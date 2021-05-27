@@ -1,17 +1,19 @@
 {
   "name": "hr-rpp28-front-end-capstone",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project Atelier Front End Capstone HR-RPP28",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "react-dev": "webpack --mode development --watch",
+    "server-dev": "npx nodemon server/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FEC-madal/hr-rpp28-front-end-capstone.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rob Stafford, Tom Ho, Chris Floyd, Tim Moses",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FEC-madal/hr-rpp28-front-end-capstone/issues"
