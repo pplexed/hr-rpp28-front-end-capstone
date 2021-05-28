@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
 
     //default state
-    state = {};
+    this.state = {};
   }
 
   render () {
@@ -21,11 +21,14 @@ class App extends React.Component {
       <div>
         <h1>FEC React Main App</h1>
         <Overview/>
+        <br></br>
         <QuestionAnswer/>
+        <br></br>
         <RatingsReviews/>
+        <br></br>
         <RelatedItems/>
       </div>
-    )
+    );
 
   }
 

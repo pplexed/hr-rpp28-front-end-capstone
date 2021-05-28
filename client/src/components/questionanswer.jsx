@@ -7,13 +7,19 @@ class QuestionAnswer extends React.Component {
     super(props);
 
     //default state
-    state = {};
+    this.state = {};
   }
 
   render () {
 
     return (
-      <div>This is the Question Answer module</div>
+      <table border='1px'>
+      <tr>
+        <th>
+            <div>This is the Question Answer Module</div>
+       </th>
+      </tr>
+    </table>
     )
   }
 }

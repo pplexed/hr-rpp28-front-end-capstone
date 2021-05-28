@@ -7,13 +7,19 @@ class RelatedItems extends React.Component {
     super(props);
 
     //default state
-    state = {};
+    this.state = {};
   }
 
   render () {
 
     return (
-      <div>This is the Related Items module</div>
+      <table border='1px'>
+      <tr>
+        <th>
+            <div>This is the Related items Module</div>
+       </th>
+      </tr>
+    </table>
     )
   }
 }

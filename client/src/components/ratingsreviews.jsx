@@ -7,13 +7,19 @@ class RatingsReviews extends React.Component {
     super(props);
 
     //default state
-    state = {};
+    this.state = {};
   }
 
   render () {
 
     return (
-      <div>This is the Ratings and Reviews module</div>
+      <table border='1px'>
+      <tr>
+        <th>
+            <div>This is the Ratings Reviews Module</div>
+       </th>
+      </tr>
+    </table>
     )
   }
 }
