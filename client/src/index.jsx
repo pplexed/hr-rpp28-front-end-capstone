@@ -22,11 +22,11 @@ class App extends React.Component {
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
+        <RelatedItems/>
+        <br></br>
         <QuestionAnswer/>
         <br></br>
         <RatingsReviews/>
-        <br></br>
-        <RelatedItems/>
       </div>
     );
 
