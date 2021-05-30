@@ -1,5 +1,5 @@
 import React from 'react';
-import OutfitItemCard from 'outfitItems.jsx';
+import OutfitItemCard from './outfitItemCard.jsx';
 
 class OutfitItemsList extends React.Component {
 

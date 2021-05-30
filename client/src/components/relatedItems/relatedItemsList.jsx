@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedItemCard from 'relatedItems.jsx';
+import RelatedItemCard from './relatedItemCard.jsx';
 
 class RelatedItemsList extends React.Component {
 

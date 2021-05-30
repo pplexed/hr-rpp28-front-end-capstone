@@ -13,7 +13,7 @@ class RelatedItemCard extends React.Component {
   render () {
     return (
             <div id="relatedItemCard">These are the RelatedItemCards</div>
-    )
+    );
   }
 }
 

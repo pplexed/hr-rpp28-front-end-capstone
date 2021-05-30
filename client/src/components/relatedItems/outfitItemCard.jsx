@@ -14,7 +14,7 @@ class OutfitItemCard extends React.Component {
             <div id="outfitItemCard">These are the OutfitItemCards
 
             </div>
-    )
+    );
   }
 }
 
