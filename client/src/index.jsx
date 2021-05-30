@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Overview from './components/overview.jsx';
 import QuestionAnswer from './components/questionanswer.jsx';
 import RatingsReviews from './components/ratingsreviews.jsx';
-import RelatedItems from './components/relateditems.jsx';
+import RelatedItemsModule from './components/relatedItems/relatedItemsModule';
 
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
-        <RelatedItems/>
+        <RelatedItemsModule />
         <br></br>
         <QuestionAnswer/>
         <br></br>

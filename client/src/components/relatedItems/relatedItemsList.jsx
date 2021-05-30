@@ -12,13 +12,14 @@ class RelatedItemsList extends React.Component {
 
   render () {
     return (
-            <div id="relatedItemsList">This is the Related items Module
-
+            <div id="relatedItemsList">
+              {props.relatedItemsArr.map( item => {
+                return (<RelatedItemCard data={item} />);
+              })}
             </div>
-    )
+    );
   }
 }
-
 
 
 export default RelatedItemsList;

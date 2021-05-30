@@ -12,11 +12,12 @@ class OutfitItemsList extends React.Component {
 
   render () {
     return (
-            <div id="outfitItemsList">This is the OutfitItemsList
-
-              <OutfitItemCard />
-            </div>
-    )
+      <div id="outfitItemsList">
+        {props.outfitItemsArr.map( item => {
+          return (<OutfitItemCard data={item} />);
+        })}
+      </div>
+    );
   }
 }
 
