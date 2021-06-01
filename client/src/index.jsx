@@ -12,7 +12,10 @@ class App extends React.Component {
     super(props);
 
     //default state
-    this.state = {};
+    this.state = {
+      // Tim will need a property for current product id to make a GET request for related items
+      // The team will need a product review rating to render on multiple components
+    };
   }
 
   render () {
@@ -22,7 +25,7 @@ class App extends React.Component {
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
-        <RelatedItemsModule />
+        <RelatedItemsModule {/* Need to pass this.state.currentProductId */} />
         <br></br>
         <QuestionAnswer/>
         <br></br>

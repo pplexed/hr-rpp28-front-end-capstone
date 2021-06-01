@@ -7,7 +7,9 @@ class RelatedItemsList extends React.Component {
     super(props);
 
     //default state
-    this.state = {};
+    this.state = {
+      // relatedProducts array
+    };
   }
 
   render () {
