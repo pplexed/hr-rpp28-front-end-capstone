@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedItemsList from './relatedItems.jsx';
+import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
 
 class RelatedItemsModule extends React.Component {
