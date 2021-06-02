@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Overview from './components/overview.jsx';
 import QuestionAnswer from './components/questionanswer.jsx';
 import RatingsReviews from './components/ratingsreviews.jsx';
-import RelatedItems from './components/relateditems.jsx';
+import RelatedItemsModule from './components/relatedItems/relatedItemsModule.jsx';
 
 
 class App extends React.Component {
@@ -12,7 +12,10 @@ class App extends React.Component {
     super(props);
 
     //default state
-    this.state = {};
+    this.state = {
+      // Tim will need a property for current product id to make a GET request for related items
+      // The team will need a product review rating to render on multiple components
+    };
   }
 
   render () {
@@ -22,7 +25,7 @@ class App extends React.Component {
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
-        <RelatedItems/>
+        <RelatedItemsModule {/* Need to pass this.state.currentProductId */} />
         <br></br>
         <QuestionAnswer/>
         <br></br>
