@@ -25,7 +25,7 @@ class App extends React.Component {
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
-        <RelatedItemsModule {/* Need to pass this.state.currentProductId */} />
+        <RelatedItemsModule /> {/* Need to pass this.state.currentProductId */}
         <br></br>
         <QuestionAnswer/>
         <br></br>

@@ -15,9 +15,9 @@ class RelatedItemsList extends React.Component {
   render () {
     return (
             <div id="relatedItemsList">
-              {props.relatedItemsArr.map( item => {
+              {/* {props.relatedItemsArr.map( item => {
                 return (<RelatedItemCard data={item} />);
-              })}
+              })} */}
             </div>
     );
   }

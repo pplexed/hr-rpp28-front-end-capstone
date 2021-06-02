@@ -13,9 +13,9 @@ class OutfitItemsList extends React.Component {
   render () {
     return (
       <div id="outfitItemsList">
-        {props.outfitItemsArr.map( item => {
+        {/* {props.outfitItemsArr.map( item => {
           return (<OutfitItemCard data={item} />);
-        })}
+        })} */}
       </div>
     );
   }
