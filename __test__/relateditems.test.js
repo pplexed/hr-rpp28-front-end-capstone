@@ -1,11 +1,11 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import RelatedItems from '../client/src/components/relateditems';
+import RelatedItemsModule from '../client/src/components/relatedItems/relatedItemsModule.jsx';
 
 test('Text inside RelatedItems', () => {
- 
-  const wrapper = shallow(<RelatedItems/>);
 
-  expect(wrapper.text()).toEqual('This is the Related items Module');
+  const wrapper = shallow(<RelatedItemsModule/>);
+
+  expect(wrapper.text()).toEqual('This is the Related items list<RelatedItemsList />This is the Outfit items list<OutfitItemsList />');
 
 });
