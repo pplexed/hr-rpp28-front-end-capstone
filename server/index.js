@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes.js');
+var RIroutes = require('./routes/relatedItems_routes.js');
 
 
 const PORT = 3000;
@@ -13,6 +14,8 @@ app.use(express.static('./client/dist'));
 //import routes
 var QAroutes = require('./routes/QA_routes.js');
 app.use('/qa', QAroutes);
+
+app.use('/relatedItems', RIroutes);
 
 
 app.get('/', (req, res) => {
