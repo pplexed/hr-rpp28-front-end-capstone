@@ -14,10 +14,10 @@ class RelatedItemsModule extends React.Component {
     this.data = {};
   }
 
-  getRealtedItems() {
+  getRelatedItems() {
     let product_id = this.props.product_id;
 
-    axios.get(`/api/products/${product_id}/related`, {
+    axios.get(`/products/${product_id}/related`, {
       params: {
         product_id: { product_id }
       }
@@ -36,7 +36,7 @@ class RelatedItemsModule extends React.Component {
   }
 
   getProductData(id) {
-    return axios.get(`/api/products/${id}`, {
+    return axios.get(`/products/${id}`, {
       params: {
         product_id: id
       }
@@ -46,7 +46,7 @@ class RelatedItemsModule extends React.Component {
   }
 
   componentDidMount() {
-    this.getRealtedItems();
+    this.getRelatedItems();
   }
 
   componentWillUnmount() {
