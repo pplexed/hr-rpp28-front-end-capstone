@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 
 const CarouselContainer extends React.Component {
@@ -12,20 +11,22 @@ const CarouselContainer extends React.Component {
     this.checkScroll = this.checkScroll.bind(this);
 
     this.state = {
-      showScrollLeft: false,
-      showScrollRight: true,
+      displayScrollLeft: false,
+      displayScrollRight: true,
       scrollWidth: 0
     };
 
-    this.ref = React.createRef();
+    this.carouselRef = React.createRef();
   }
 
   scrollRight() {
-
+    this.carouselRef.current.scrollLeft += this.carouselRef.current.firstChild.clientWidth;
+    this.checkScroll;
   }
 
   scrollLeft() {
-
+    this.carouselRef.current.scrollLeft -= this.carouselRef.current.firstChild.clientWidth;
+    this.checkScroll;
   }
 
   checkScroll() {
@@ -33,7 +34,12 @@ const CarouselContainer extends React.Component {
   }
 
   componentDidMount() {
-
+    if (this.carouselRef.current.children.length < 4) {
+      this.setState({
+        displayScrollLeft: false,
+        displayScrollRight: false
+      });
+    }
   }
 
   render() {
@@ -41,10 +47,6 @@ const CarouselContainer extends React.Component {
 
     );
   }
-};
-
-CarouselContainer.propTypes = {
-
 };
 
 export default CarouselContainer;
