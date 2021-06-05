@@ -18,6 +18,15 @@ app.get('/reviews', (req, res) => {
     if (err) {
       console.log(err);
     } else {
+//import routes
+var QAroutes = require('./routes/QA_routes.js');
+app.use('/qa', QAroutes);
+
+
+app.get('/', (req, res) => {
+
+  //res.send('basic get request received');
+  console.log('received a request at /');
 
       res.send(data);
     }
