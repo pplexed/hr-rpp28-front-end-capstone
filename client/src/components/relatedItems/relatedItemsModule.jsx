@@ -1,6 +1,7 @@
 import React from 'react';
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
+import axios from 'axios';
 
 class RelatedItemsModule extends React.Component {
   constructor(props) {
