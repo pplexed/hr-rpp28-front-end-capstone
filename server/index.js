@@ -10,6 +10,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('./client/dist'));
 
+//import routes
+var QAroutes = require('./routes/QA_routes.js');
+app.use('/qa', QAroutes);
+
+
 app.get('/', (req, res) => {
 
   //res.send('basic get request received');
