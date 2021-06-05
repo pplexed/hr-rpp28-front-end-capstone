@@ -1,15 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
-
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 
 
 // default options as middleware
 router.use(fileUpload());
-
-
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
@@ -17,14 +14,12 @@ router.use(bodyParser.json());
 
 //NON-API Photo upload Logic
 
-
 router.post('/uploadphoto', (req, res) => {
   console.log('upload post received');
 
   console.log(Object.keys(req.files));
 
   if (req.files.answerpic) {
-    
 
     fs.writeFile(`./client/dist/${req.files.answerpic.name}`, req.files.answerpic.data, function(err) {
       if(err) {
@@ -32,8 +27,8 @@ router.post('/uploadphoto', (req, res) => {
       }
       console.log("The file was saved!");
       res.send(`http://localhost:3000/${req.files.answerpic.name}`);
-    }); 
-  
+    });
+
   }
 });
 
