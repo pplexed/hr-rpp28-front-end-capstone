@@ -1,6 +1,7 @@
 import React from 'react';
 import FeaturesList from './features.jsx';
-import { sampleProductInfo } from '../../../../sampleDataSets';
+import Styles from './styles.jsx';
+import { sampleProductInfo, sampleStyleInfo } from '../../../../sampleDataSets';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -19,11 +20,32 @@ class Overview extends React.Component {
         feature: '',
         value: '',
       }],
+      results: [{
+        style_id: 0,
+        name: '',
+        original_price: 0,
+        sale_price: 0,
+        default: true,
+        photos:[{
+          thumbnail_url: '',
+          url: '',
+        }],
+        skus: {}
+      }],
+      styleChosen: 0,
     };
   }
 
   componentDidMount() {
     this.setState(sampleProductInfo);
+    this.setState(sampleStyleInfo);
+  }
+
+  onChange(e) {
+    // may need 1) conditional logic 2) another onChange on lower lvl 3) change to track spec comp)
+    this.setState({
+      styleChosen: e.target.value,
+    });
   }
 
   render() {
@@ -36,6 +58,7 @@ class Overview extends React.Component {
       defaultPrice,
       productOverview,
       features,
+      results,
     } = this.state;
     return (
       <table border="1px">
@@ -53,7 +76,7 @@ class Overview extends React.Component {
           <tr>
             <div id="name">{ name }</div>
           </tr>
-          {/* this will require conditional logic, price is derived from style */}
+          {/* this will require passing back up through components, price is derived from style */}
           <tr>
             <div id="defaultPrice">{ defaultPrice }</div>
           </tr>
@@ -68,6 +91,9 @@ class Overview extends React.Component {
           </tr>
           <tr>
             <FeaturesList featuresList={features} />
+          </tr>
+          <tr className="style-picker">
+            <Styles results={results} styleChosen={this.state.styleChosen} pickedStyle={this.onChange.bind(this)}/>
           </tr>
         </tbody>
       </table>

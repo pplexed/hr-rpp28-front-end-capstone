@@ -1,7 +1,19 @@
 import React from 'react';
-// needs to be properly mapped
+
 const FeaturesList = (props) => {
-  return null;
+  const features = props.featuresList.map((feature) => {
+    return (
+      <li>
+        {feature.feature}
+        :
+        {feature.value}
+      </li>
+    );
+    });
+
+  return (
+    <ul>{features}</ul>
+  );
 };
 
 export default FeaturesList;
