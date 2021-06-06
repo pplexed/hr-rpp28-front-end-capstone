@@ -14,7 +14,6 @@ const Styles = (props) => {
       </select>
     </div>
   );
-  // return null;
 };
 
 export default Styles;
