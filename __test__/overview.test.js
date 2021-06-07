@@ -6,6 +6,6 @@ test('Text inside Overview', () => {
 
   const wrapper = shallow(<Overview />);
 
-  expect(wrapper.text()).toEqual('This is the overview module');
+  expect(wrapper.text()).toEqual('This is the overview moduleBasketball ShoesAir Minis 2500Full court supportThis optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.<FeaturesList /><Styles />');
 
 });
