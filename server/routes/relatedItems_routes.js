@@ -15,7 +15,7 @@ const options = {
   method: 'get',
   url: url,
   headers: token.AUTH
-}
+};
 
 //NON-API Photo upload Logic (TomHo)
 router.post('/uploadphoto', (req, res) => {
@@ -35,10 +35,6 @@ router.post('/uploadphoto', (req, res) => {
   }
 });
 
-router.get('/products/:product_id/related', (req, res) => {
-  console.log('Should return array of related products', req);
-  res.status(200).send();
-});
 
 
 module.exports = router;
