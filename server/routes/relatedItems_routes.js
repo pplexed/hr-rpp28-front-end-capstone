@@ -1,13 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
+const axios = require('axios');
+const token = require('../../config.js');
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 router.use(fileUpload());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
+
+const options = {
+  method: 'get',
+  url: url,
+  headers: token.AUTH
+}
 
 //NON-API Photo upload Logic (TomHo)
 router.post('/uploadphoto', (req, res) => {
@@ -27,6 +35,10 @@ router.post('/uploadphoto', (req, res) => {
   }
 });
 
-router.get('/')
+router.get('/products/:product_id/related', (req, res) => {
+  console.log('Should return array of related products', req);
+  res.status(200).send();
+});
+
 
 module.exports = router;
