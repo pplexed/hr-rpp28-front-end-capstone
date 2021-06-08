@@ -1,6 +1,8 @@
 import React from 'react';
+import router from '../../../../server/routes/overviewRoutes.js'
 import FeaturesList from './features.jsx';
 import Styles from './styles.jsx';
+
 import { sampleProductInfo, sampleStyleInfo } from '../../../../sampleDataSets';
 
 class Overview extends React.Component {
@@ -26,17 +28,19 @@ class Overview extends React.Component {
         original_price: 0,
         sale_price: 0,
         default: true,
-        photos:[{
+        photos: [{
           thumbnail_url: '',
           url: '',
         }],
-        skus: {}
+        skus: {},
       }],
       styleChosen: 0,
     };
   }
 
   componentDidMount() {
+    let startProd = router.get;
+    console.log('client recieved product info: ', startProd);
     this.setState(sampleProductInfo);
     this.setState(sampleStyleInfo);
   }
