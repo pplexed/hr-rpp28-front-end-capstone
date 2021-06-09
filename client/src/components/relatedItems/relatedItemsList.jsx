@@ -12,10 +12,16 @@ class RelatedItemsList extends React.Component {
   }
 
   render() {
+    const data = this.props.data.relatedItemsData;
+
+    console.log('DATA', data);
+    console.log('wtf Array:', data[0]);
+    console.log('WTF Object:', data['0']);
+
     return (
       <div id="relatedItemsList">
         This is the Related Items List
-        {this.props.data.relatedItemsData.map((item) => <RelatedItemCard data={item} />)}
+        {/* <RelatedItemCard data={}/> */}
       </div>
     );
   }

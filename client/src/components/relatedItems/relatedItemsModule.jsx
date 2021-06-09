@@ -16,8 +16,8 @@ class RelatedItemsModule extends React.Component {
     this.product_id = 22134;
     this.relatedItemsArray = [];
     this.relatedItemsData = [];
-    // this.getRelatedProductsArray = this.getRelatedProductsArray.bind(this);
-    // this.getRelatedProductsInfo = this.getRelatedProductsInfo.bind(this);
+    this.getRelatedProductsArray = this.getRelatedProductsArray.bind(this);
+    this.getRelatedProductsInfo = this.getRelatedProductsInfo.bind(this);
   }
 
   componentDidMount() {
@@ -49,9 +49,8 @@ class RelatedItemsModule extends React.Component {
   }
 
   getRelatedProductsInfo() {
-    console.log('relatedItemsArray:', this.state.relatedItems);
     for (let i = 0; i < this.state.relatedItems.length; i += 1) {
-      let builtUrl = url + `/products/${this.relatedItemsArray[i]}`;
+      let builtUrl = url + `/products/${this.state.relatedItems[i]}`;
 
       const options = {
         method: 'get',
@@ -66,11 +65,10 @@ class RelatedItemsModule extends React.Component {
         .catch((err) => {
           console.log('Error in routes/getRelatedItemsInfo:', err);
         });
-      }
-      this.setState({
-        relatedItemsData: this.relatedItemsData
-      });
-    console.log('relatedItemsData:', this.state.relatedItemsData);
+    }
+    this.setState({
+      relatedItemsData: this.relatedItemsData
+    });
   }
 
   render () {
