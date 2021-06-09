@@ -9,23 +9,29 @@ class RelatedItemsModule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      relatedItems: [],
-      relatedItemsData: [],
+      relatedItemsData: {},
+      isLoading: true
     };
 
     this.product_id = 22134;
-    this.relatedItemsArray = [];
-    this.relatedItemsData = [];
-    this.getRelatedProductsArray = this.getRelatedProductsArray.bind(this);
-    this.getRelatedProductsInfo = this.getRelatedProductsInfo.bind(this);
+    this.data = {};
   }
 
   componentDidMount() {
-    this.getRelatedProductsArray();
+    this.getRelatedItemsIds();
   }
 
-  getRelatedProductsArray() {
-    const builtUrl = url + `/products/${this.product_id}/related`;
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.data = {};
+    this.setState = () => {
+      return;
+    };
+  }
+
+  getRelatedItemsIds() {
+    const product_id = this.product_id;
+    const builtUrl = url + `/products/${product_id}/related`;
 
     const options = {
       method: 'get',
@@ -34,48 +40,41 @@ class RelatedItemsModule extends React.Component {
     };
 
     axios(options)
-      .then((res) => {
+      .then(({ data }) => {
+        return Promise.all(data.map((id) => {
+          return this.getRelatedItemsData(id);
+        }));
+      }).then(() => {
         this.setState({
-          relatedItems: res.data
+          isLoading: false,
+          relatedItemsData: this.data
         });
-        this.relatedItemsArray = res.data;
-      })
-      .catch((err) => {
-        console.log('Error in axios call in getRelatedProductsArray', err);
-      })
-      .then(() => {
-        this.getRelatedProductsInfo();
+      }).catch((err) => {
+        console.log(err);
       });
   }
 
-  getRelatedProductsInfo() {
-    for (let i = 0; i < this.state.relatedItems.length; i += 1) {
-      let builtUrl = url + `/products/${this.state.relatedItems[i]}`;
-
-      const options = {
-        method: 'get',
-        url: builtUrl,
-        headers: token.AUTH
-      };
-
-      axios(options)
-        .then((res) => {
-          this.relatedItemsData.push(res.data);
-        })
-        .catch((err) => {
-          console.log('Error in routes/getRelatedItemsInfo:', err);
-        });
+  getRelatedItemsData(id) {
+    const builtUrl = url + `/products/${id}`;
+    const options = {
+      method: 'get',
+      url: builtUrl,
+      headers: token.AUTH
     }
-    this.setState({
-      relatedItemsData: this.relatedItemsData
-    });
+    return axios(options)
+      .then(({ data }) => {
+        this.data[data.id] = data;
+      });
   }
 
-  render () {
+  render() {
+    if (this.state.isLoading) {
+      return <div>Related Items Loading ...</div>;
+    }
     return (
       <div id="relatedItemsModule">
         <div id="relatedItemsList">This is the Related Items Module
-          <RelatedItemsList data={this.state} />
+          <RelatedItemsList relatedItemInfo={this.state.relatedItemsData} />
         </div><br></br>
         <div id="outfitItemsList">This is the Outfit items list
           <OutfitItemsList />
