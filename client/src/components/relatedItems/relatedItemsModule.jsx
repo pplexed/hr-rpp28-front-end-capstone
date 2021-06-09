@@ -69,12 +69,12 @@ class RelatedItemsModule extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>Related Items Loading ...</div>;
+      return <div>... Related Items Loading ...</div>;
     }
     return (
       <div id="relatedItemsModule">
         <div id="relatedItemsList">This is the Related Items Module
-          <RelatedItemsList relatedItemInfo={this.state.relatedItemsData} />
+          <RelatedItemsList data={this.state.relatedItemsData} />
         </div><br></br>
         <div id="outfitItemsList">This is the Outfit items list
           <OutfitItemsList />
