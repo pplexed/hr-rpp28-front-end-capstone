@@ -2,26 +2,23 @@ import React from 'react';
 import RelatedItemCard from './relatedItemCard.jsx';
 
 class RelatedItemsList extends React.Component {
-
   constructor(props) {
     super(props);
 
-    //default state
     this.state = {
-      // relatedProducts array
+      relatedItems: this.props.relatedItemsArray,
+      relatedItemsData: this.props.relatedItemsData
     };
   }
 
-  render () {
+  render() {
     return (
-            <div id="relatedItemsList">
-              {/* {props.relatedItemsArr.map( item => {
-                return (<RelatedItemCard data={item} />);
-              })} */}
-            </div>
+      <div id="relatedItemsList">
+        This is the Related Items List
+        {this.state.relatedItemsData.map((item) => <RelatedItemCard relatedItemData={item} />)}
+      </div>
     );
   }
 }
-
 
 export default RelatedItemsList;

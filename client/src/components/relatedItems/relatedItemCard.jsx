@@ -1,22 +1,10 @@
 import React from "react";
 
-
-class RelatedItemCard extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    //default state
-    this.state = {};
-  }
-
-  render () {
-    return (
-            <div id="relatedItemCard">These are the RelatedItemCards</div>
-    );
-  }
-}
-
-
+const RelatedItemCard = (props) => {
+  <div id="relatedItemCard">
+    These are the RelatedItemCards:
+    {this.props}
+  </div>;
+};
 
 export default RelatedItemCard;
