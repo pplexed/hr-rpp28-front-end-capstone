@@ -1,5 +1,6 @@
 import React from 'react';
-import router from '../../../../server/routes/overviewRoutes.js'
+import axios from 'axios';
+
 import FeaturesList from './features.jsx';
 import Styles from './styles.jsx';
 
@@ -11,7 +12,7 @@ class Overview extends React.Component {
 
     // default state
     this.state = {
-      id: '',
+      id: 22125,
       name: '',
       slogan: '',
       description: '',
@@ -36,20 +37,40 @@ class Overview extends React.Component {
       }],
       styleChosen: 0,
     };
+    this.updateProductState = this.updateProductState.bind(this);
+    // () => this.updateProductState();
   }
 
   componentDidMount() {
-    let startProd = router.get;
-    console.log('client recieved product info: ', startProd);
-    this.setState(sampleProductInfo);
-    this.setState(sampleStyleInfo);
+    // this.setState(sampleProductInfo);
+    // this.setState(sampleStyleInfo);
+    // this.updateProductState();
+    // () => this.updateProductState()
+    //   .then
+    //   console.log('this.state: ', this.state);
+    try {
+      this.updateProductState();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   onChange(e) {
-    // may need 1) conditional logic 2) another onChange on lower lvl 3) change to track spec comp)
+    // may need 1) conditional logic 2) another onChange on lower lvl 3) change to track spec comp
     this.setState({
       styleChosen: e.target.value,
     });
+  }
+
+  updateProductState() {
+    var context = this;
+    return axios.get('/getOneProduct')
+      .then(function ({ data }) {
+        context.setState(data);
+      })
+      .catch(function (error) {
+        console.log('client axios error: ', error);
+      });
   }
 
   render() {
