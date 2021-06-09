@@ -1,15 +1,13 @@
 import React from "react";
 
-const RelatedItemCard = (props) => {
-  console.log('props.data', props.data);
-  return (
+const RelatedItemCard = (props) => (
     <div id="relatedItemCard">
-      These are the RelatedItemCards:
-      id: {props.data.id}
-      name: {props.data.name}
-      default_price: {props.data.default_price}
+      <br></br>
+      These are the RelatedItemCards:<br></br>
+      id: {props.data.id}<br></br>
+      name: {props.data.name}<br></br>
+      default_price: {props.data.default_price}<br></br>
     </div>
-  );
-};
+);
 
 export default RelatedItemCard;
