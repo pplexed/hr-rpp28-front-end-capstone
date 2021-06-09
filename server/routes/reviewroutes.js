@@ -15,7 +15,7 @@ router.use(bodyParser.json());
 const options = {
   method: 'get',
   url: url,
-  headers: token.auth
+  headers: token.AUTH
 }
 
 router.get('/product', (req, res) => {
