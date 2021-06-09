@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Overview from './components/overview.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import Overview from './components/overview/overview.jsx';
 import QuestionAnswer from './components/questionanswer.jsx';
 import RatingsReviews from './components/reviews/ratingsreviews.jsx';
 import RelatedItemsModule from './components/relatedItems/relatedItemsModule.jsx';
@@ -32,7 +32,6 @@ class App extends React.Component {
     this.reviews()
   }
   render () {
-
     return (
       <div>
         <h1>FEC React Main App</h1>
