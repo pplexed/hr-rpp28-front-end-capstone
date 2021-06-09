@@ -6,8 +6,8 @@ class RelatedItemsList extends React.Component {
     super(props);
 
     this.state = {
-      relatedItems: this.props.relatedItemsArray,
-      relatedItemsData: this.props.relatedItemsData
+      relatedItems: this.props.data.relatedItems,
+      relatedItemsData: this.props.data.relatedItemsData
     };
   }
 
@@ -15,7 +15,7 @@ class RelatedItemsList extends React.Component {
     return (
       <div id="relatedItemsList">
         This is the Related Items List
-        {this.state.relatedItemsData.map((item) => <RelatedItemCard relatedItemData={item} />)}
+        {this.props.data.relatedItemsData.map((item) => <RelatedItemCard data={item} />)}
       </div>
     );
   }
