@@ -1,39 +1,23 @@
 import React from "react";
 import axios from 'axios';
+import Photobar from '../Photobar/photobar.jsx';
 
 
-
-class PhotobarA extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render () {
-    if ((!this.props.photos) || (this.props.photos.length === 0)) {
-      return null;
-    }
-    return (
-      <span>
-        {this.props.photos.map((photo) => <img src={photo.url} width="75" height="75"></img>)}
-      </span>
-    )
-  }
-}
 
 class UploadPhotos extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      photos: []
+      photos: [],
+      max: 5,
+      showErrorMessage: false,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
   componentDidMount() {
-
-    this.setState({photos: [{url: 'test1'}, {url: 'test2'}] });
 
   }
 
@@ -50,10 +34,9 @@ class UploadPhotos extends React.Component {
           'Content-Type': 'multipart/form-data'
         }
     }).then((response) => {
-      console.log('returned hyperlink', response)
+      console.log('returned hyperlink', response.data)
       let newarray = this.state.photos;
-
-      newarray.push({url: response.data});
+      newarray.push(response.data);
       this.setState({photos: newarray});
     });
 
@@ -64,7 +47,7 @@ class UploadPhotos extends React.Component {
 
     return (
       <div>
-        <PhotobarA photos={this.state.photos}/>
+        <Photobar photos={this.state.photos}/>
         <form method='POST' action='http://127.0.0.1:3000/qa/uploadphoto' enctype='multipart/form-data'>
           <label for='answerpic'>Upload your photos!</label><br></br>
           <input type="file" name='answerpic' onChange={this.onChangeHandler} multiple></input>
