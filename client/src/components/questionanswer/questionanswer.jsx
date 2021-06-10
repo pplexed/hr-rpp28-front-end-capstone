@@ -74,7 +74,7 @@ class QuestionAnswer extends React.Component {
   }
 
   loadMoreQuestions() {
-    this.setState({defaultlength: this.state.defaultlength +2 });
+    this.setState({defaultlength: this.state.defaultlength + 2 });
   }
 
   render () {

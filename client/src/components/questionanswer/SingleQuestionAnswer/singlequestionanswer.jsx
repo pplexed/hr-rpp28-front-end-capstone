@@ -1,7 +1,8 @@
 import React from 'react';
 import SingleAnswerBar from './singleanswer.jsx';
 import SingleQuestionBar from './singlequestion.jsx';
-import listAnswers from "../listanswersexample.js";
+import listAnswers from '../listanswersexample.js';
+import axios from 'axios';
 
 
 class SingleQuestionAnswer extends React.Component {
@@ -9,23 +10,27 @@ class SingleQuestionAnswer extends React.Component {
     super(props);
 
     this.state = {
-      answers: listAnswers.results,
-      answerBars : this.props.question.answers,
-      defaultlength: 0,
+      answers: this.props.question.answers,
+      defaultlength: 2,
     };
   }
 
+  componentDidMount() {
+    console.log('in Component did mount', this.props.question.answers);
+
+  }
+ 
   loadMoreAnswers() {
     this.setState({ defaultlength: (this.state.defaultlength + 2) });
     console.log('load more answers event handler triggered!', this.state.defaultlength);
   }
 
   render() {
-    let answerBars = Object.keys(this.props.question.answers).map(key =>  
+    let answerBars = Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(key =>  
       <SingleAnswerBar answer = { this.props.question.answers[key] }/>);
 
-    let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key => 
-      <SingleAnswerBar answer={key} />);
+    // let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key => 
+    //   <SingleAnswerBar answer={key} />);
 
     return (
       <table className='question'>
@@ -38,7 +43,7 @@ class SingleQuestionAnswer extends React.Component {
             {answerBars}
           </div>
           <div>
-            {moreAnswers}
+            {/*moreAnswers*/}
           </div>
           <div onClick={this.loadMoreAnswers.bind(this)}>
             load more answers
@@ -52,3 +57,7 @@ class SingleQuestionAnswer extends React.Component {
 }
 
 export default SingleQuestionAnswer;
+
+//Note to self:
+// in the questions get response, for each question there is a field called answers.  
+// the answers field in the question object is an object of objects. 
