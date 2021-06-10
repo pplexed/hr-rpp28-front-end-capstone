@@ -78,17 +78,6 @@ class AddAnswerModal extends React.Component {
     };
   }
 
-  // componentDidMount () {
-  //   this.setState({show: this.props.show});
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if(prevProps.show !== this.props.show) {
-  //     this.setState({show: this.props.show});
-  //     console.log('component did update called');
-  //   }
-  // }
-
   closeButtonHandler (e) {
     //close the window when the button is clicked
     this.setState({show: false});
@@ -112,7 +101,7 @@ class AddAnswerModal extends React.Component {
 
     //validate email here
     if (!validateTest) {
-      console.log('implement a warning here');
+      console.log('Invalid Email Entered');
     }
 
     return validateTest;
@@ -132,7 +121,7 @@ class AddAnswerModal extends React.Component {
         question: this.state.question
       })
       .then((response) => {
-        console.log('answer submitted returned with', response);
+        console.log('answer submitted returned with', response.data);
       })
       .catch((err) => {
         console.log('error in submitting answer', err);

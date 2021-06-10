@@ -29,8 +29,8 @@ class SingleQuestionBar extends React.Component {
     return (
       <div>
         ------------
-        <td>Q: {this.state.question.question_body}</td>
-        <td>
+        <td class='q_bar_left' border='1px'>Q: {this.state.question.question_body}</td>
+        <td class='q_bar_right' border='1px'>
           <span>Helpful? </span>
           <span onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
           <span onClick={this.props.AModalHandler}>| add answer </span>

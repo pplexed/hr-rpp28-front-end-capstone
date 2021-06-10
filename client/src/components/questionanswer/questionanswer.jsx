@@ -1,7 +1,5 @@
 import React from 'react';
-import listQuestions from './listquestionsexample.js';
 import axios from 'axios';
-import listAnswers from "./listanswersexample.js";
 import AddAnswerModal from './QAModals/addanswermodal.jsx';
 import AddQuestionModal from './QAModals/addquestionmodal.jsx';
 import SearchQuestionBar from './SearchQuestionBar/searchquestionbar.jsx';
@@ -29,6 +27,9 @@ class AdditionalQuestionBar extends React.Component {
     )
   }
 }
+
+
+
 
 class QuestionAnswer extends React.Component {
   constructor(props) {
@@ -78,19 +79,22 @@ class QuestionAnswer extends React.Component {
   }
 
   render () {
+
+    let questionlist = this.state.questions.results.slice(0, this.state.defaultlength).map((question) => {
+      return <tr><td><SingleQuestionAnswer question={question} AModalHandler={this.showAModalHandler.bind(this)}/></td></tr>
+    });
+
     return (
       <table width='90%' border='1px' align='left' font-family='arial'>
       <tr className='qatable'>
         <th align='left'>
               <SearchQuestionBar/>
               <p>view questions</p> 
-              {this.state.questions.results.slice(0, this.state.defaultlength).map((question) => <SingleQuestionAnswer question={question} AModalHandler={this.showAModalHandler.bind(this)}/>)}
         </th>
       </tr>
-      <tr>
-        <td>
-        </td>
-      </tr>
+
+      {questionlist}
+
        <tr>
         <td>
           <AdditionalQuestionBar show={this.showQModalHandler.bind(this)} moreAnsweredQuestions={this.loadMoreQuestions.bind(this)}/>
@@ -98,7 +102,7 @@ class QuestionAnswer extends React.Component {
       </tr>
       <tr>
         <td>
-          {<AddAnswerModal qid='1' show={this.state.showAModal} key={this.state.showAModal}/>}
+          {<AddAnswerModal qid='153661' show={this.state.showAModal} key={this.state.showAModal}/>}
         </td>
       </tr>
       <tr>
