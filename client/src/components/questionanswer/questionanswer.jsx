@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import AddAnswerModal from './QAModals/addanswermodal.jsx';
 import AddQuestionModal from './QAModals/addquestionmodal.jsx';
 import SearchQuestionBar from './SearchQuestionBar/searchquestionbar.jsx';
 import SingleQuestionAnswer from './SingleQuestionAnswer/singlequestionanswer.jsx';
@@ -38,7 +37,6 @@ class QuestionAnswer extends React.Component {
       questions: { results: []},
       product_id: '', 
       showQModal: false,
-      showAModal: false,
       defaultlength: 2,
     }
   }
@@ -62,11 +60,11 @@ class QuestionAnswer extends React.Component {
     
   }
 
-  showAModalHandler() {
-    console.log('Event handler clicked for Show Modal Answer Window!');
-    console.log('passing this into props', this.state.showAModal);
-    this.setState({showAModal: !this.state.showAModal});
-  }
+  // showAModalHandler() {
+  //   console.log('Event handler clicked for Show Modal Answer Window!');
+  //   console.log('passing this into props', this.state.showAModal);
+  //   this.setState({showAModal: !this.state.showAModal});
+  // }
 
   showQModalHandler() {
     console.log('passed event handler clicked for show Question Modal Window!');
@@ -81,7 +79,7 @@ class QuestionAnswer extends React.Component {
   render () {
 
     let questionlist = this.state.questions.results.slice(0, this.state.defaultlength).map((question) => {
-      return <tr><td><SingleQuestionAnswer question={question} AModalHandler={this.showAModalHandler.bind(this)}/></td></tr>
+      return <tr><td><SingleQuestionAnswer question={question}/></td></tr>
     });
 
     return (
@@ -102,7 +100,7 @@ class QuestionAnswer extends React.Component {
       </tr>
       <tr>
         <td>
-          {<AddAnswerModal qid='153661' show={this.state.showAModal} key={this.state.showAModal}/>}
+          {/* {<AddAnswerModal qid='153661' show={this.state.showAModal} key={this.state.showAModal}/>} */}
         </td>
       </tr>
       <tr>

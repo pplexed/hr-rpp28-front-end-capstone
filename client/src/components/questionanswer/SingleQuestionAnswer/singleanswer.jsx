@@ -27,25 +27,24 @@ class SingleAnswerBar extends React.Component {
     return (
       <div>
         -------------------
-        <td>A: {this.state.body} <br></br>
-        </td>
-        <tr>
-          <td>
-            <div>By {this.state.answerer_name}, {this.state.date.substring(0,10)}  </div>
-          </td>
-          <td>
+        <div>A: {this.state.body} </div>    
+              
+        
+        <div>
+            <span>By {this.state.answerer_name}, {this.state.date.substring(0,10)}  </span>
+           
+            
+            <span>| helpful? </span>
+            <span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}>Yes({this.state.helpfulness})</span>  
+            <span> | </span>
+            <span id='reportanswer' onClick = {this.handleReport.bind(this)}>Report</span>
+           
+        </div>
 
-          </td>
-          <td>
-            | helpful? <span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}>Yes({this.state.helpfulness})</span>  
-            | <span id='reportanswer' onClick = {this.handleReport.bind(this)}>Report</span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Photobar photos={this.state.photos}/>
-          </td>
-        </tr>
+        <div>
+          <Photobar photos={this.state.photos}/>
+        </div>
+    
       </div>
     )
   }
