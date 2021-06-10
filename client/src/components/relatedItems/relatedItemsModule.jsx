@@ -73,7 +73,7 @@ class RelatedItemsModule extends React.Component {
     }
     return (
       <div id="relatedItemsModule">
-        <div id="relatedItemsList">This is the Related Items Module
+        <div id="relatedItemsList">This is the Related items list
           <RelatedItemsList data={this.state.relatedItemsData} />
         </div><br></br>
         <div id="outfitItemsList">This is the Outfit items list
