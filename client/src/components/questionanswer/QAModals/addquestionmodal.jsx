@@ -1,8 +1,5 @@
-
-import React from "react";
+import React from 'react';
 import axios from 'axios';
-
-
 
 class AddQuestionModal extends React.Component {
 
@@ -35,14 +32,10 @@ class AddQuestionModal extends React.Component {
     this.setState({show: false});
   }
 
-
   checkInput() {
-    
     let validateTest = this.state.nickname && this.state.email && this.state.question; 
-    
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-      
       let emailtest = false;
       if (this.state.email.match(regex)) {
         emailtest = true;
@@ -51,52 +44,49 @@ class AddQuestionModal extends React.Component {
       validateTest = validateTest && emailtest;
     }
 
-    //validate email here
+    // validate email here
     if (!validateTest) {
       console.log('implement a warning here');
     }
 
     return validateTest;
 
-    //this.setState({validated : validateTest});
+    // this.setState({validated : validateTest});
   }
 
 
   submitHandler(e) {
     e.preventDefault();
 
-    //if (this.state.validated) {
+    // if (this.state.validated) {
     if (this.checkInput()) {
       axios.post(`http://localhost:3000/qa/questions/`, {
         nickname: this.state.nickname,
         email: this.state.email,
         question: this.state.question
       })
-      .then((response) => {
-        console.log('question submitted returned with', response);
-      })
-      .catch((err) => {
-        console.log('error in submitting question', err);
-      })
+        .then((response) => {
+          console.log('question submitted returned with', response);
+        })
+        .catch((err) => {
+          console.log('error in submitting question', err);
+        });
     }
     else {
       console.log('error data not validated');
     }
   }
 
-
   changeHandler(e) {
-     this.setState({[e.target.name]: e.target.value});
-     console.log(`change handler fired! value: ${e.target.value}`);
-     
+    this.setState({[e.target.name]: e.target.value });
+    console.log(`change handler fired! value: ${e.target.value}`);
   }
 
   clickHandlerNickname(e) {
-
     if (this.state.firstclicknickname) {
       this.setState({
         nickname: '',
-        firstclicknickname: false
+        firstclicknickname: false,
       });
     }
   }
@@ -105,20 +95,18 @@ class AddQuestionModal extends React.Component {
     if (this.state.firstclickemail) {
       this.setState({
         email: '',
-        firstclickemail: false
+        firstclickemail: false,
       });
     }
   }
 
   render() {
-
     if (!this.state.show) {
       return null;
     }
 
     return (
         <div className='modal-q' >
-          
           <div className='modal-content-q'>
 
             <div className='modal-header-q'>
@@ -154,7 +142,7 @@ class AddQuestionModal extends React.Component {
             </div>
           </div>
         </div>
-    )
+    );
   }
 }
 

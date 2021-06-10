@@ -4,6 +4,7 @@ import axios from 'axios';
 import listAnswers from "./listanswersexample.js";
 import AddAnswerModal from './QAModals/addanswermodal.jsx';
 import AddQuestionModal from './QAModals/addquestionmodal.jsx';
+import SearchQuestionBar from './SearchQuestionBar/searchquestionbar.jsx';
 
 
 
@@ -18,8 +19,9 @@ class AdditionalQuestionBar extends React.Component {
 
     return (
       <div>
+        This is the Additional Question Bar
         <form name='additional'>
-          <input type='button' value='More Answered Questions' onClick={this.props.show}>
+          <input type='button' value='More Answered Questions'>
           </input>
           <input type='button' value='Add a Question +' onClick={this.props.show}>
           </input>
@@ -30,45 +32,7 @@ class AdditionalQuestionBar extends React.Component {
 }
 
 
-class SearchQuestion extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputField : 'HAVE A QUESTION?  SEARCH FOR ANSWERS...'
-    };
-  }
 
-  updatedInput (e) {
-
-    this.setState({inputField: e.target.value});
-
-    if (this.state.inputField.length > 1) {
-
-      axios.get(`http://localhost:3000/qa/search/${this.state.inputField}`)
-      .then((response) => {
-        console.log('response: ', response);
-      })
-  
-    }
-  }
-
-  clickHandler () {
-    this.setState({inputField: ''});
-  }
- 
-  render() {
-
-    return (
-      <div>Search Question
-        <form name='questionsearchbar'>
-          <input type='text' onClick={this.clickHandler.bind(this)} onInput={this.updatedInput.bind(this)} className="questionfield" value={this.state.inputField}>
-          </input>
-        </form>
-      </div>
-    )
-
-  }
-}
 
 class Photobar extends React.Component {
   constructor(props) {
@@ -92,11 +56,14 @@ class SingleQuestionBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.question;
+    this.state = {
+      question: this.props.question,
+    } 
+
   }
 
   handleHelpful = event => {
-    axios.put(`http://localhost:3000/qa/questions/${this.state.question_id}/helpful`)
+    axios.put(`http://localhost:3000/qa/questions/${this.state.question.question_id}/helpful`)
     .then((response) => {
       console.log('helpful question clicked, sent to server, returned with', response);
     })
@@ -111,6 +78,7 @@ class SingleQuestionBar extends React.Component {
 
     console.log('add answer handler clicked!');
 
+
   }
   
 
@@ -118,11 +86,11 @@ class SingleQuestionBar extends React.Component {
   render () {
     return (
       <div>
-        <td>Q: {this.state.question_body}</td>
+        <td>Q: {this.state.question.question_body}</td>
         <td>
           <span>Helpful? </span>
-          <span onClick={this.handleHelpful.bind(this)}>Yes({this.state.question_helpfulness}) </span> 
-          <span onClick={this.addAnswerHandler.bind(this)}>| add answer </span>
+          <span onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
+          <span onClick={this.props.AModalHandler}>| add answer </span>
         </td>
       </div>
     )
@@ -181,7 +149,6 @@ class SingleQuestionAnswer extends React.Component {
   constructor(props) {
     super(props);
 
-    //there is a props called question
     this.state = {
       answers: listAnswers.results,
       answerBars : this.props.question.answers,
@@ -209,7 +176,7 @@ class SingleQuestionAnswer extends React.Component {
         <div className= 'scrollable'>
         
           <div>
-            <SingleQuestionBar question={this.props.question}/>
+            <SingleQuestionBar question={this.props.question} AModalHandler={this.props.AModalHandler}/>
           </div>
           <div>
             {answerBars}
@@ -234,20 +201,16 @@ class QuestionAnswer extends React.Component {
     this.state = {
       questions: listQuestions,
       showQModal: false,
-      showAModal: false
+      showAModal: false,
     }
   }
 
-  // componentDidMount() {
-  //   this.setState({showQModal: false});
-  // }
-
   showAModalHandler() {
 
-    console.log('passed event handler clicked for show Answer Modal Window!');
-    console.log('passing this into props', this.state.showQModal);
+    console.log('Event handler clicked for Show Modal Answer Window!');
+    console.log('passing this into props', this.state.showAModal);
   
-    this.setState({showQModal: !this.state.showAModal});
+    this.setState({showAModal: !this.state.showAModal});
 
   }
 
@@ -268,15 +231,13 @@ class QuestionAnswer extends React.Component {
       <table width='90%' border='1px' align='left' font-family='arial'>
       <tr className='qatable'>
         <th align='left'>
-              {/* <p>Questions and Answers</p> */}
-              <SearchQuestion/>
+              <SearchQuestionBar/>
               <p>view questions</p> 
-              {this.state.questions.results.map((question) => <SingleQuestionAnswer question={question}/>)}
+              {this.state.questions.results.map((question) => <SingleQuestionAnswer question={question} AModalHandler={this.showAModalHandler.bind(this)}/>)}
         </th>
       </tr>
       <tr>
         <td>
-        
         </td>
       </tr>
        <tr>
@@ -286,7 +247,7 @@ class QuestionAnswer extends React.Component {
       </tr>
       <tr>
         <td>
-          <AddAnswerModal qid='1' show={this.state.showAModal} key={this.state.showAModal}/>
+          {<AddAnswerModal qid='1' show={this.state.showAModal} key={this.state.showAModal}/>}
         </td>
       </tr>
       <tr>
