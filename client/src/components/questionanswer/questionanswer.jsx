@@ -20,7 +20,7 @@ class AdditionalQuestionBar extends React.Component {
       <div>
         This is the Additional Question Bar
         <form name='additional'>
-          <input type='button' value='More Answered Questions'>
+          <input type='button' value='More Answered Questions' onClick={this.props.moreAnsweredQuestions}>
           </input>
           <input type='button' value='Add a Question +' onClick={this.props.show}>
           </input>
@@ -34,10 +34,31 @@ class QuestionAnswer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: listQuestions,
+      questions: { results: []},
+      product_id: '', 
       showQModal: false,
       showAModal: false,
+      defaultlength: 2,
     }
+  }
+
+  componentDidMount() {
+
+    axios.get('http://localhost:3000/qa/questions/')
+      .then((response) => {
+        console.log('this is the axios data upon load up', response.data);
+        this.setState({
+          product_id: response.data.product_id,
+          questions: response.data,
+        });
+      })
+      .catch(err => {
+        console.log('error in loadup', err);
+        this.setState({
+          product_id: '22122',
+        });
+      });
+    
   }
 
   showAModalHandler() {
@@ -46,11 +67,14 @@ class QuestionAnswer extends React.Component {
     this.setState({showAModal: !this.state.showAModal});
   }
 
-
   showQModalHandler() {
     console.log('passed event handler clicked for show Question Modal Window!');
     console.log('passing this into props', this.state.showQModal);
     this.setState({showQModal: !this.state.showQModal});
+  }
+
+  loadMoreQuestions() {
+    this.setState({defaultlength: this.state.defaultlength +2 });
   }
 
   render () {
@@ -60,7 +84,7 @@ class QuestionAnswer extends React.Component {
         <th align='left'>
               <SearchQuestionBar/>
               <p>view questions</p> 
-              {this.state.questions.results.map((question) => <SingleQuestionAnswer question={question} AModalHandler={this.showAModalHandler.bind(this)}/>)}
+              {this.state.questions.results.slice(0, this.state.defaultlength).map((question) => <SingleQuestionAnswer question={question} AModalHandler={this.showAModalHandler.bind(this)}/>)}
         </th>
       </tr>
       <tr>
@@ -69,7 +93,7 @@ class QuestionAnswer extends React.Component {
       </tr>
        <tr>
         <td>
-          <AdditionalQuestionBar show={this.showQModalHandler.bind(this)}/>
+          <AdditionalQuestionBar show={this.showQModalHandler.bind(this)} moreAnsweredQuestions={this.loadMoreQuestions.bind(this)}/>
         </td>
       </tr>
       <tr>

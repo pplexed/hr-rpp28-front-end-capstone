@@ -28,7 +28,7 @@ class SingleQuestionBar extends React.Component {
   render () {
     return (
       <div>
-        ------THIS IS THE SINGLE QUESTION BAR ------
+        ------------
         <td>Q: {this.state.question.question_body}</td>
         <td>
           <span>Helpful? </span>

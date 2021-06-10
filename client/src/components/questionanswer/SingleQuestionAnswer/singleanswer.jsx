@@ -26,7 +26,7 @@ class SingleAnswerBar extends React.Component {
   render () {
     return (
       <div>
-        ------****THIS IS THE SINGLE ANSWER BAR****------
+        -------------------
         <td>A: {this.state.body} <br></br>
         </td>
         <tr>
