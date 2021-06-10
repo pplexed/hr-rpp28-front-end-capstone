@@ -83,21 +83,21 @@ router.post('/questions/:question_id/answers', (req, res) => {
   // construct object
   const builtPath = API_PATH + `questions/${req.params.question_id}/answers`;
 
-  const answerToBePosted = {
-    body: 'Example answer to be posted',
-    name: 'Question person',
-    email: 'crimson@avenger.com',
-    photos: [],
-  };
+  // const answerToBePosted = {
+  //   body: 'Example answer to be posted',
+  //   name: 'Question person',
+  //   email: 'crimson@avenger.com',
+  //   photos: [],
+  // };
 
   
   // NOTE TO SELF UNCOMMENT THIS and ADD Product_ID to the initial axios request.
-  // const answerToBePosted = {
-  //   body: req.body.answer
-  //   name: req.body.nickname,
-  //   email: req.body.email,
-  //   photos : req.body.photos
-  // };
+  const answerToBePosted = {
+    body: req.body.answerbody,
+    name: req.body.nickname,
+    email: req.body.email,
+    photos : req.body.photos,
+  };
 
   const axiosObject = {
     method: 'post',

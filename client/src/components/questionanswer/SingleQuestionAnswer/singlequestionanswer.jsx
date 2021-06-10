@@ -18,11 +18,12 @@ class SingleQuestionAnswer extends React.Component {
       answers: this.props.question.answers,
       defaultlength: 2,
       showAModal: false,
+      question_id: this.props.question.question_id,
     };
   }
 
   componentDidMount() {
-    console.log('in Component did mount', this.props.question.answers);
+    console.log('in Component did mount', this.props.question);
 
   }
 
@@ -73,16 +74,13 @@ class SingleQuestionAnswer extends React.Component {
             </div>
           
         </tr>
-        <br></br>
-
-
+        
         <tr>
-          <td>
-          
+              
           <table border='1px'>
-            {<AddAnswerModal qid='153661' show={this.state.showAModal} key={this.state.showAModal}/>}
+            {<AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal}/>}
           </table>
-          </td>
+        
   
         </tr>
     

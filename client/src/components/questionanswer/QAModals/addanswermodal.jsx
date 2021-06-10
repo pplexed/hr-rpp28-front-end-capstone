@@ -70,7 +70,7 @@ class AddAnswerModal extends React.Component {
       qid: this.props.qid,
       nickname: 'Example: jack543!',
       email: 'Example: jack@email.com',
-      question: '',
+      answerbody: '',
       validated: false,
       firstclicknickname: true,
       firstclickemail: true,
@@ -86,7 +86,7 @@ class AddAnswerModal extends React.Component {
 
   checkInput() {
     
-    let validateTest = this.state.nickname && this.state.email && this.state.question; 
+    let validateTest = this.state.nickname && this.state.email && this.state.answerbody; 
     
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
@@ -118,7 +118,7 @@ class AddAnswerModal extends React.Component {
       axios.post(`http://localhost:3000/qa/questions/${this.state.qid}/answers`, {
         nickname: this.state.nickname,
         email: this.state.email,
-        question: this.state.question
+        answerbody: this.state.answerbody
       })
       .then((response) => {
         console.log('answer submitted returned with', response.data);
@@ -169,7 +169,7 @@ class AddAnswerModal extends React.Component {
           <div className='modal-content-a'>
 
             <div className='modal-header-a'>
-              <div className='modal-title-a'>Submit your answer</div> <br></br>
+              <div className='modal-title-a'>Submit your answer (for q {this.state.qid})</div> <br></br>
               Insert data about product name [] and question body []
             </div>
 
@@ -179,7 +179,7 @@ class AddAnswerModal extends React.Component {
 
               <form className='SubmitAnswer' onSubmit={this.submitHandler.bind(this)}> 
               your answer <br></br>
-                <textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}>
+                <textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}>
                 </textarea>
                 <br></br>
                 What is your Nickname?
