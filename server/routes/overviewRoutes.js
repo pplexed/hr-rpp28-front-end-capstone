@@ -35,13 +35,11 @@ const getProducts = (callback) => {
 router.get('/getoneproduct', (req, res) => {
   prodId = req.query.productId;
   prodUrl = req.url;
-  //console.log('produrl: ', prodUrl);
   getProducts((err, data) => {
     if (err) {
       console.log('server error: ', err);
       res.status(404).send(err);
     } else {
-      //console.log('product came back:', data);
       res.status(200).send(data);
     }
   });
@@ -50,17 +48,15 @@ router.get('/getoneproduct', (req, res) => {
 router.get('/getproductstyle', (req, res) => {
   prodId = req.query.productId;
   addParams = '/styles';
-  // console.log('prodId: ', prodId);
   getProducts((err, data) => {
     if (err) {
       console.log('server error: ', err);
       res.status(404).send(err);
     } else {
-      //console.log('product came back:', data);
+      console.log('product came back:', data);
       res.status(200).send(data);
     }
   });
 });
 
-// getproductstyle
 module.exports = router;

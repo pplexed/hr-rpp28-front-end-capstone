@@ -17,7 +17,7 @@ class Overview extends React.Component {
       slogan: '',
       description: '',
       category: '',
-      price: '0.00',
+      price: '65.00',
       productOverview: '',
       features: [{
         feature: '',
@@ -48,18 +48,20 @@ class Overview extends React.Component {
       console.error(error);
     }
     try {
-      //console.log('trying to get style');
+      // console.log('trying to get style');
       this.updateStyleState(productId);
     } catch (error) {
       console.error(error);
     }
+    // const defaultStylePrice = this.state.results[0].original_price;
+    // console.log('original results array: ', this.state.results);
+    // this.setState({ price: defaultStylePrice });
   }
 
   onChange(e) {
     this.setState({
       styleChosen: e.target.value,
     });
-    console.log(e.target.value);
     this.updatePriceBasedOnStyle(e.target.value);
   }
 
@@ -86,13 +88,9 @@ class Overview extends React.Component {
   }
 
   updatePriceBasedOnStyle(styleId) {
-    console.log('did someone call me?');
     const styles = this.state.results;
-    //console.log('styles: ', styles);
     for (let i = 0; i < styles.length; i++) {
-      console.log(styles[i].style_id);
       if (styles[i].style_id.toString() === styleId) {
-        console.log('if statement fired');
         this.setState({
           price: styles[i].original_price,
         });
