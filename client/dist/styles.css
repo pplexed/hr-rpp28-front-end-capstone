@@ -29,12 +29,12 @@ input.questionfield {
   width:90%;
 }
 
-input[nickname] {
+input[name='nickname'] {
   width:55%;
   
 }
 
-input[email] {
+input[name='email'] {
   width:55%;
  
 }

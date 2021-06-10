@@ -51,7 +51,7 @@ class UploadPhotos extends React.Component {
         <form method='POST' action='http://127.0.0.1:3000/qa/uploadphoto' enctype='multipart/form-data'>
           <label for='answerpic'>Upload your photos!</label><br></br>
           <input type="file" name='answerpic' onChange={this.onChangeHandler} multiple></input>
-          <input type="submit"></input>
+          <input type="submit" value='Submit Photo'></input>
         </form>
       </div>
     )
@@ -205,7 +205,9 @@ class AddAnswerModal extends React.Component {
                 <input type='submit' value='submit answer'></input>
 
             </form>
+            <br></br>
             </div>
+
 
             <div className='uploadphoto'>
               <UploadPhotos/>
