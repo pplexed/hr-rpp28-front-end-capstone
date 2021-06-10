@@ -48,6 +48,7 @@ class SingleQuestionAnswer extends React.Component {
 
     return (
       <div>
+        <br></br>
         
         <SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/>
 
@@ -72,13 +73,16 @@ class SingleQuestionAnswer extends React.Component {
             </div>
           
         </tr>
+        <br></br>
 
 
         <tr>
+          <td>
           
           <table border='1px'>
             {<AddAnswerModal qid='153661' show={this.state.showAModal} key={this.state.showAModal}/>}
           </table>
+          </td>
   
         </tr>
     
