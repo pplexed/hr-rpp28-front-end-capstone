@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Overview from './components/overview/overview.jsx';
-import QuestionAnswer from './components/questionanswer.jsx';
+import QuestionAnswer from './components/questionanswer/questionanswer.jsx';
 import RatingsReviews from './components/reviews/ratingsreviews.jsx';
 import RelatedItemsModule from './components/relatedItems/relatedItemsModule.jsx';
 import axios from 'axios';
@@ -24,9 +24,8 @@ class App extends React.Component {
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
-        <RelatedItemsModule /> {/* Need to pass this.state.currentProductId */}
+        {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>
-        <QuestionAnswer/>
         <br></br>
         <div className="reviews-container">
           <div className="reviews-column-container">
@@ -34,6 +33,7 @@ class App extends React.Component {
             <div className="reviews-right"><RatingsReviews /></div>
           </div>
         </div>
+        <QuestionAnswer/>
       </div>
     );
 
