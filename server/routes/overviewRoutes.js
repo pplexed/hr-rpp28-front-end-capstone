@@ -8,18 +8,21 @@ const axios = require('axios');
 
 const token = require('../../config.js');
 
-const serverUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/22125';
+const serverUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/';
 
 router.use(fileUpload());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const options = {
-  method: 'get',
-  url: serverUrl,
-  headers: token.AUTH,
-};
+let prodId = 0;
+let addParams = '';
+
 const getProducts = (callback) => {
+  const options = {
+    method: 'get',
+    url: serverUrl + prodId + addParams,
+    headers: token.AUTH,
+  };
   axios(options)
     .then((response) => {
       callback(null, response.data);
@@ -29,17 +32,35 @@ const getProducts = (callback) => {
     });
 };
 
-router.get('/getOneProduct', (req, res) => {
-  console.log('server recieved request for product info!');
+router.get('/getoneproduct', (req, res) => {
+  prodId = req.query.productId;
+  prodUrl = req.url;
+  //console.log('produrl: ', prodUrl);
   getProducts((err, data) => {
     if (err) {
       console.log('server error: ', err);
       res.status(404).send(err);
     } else {
-      console.log('product came back:', data);
+      //console.log('product came back:', data);
       res.status(200).send(data);
     }
   });
 });
 
+router.get('/getproductstyle', (req, res) => {
+  prodId = req.query.productId;
+  addParams = '/styles';
+  // console.log('prodId: ', prodId);
+  getProducts((err, data) => {
+    if (err) {
+      console.log('server error: ', err);
+      res.status(404).send(err);
+    } else {
+      //console.log('product came back:', data);
+      res.status(200).send(data);
+    }
+  });
+});
+
+// getproductstyle
 module.exports = router;

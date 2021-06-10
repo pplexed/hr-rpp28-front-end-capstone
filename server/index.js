@@ -11,14 +11,15 @@ var QAroutes = require('./routes/QA_routes.js');
 
 const PORT = 3000;
 
-app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./client/dist'));
 
 // import routes
 app.use('/qa', QAroutes);
 app.use('/reviews', review);
-app.use(overview);
+app.use('/overview', overview);
 
 // app.get('/reviews', (req, res) => {
 //   review.getReviews((err, data) => {
