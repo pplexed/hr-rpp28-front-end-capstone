@@ -72,7 +72,7 @@ class Overview extends React.Component {
         context.setState(data);
       })
       .catch(function (error) {
-        console.log('client axios error: ', error);
+        //console.log('client axios error: ', error);
       });
   }
 
@@ -83,7 +83,7 @@ class Overview extends React.Component {
         context.setState(data);
       })
       .catch(function (error) {
-        console.log('client axios error: ', error);
+        //console.log('client axios error: ', error);
       });
   }
 
