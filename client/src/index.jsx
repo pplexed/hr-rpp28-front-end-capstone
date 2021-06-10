@@ -22,21 +22,17 @@ class App extends React.Component {
     return (
       <div>
         <h1>FEC React Main App</h1>
-        {/* <Overview/> */}
+        <Overview/>
         <br></br>
-        {/*<RelatedItemsModule /> Need to pass this.state.currentProductId*/}
+        {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>
-       
         <br></br>
-
-        {/* <div className="reviews-container">
+        <div className="reviews-container">
           <div className="reviews-column-container">
             <div className="reviews-left">Ratings and Product</div>
             <div className="reviews-right"><RatingsReviews /></div>
           </div>
-        </div> */}
-
-      
+        </div>
         <QuestionAnswer/>
       </div>
     );

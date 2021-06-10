@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Photobar from '../Photobar/photobar.jsx';
 
 class SingleAnswerBar extends React.Component {
