@@ -5,6 +5,7 @@ import IRT from  './irt.jsx';
 
 function RatingsReviews(props) {
   const allReviews = props.reviewInfo.results || [];
+
   //we pull all the reviews into the array
   //we just want the first two
   //thinking I need rewrite as a class

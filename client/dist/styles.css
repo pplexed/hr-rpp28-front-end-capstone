@@ -1,22 +1,15 @@
-/* .reviews-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.review-summary {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 52ch;
+  font-weight: bold;
 }
 
-.reviews-column-container {
-  display: flex;
-  flex-direction: row;
-}
+.review-photo {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
 
-.reviews-left {
-  width: 25%;
-  height: auto;
-  border: 2px solid red;
 }
-
-.reviews-right {
-  width: 75%;
-  border: 2px solid green
-} */
