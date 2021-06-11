@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
-const token = require('../../../../config.js');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 class RelatedItemsModule extends React.Component {
@@ -14,11 +13,11 @@ class RelatedItemsModule extends React.Component {
     };
 
     this.product_id = 22134;
-    this.data = {};
+    // this.data = {};
   }
 
   componentDidMount() {
-    this.getRelatedItemsIds();
+    this.getRelatedItemsInfo();
   }
 
   componentWillUnmount() {
@@ -29,42 +28,57 @@ class RelatedItemsModule extends React.Component {
     };
   }
 
-  getRelatedItemsIds() {
-    const product_id = this.product_id;
-    const builtUrl = url + `/products/${product_id}/related`;
-
-    const options = {
+  getRelatedItemsInfo() {
+    axios({
       method: 'get',
-      url: builtUrl,
-      headers: token.AUTH
-    };
-
-    axios(options)
-      .then(({ data }) => {
-        return Promise.all(data.map((id) => {
-          return this.getRelatedItemsData(id);
-        }));
-      }).then(() => {
-        this.setState({
-          isLoading: false,
-          relatedItemsData: this.data
-        });
-      }).catch((err) => {
-        console.log(err);
+      url: '/relatedItems',
+      data: {
+        product_id: this.product_id
+      }
+    })
+    .then((res) => {
+      this.setState({
+        relatedItemsData: res.data
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    // const product_id = this.product_id;
+    // const builtUrl = url + `/products/${product_id}/related`;
+
+    // const options = {
+    //   method: 'get',
+    //   url: builtUrl,
+    //   headers: token.AUTH
+    // };
+
+    // axios(options)
+    //   .then(({ data }) => {
+    //     return Promise.all(data.map((id) => {
+    //       return this.getRelatedItemsData(id);
+    //     }));
+    //   }).then(() => {
+    //     this.setState({
+    //       isLoading: false,
+    //       relatedItemsData: this.data
+    //     });
+    //   }).catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   getRelatedItemsData(id) {
-    const builtUrl = url + `/products/${id}`;
-    const options = {
-      method: 'get',
-      url: builtUrl,
-      headers: token.AUTH
-    }
-    return axios(options)
-      .then(({ data }) => {
-        this.data[data.id] = data;
-      });
+    // const builtUrl = url + `/products/${id}`;
+    // const options = {
+    //   method: 'get',
+    //   url: builtUrl,
+    //   headers: token.AUTH
+    // }
+    // return axios(options)
+    //   .then(({ data }) => {
+    //     this.data[data.id] = data;
+    //   });
   }
 
   render() {
