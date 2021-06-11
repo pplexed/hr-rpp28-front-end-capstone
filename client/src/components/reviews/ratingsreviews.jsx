@@ -1,27 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IRT from  './irt.jsx';
+import axios from 'axios';
 
 
-function RatingsReviews(props) {
-  const allReviews = props.reviewInfo.results || [];
+class RatingsReviews extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {reviewList: []}
+    //this.bind goes here
+    this.reviews = this.reviews.bind(this);
+  }
 
-  //we pull all the reviews into the array
-  //we just want the first two
-  //thinking I need rewrite as a class
-  // add a function that has a reviewsCounter that starts at 2
-  // the counter increases by two with each more reviews click
-  // the counter would be the number to slice from the array of reviews
-  // if the counter equals the length or the total reviews then we can hide the more reviews button
-  // need to account for if there are no reviews as well
-  const reviewList = allReviews.map((item, index) => {
-    return (
-    <div key={index}>
-    <IRT review={item} />
-    </div>
-    )
-  })
+  //functions go here
 
+
+  //Ratings and Reviews Sections
+  reviews() {
+    axios.get('/reviews/review-product')
+      .then((response) => {
+        this.setState({
+          reviewList: response.data.results
+        })
+        // this.breakdown();
+      })
+  }
+
+
+  // breakdown() {
+  //   axios.get('/reviews/breakdown')
+  //     .then((response) => {
+  //       this.setState({
+  //         reviewBreakdown: response.data
+  //       });
+  //     })
+  // }
+
+//end of Ratings and Reviews Section
+
+  componentDidMount() {
+    this.reviews();
+  }
+
+  render() {
+    let allReviews = this.state.reviewList || [];
+
+    let reviewList = this.state.reviewList.map((item, index) => {
+      return (
+      <div key={index}>
+      <IRT review={item} />
+      </div>
+      )
+    })
 
     return (
       <div>
@@ -30,6 +60,7 @@ function RatingsReviews(props) {
         <div><button type="button">MORE REVIEWS</button></div>
       </div>
     );
+  }
 }
 
 

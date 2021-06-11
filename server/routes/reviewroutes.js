@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const axios = require('axios');
 const token = require('../../config.js')
-const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22216'
+const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22217'
 const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22216'
 
 // default options as middleware
@@ -19,10 +19,9 @@ const options = {
   headers: token.AUTH
 }
 
-router.get('/product', (req, res) => {
-  console.log('working');
+router.get('/review-product', (req, res) => {
+  console.log('this is the req:', req)
   getReviews((err, data) => {
-    console.log('we are here');
     if (err) {
       console.log(err);
     } else {

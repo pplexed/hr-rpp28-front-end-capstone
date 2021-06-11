@@ -19,20 +19,6 @@ app.use(express.static('./client/dist'));
 //import routes
 app.use('/qa', QAroutes);
 app.use('/reviews', review);
-
-// app.get('/reviews', (req, res) => {
-//   review.getReviews((err, data) => {
-//     console.log('we are here');
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// });
-
-
-
 app.use('/relatedItems', RIroutes);
 
 

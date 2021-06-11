@@ -15,42 +15,42 @@ class App extends React.Component {
     this.state = {
       // Tim will need a property for current product id to make a GET request for related items
       // The team will need a product review rating to render on multiple components
-      reviewList: [],
-      reviewBreakdown: []
+      // reviewList: [],
+      // reviewBreakdown: []
     };
-    this.reviews = this.reviews.bind(this);
-    this.breakdown = this.breakdown.bind(this);
+    // this.reviews = this.reviews.bind(this);
+    // this.breakdown = this.breakdown.bind(this);
   }
 
 
 
-//Ratings and Reviews Sections
-  reviews() {
-    axios.get('/reviews/product')
-      .then((response) => {
-        this.setState({
-          reviewList: response.data
-        });
-        this.breakdown();
-      })
-  }
+// //Ratings and Reviews Sections
+//   reviews() {
+//     axios.get('/reviews/product')
+//       .then((response) => {
+//         this.setState({
+//           reviewList: response.data
+//         });
+//         this.breakdown();
+//       })
+//   }
 
-  breakdown() {
-    axios.get('/reviews/breakdown')
-      .then((response) => {
-        this.setState({
-          reviewBreakdown: response.data
-        });
-      })
-  }
+//   breakdown() {
+//     axios.get('/reviews/breakdown')
+//       .then((response) => {
+//         this.setState({
+//           reviewBreakdown: response.data
+//         });
+//       })
+//   }
 
-//end of Ratings and Reviews Section
+// //end of Ratings and Reviews Section
 
 
   componentDidMount() {
 
 
-    this.reviews()
+    // this.reviews()
 
   }
   render () {
@@ -64,8 +64,11 @@ class App extends React.Component {
         <br></br>
         <div className="reviews-container">
           <div className="reviews-column-container"> Ratings and Reviews
-            <div className="reviews-left"><Breakdown breakdown={this.state.reviewBreakdown}/></div>
-            <div className="reviews-right"><RatingsReviews reviewInfo={this.state.reviewList} /></div>
+             {/* <div className="reviews-left"><Breakdown /></div> */}
+            <div className="reviews-right"><RatingsReviews  /></div>
+
+            {/* <div className="reviews-left"><Breakdown breakdown={this.state.reviewBreakdown}/></div>
+            <div className="reviews-right"><RatingsReviews reviewInfo={this.state.reviewList} /></div> */}
           </div>
         </div>
         <QuestionAnswer/>
