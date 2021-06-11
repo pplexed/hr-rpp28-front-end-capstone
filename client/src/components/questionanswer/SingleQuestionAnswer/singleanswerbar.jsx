@@ -7,6 +7,7 @@ class SingleAnswerBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.answer;
+    this.state.reported = false;
   }
 
   handleHelpful = event => {
@@ -20,10 +21,14 @@ class SingleAnswerBar extends React.Component {
     axios.put(`http://localhost:3000/qa/answers/${this.state.answer_id}/report`)
     .then((response) => {
       console.log('report clicked, sent to server, returned with', response);
+      this.setState({reported: true});
     })
   }
 
   render () {
+    let notReportedTag = <span id='reportanswer' onClick = {this.handleReport.bind(this)}>Report</span>;
+    let reportedTag = <span>Reported</span>
+
     return (
       <div>
         -------------------
@@ -37,7 +42,7 @@ class SingleAnswerBar extends React.Component {
             <span>| helpful? </span>
             <span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}>Yes({this.state.helpfulness})</span>  
             <span> | </span>
-            <span id='reportanswer' onClick = {this.handleReport.bind(this)}>Report</span>
+            {this.state.reported ? reportedTag : notReportedTag}
            
         </div>
 
