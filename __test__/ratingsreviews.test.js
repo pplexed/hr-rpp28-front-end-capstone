@@ -6,6 +6,6 @@ test('Text inside Ratingsreviews', () => {
 
   const wrapper = shallow(<RatingsReviews/>);
 
-  expect(wrapper.text()).toEqual('sort will go here<IRT />MORE REVIEWS');
+  expect(wrapper.text()).toEqual('sort will go hereMORE REVIEWS');
 
 });
