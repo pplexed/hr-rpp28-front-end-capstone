@@ -207,7 +207,7 @@ class AddAnswerModal extends React.Component {
 
             <div className='modal-header-a'>
               <div className='modal-title-a'>Submit your answer (for q {this.state.qid})</div> <br></br>
-              Insert data about product name [] and question body []
+              <div>{this.props.product_name} : <b>{this.props.question_body}</b></div>
             </div>
 
             <div className='modal-body-a'>

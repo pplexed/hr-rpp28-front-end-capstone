@@ -78,7 +78,7 @@ class SingleQuestionAnswer extends React.Component {
         <tr>
               
           <table border='1px'>
-            {<AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal}/>}
+            {<AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal} product_name={'passed in data:'} question_body={this.props.question.question_body}/>}
           </table>
         
   
