@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 class RelatedItemsModule extends React.Component {
   constructor(props) {
@@ -23,9 +22,7 @@ class RelatedItemsModule extends React.Component {
   componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
     this.data = {};
-    this.setState = () => {
-      return;
-    };
+    this.setState = () => {return;};
   }
 
   getRelatedItemsInfo() {
@@ -33,17 +30,17 @@ class RelatedItemsModule extends React.Component {
       method: 'get',
       url: '/relatedItems',
       data: {
-        product_id: this.product_id
+        product_id: this.product_id,
       }
     })
-    .then((res) => {
-      this.setState({
-        relatedItemsData: res.data
+      .then((res) => {
+        this.setState({
+          relatedItemsData: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
     // const product_id = this.product_id;
     // const builtUrl = url + `/products/${product_id}/related`;
 

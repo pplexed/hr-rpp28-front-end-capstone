@@ -28,23 +28,22 @@ router.get('/relatedItems', (req, res) => {
     headers: token.AUTH
   };
 
+  console.log('options', options);
+
   axios(options)
     .then(({ data }) => {
-      return Promise.all(data.map((id) => {
-
+      return (Promise.all(data.map((id) => {
         const builtUrl = url + `/products/${id}`;
-
         const options = {
           method: 'get',
           url: builtUrl,
           headers: token.AUTH
         }
-
         return axios(options)
           .then(({ data }) => {
             itemData[data.id] = data;
           });
-      }));
+      })));
     }).then((itemData) => {
       res.send(itemData);
     }).catch((err) => {
