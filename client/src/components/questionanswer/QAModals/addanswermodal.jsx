@@ -94,7 +94,11 @@ class AddAnswerModal extends React.Component {
       validated: false,
       firstclicknickname: true,
       firstclickemail: true,
-      show: this.props.show
+      show: this.props.show,
+      nicknameIsInvalid: false,
+      emailIsInvalid: false,
+      answerbodyIsInvalid: false,
+  
     };
   }
 
@@ -105,6 +109,13 @@ class AddAnswerModal extends React.Component {
 
 
   checkInput() {
+
+    this.setState({
+      nicknameIsInvalid: !this.state.nickname,
+      emailIsInvalid: !this.state.nickname,
+      answerbodyIsInvalid: !this.state.answerbody,
+    });
+
     
     let validateTest = this.state.nickname && this.state.email && this.state.answerbody; 
     
@@ -120,7 +131,7 @@ class AddAnswerModal extends React.Component {
     }
 
     //validate email here
-    if (!validateTest) {
+    if (!emailField) {
       console.log('Invalid Email Entered');
     }
 
@@ -133,7 +144,7 @@ class AddAnswerModal extends React.Component {
   submitHandler(e) {
     e.preventDefault();
 
-    //if (this.state.validated) {
+    // all validations must pass
     if (this.checkInput()) {
       axios.post(`http://localhost:3000/qa/questions/${this.state.qid}/answers`, {
         nickname: this.state.nickname,
@@ -185,6 +196,10 @@ class AddAnswerModal extends React.Component {
       return null;
     }
 
+    let alertstyle = {
+      color: 'red',
+    };
+
     return (
         <div className='modal-a' >
           
@@ -200,16 +215,23 @@ class AddAnswerModal extends React.Component {
               {/* <form className='InputQuestion' method='POST' action='http://localhost:3000/qa/questions'> */}
 
               <form className='SubmitAnswer' onSubmit={this.submitHandler.bind(this)}> 
-              your answer <br></br>
+                <div>your answer </div>
+                
+                {this.state.answerbodyIsInvalid ?  <div style={alertstyle}>You must enter an answer</div> : <div></div>}
+                
                 <textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}>
                 </textarea>
-                <br></br>
-                What is your Nickname?
-                <br></br>
+              
+                <div>What is your Nickname? </div> 
+                
+                {this.state.nicknameIsInvalid ?  <div style={alertstyle}>You must enter a Nickname</div> : <div></div>}
+                
                 <input type='text' onClick={this.clickHandlerNickname.bind(this)} maxLength='60' name='nickname' value={this.state.nickname}onChange={this.changeHandler.bind(this)}></input>
                 <br></br>
-                Your E-mail
-                <br></br>
+                
+                <div>Your E-mail</div>
+                {this.state.emailIsInvalid ?  <div style={alertstyle}>You must enter an e-mail address</div> : <div></div>}
+                
                 <input type='text' onClick={this.clickHandlerEmail.bind(this)} maxLength='60' name='email' value={this.state.email} onChange={this.changeHandler.bind(this)}></input>
                 <br></br>
                 <br></br>
