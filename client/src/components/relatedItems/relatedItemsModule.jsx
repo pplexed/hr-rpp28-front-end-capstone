@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
 
@@ -31,9 +32,10 @@ class RelatedItemsModule extends React.Component {
       url: '/relatedItems',
       data: {
         product_id: this.product_id,
-      }
+      },
     })
       .then((res) => {
+        console.log('HERE');
         this.setState({
           relatedItemsData: res.data,
         });
