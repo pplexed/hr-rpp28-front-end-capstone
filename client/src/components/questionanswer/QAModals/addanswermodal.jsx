@@ -4,6 +4,30 @@ import Photobar from '../Photobar/photobar.jsx';
 
 
 
+class SubmitPhotoForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {show: this.props.show}
+  }
+
+  render() {
+
+    if (!this.state.show) {
+      return null;
+    }
+
+    return (
+      <form method='POST' action='http://127.0.0.1:3000/qa/uploadphoto' enctype='multipart/form-data'>
+        <label for='answerpic'>Upload your photos!</label><br></br>
+        <input type="file" name='answerpic' onChange={this.props.onChangeHandler} multiple></input>
+        <input type="submit" value='Submit Photo'></input>
+      </form>
+    )
+  }
+}
+
+
 class UploadPhotos extends React.Component {
 
   constructor(props) {
@@ -11,20 +35,16 @@ class UploadPhotos extends React.Component {
     this.state = {
       photos: [],
       max: 5,
-      showErrorMessage: false,
+      showUploadForm: true,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
-  componentDidMount() {
-
-  }
 
   onChangeHandler (e) {
     console.log('photo load handler fired');
     console.log(e.target.files);
-
 
     var formData = new FormData();
 
@@ -37,10 +57,14 @@ class UploadPhotos extends React.Component {
       console.log('returned hyperlink', response.data)
       let newarray = this.state.photos;
       newarray.push(response.data);
-      this.setState({photos: newarray});
+
+      // max photos can be 5 before the button disappears
+      if (this.state.photos.length < 5) {
+        this.setState({photos: newarray});
+      } else {
+        this.setState({showUploadForm: false});
+      }
     });
-
-
   }
 
   render() {
@@ -48,11 +72,7 @@ class UploadPhotos extends React.Component {
     return (
       <div>
         <Photobar photos={this.state.photos}/>
-        <form method='POST' action='http://127.0.0.1:3000/qa/uploadphoto' enctype='multipart/form-data'>
-          <label for='answerpic'>Upload your photos!</label><br></br>
-          <input type="file" name='answerpic' onChange={this.onChangeHandler} multiple></input>
-          <input type="submit" value='Submit Photo'></input>
-        </form>
+        <SubmitPhotoForm show={this.state.showUploadForm} key={this.state.showUploadForm} onChangeHandler={this.onChangeHandler.bind(this)}/>
       </div>
     )
   }
@@ -122,6 +142,8 @@ class AddAnswerModal extends React.Component {
       })
       .then((response) => {
         console.log('answer submitted returned with', response.data);
+        
+
       })
       .catch((err) => {
         console.log('error in submitting answer', err);

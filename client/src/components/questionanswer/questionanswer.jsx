@@ -60,12 +60,6 @@ class QuestionAnswer extends React.Component {
     
   }
 
-  // showAModalHandler() {
-  //   console.log('Event handler clicked for Show Modal Answer Window!');
-  //   console.log('passing this into props', this.state.showAModal);
-  //   this.setState({showAModal: !this.state.showAModal});
-  // }
-
   showQModalHandler() {
     console.log('passed event handler clicked for show Question Modal Window!');
     console.log('passing this into props', this.state.showQModal);
