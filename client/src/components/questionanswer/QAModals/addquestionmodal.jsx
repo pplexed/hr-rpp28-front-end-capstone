@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 class AddQuestionModal extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,19 +15,8 @@ class AddQuestionModal extends React.Component {
     };
   }
 
-  // componentDidMount () {
-  //   this.setState({show: this.props.show});
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if(prevProps.show !== this.props.show) {
-  //     this.setState({show: this.props.show});
-  //     console.log('component did update called');
-  //   }
-  // }
-
   closeButtonHandler (e) {
-    //close the window when the button is clicked
+    // close the window when the button is clicked
     this.setState({show: false});
   }
 
