@@ -11,7 +11,7 @@ class RelatedItemsModule extends React.Component {
       relatedItemsData: {},
       isLoading: true
     };
-
+    this.data = [];
     this.product_id = 22134;
     // this.data = {};
   }
@@ -29,65 +29,30 @@ class RelatedItemsModule extends React.Component {
   getRelatedItemsInfo() {
     axios({
       method: 'get',
-      url: '/relatedItems',
+      url: '/relatedItems/relatedItems',
       data: {
         product_id: this.product_id,
       },
     })
       .then((res) => {
-        console.log('HERE');
         this.setState({
           relatedItemsData: res.data,
         });
+        this.data = res.data;
       })
       .catch((err) => {
-        console.log(err);
+        console.log('Catch block in main component', err);
       });
-    // const product_id = this.product_id;
-    // const builtUrl = url + `/products/${product_id}/related`;
-
-    // const options = {
-    //   method: 'get',
-    //   url: builtUrl,
-    //   headers: token.AUTH
-    // };
-
-    // axios(options)
-    //   .then(({ data }) => {
-    //     return Promise.all(data.map((id) => {
-    //       return this.getRelatedItemsData(id);
-    //     }));
-    //   }).then(() => {
-    //     this.setState({
-    //       isLoading: false,
-    //       relatedItemsData: this.data
-    //     });
-    //   }).catch((err) => {
-    //     console.log(err);
-    //   });
-  }
-
-  getRelatedItemsData(id) {
-    // const builtUrl = url + `/products/${id}`;
-    // const options = {
-    //   method: 'get',
-    //   url: builtUrl,
-    //   headers: token.AUTH
-    // }
-    // return axios(options)
-    //   .then(({ data }) => {
-    //     this.data[data.id] = data;
-    //   });
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <div>... Related Items Loading ...</div>;
-    }
+    // if (this.state.isLoading) {
+    //   return <div>... Related Items Loading ...</div>;
+    // }
     return (
       <div id="relatedItemsModule">
         <div id="relatedItemsList">This is the Related items list
-          <RelatedItemsList data={this.state.relatedItemsData} />
+          <RelatedItemsList data={this.data} />
         </div><br></br>
         <div id="outfitItemsList">This is the Outfit items list
           <OutfitItemsList />

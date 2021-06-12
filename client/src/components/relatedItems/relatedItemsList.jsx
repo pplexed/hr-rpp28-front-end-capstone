@@ -6,30 +6,26 @@ class RelatedItemsList extends React.Component {
     super(props);
 
     this.state = {
-      relatedItemsData: this.props.data
     };
     this.dataArray = [];
-    this.mappedReactData = this.mapData();
   }
 
   componentDidMount() {
-    this.mapData();
-  }
-
-  mapData() {
-    this.dataArray = Object.values(this.props.data);
-    this.mappedReactData = this.dataArray.map((item) => {
-      return <RelatedItemCard data={item} />
+    this.setState({
+      relatedItemsData: this.props.data
     });
+    this.dataArray = Object.values(this.props.data);
+    console.log('Props', this.props);
+    console.log('dataArray', this.dataArray);
   }
 
   render() {
     return (
       <div id="relatedItemsList">
         This is the Related Items List
-        {this.dataArray.map( (item) => <div><RelatedItemCard data={item} /></div> )}
+        {this.dataArray.map((item) => (<div><RelatedItemCard data={item} /></div>))}
       </div>
-    );
+    )
   }
 }
 

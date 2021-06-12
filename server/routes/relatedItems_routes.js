@@ -6,12 +6,12 @@ const axios = require('axios');
 const token = require('../../config.js');
 
 const router = express.Router();
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 
 router.use(fileUpload());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
 const product_id = 22134;
 
 router.get('/relatedItems', (req, res) => {
@@ -19,30 +19,26 @@ router.get('/relatedItems', (req, res) => {
   // const builtUrl = url + `/products/${req.data.product_id}/related`;
 
   // Turn this line off when app goes live
+  var itemData = {};
   const builtUrl = url + `/products/${product_id}/related`;
 
   const options = {
     method: 'get',
     url: builtUrl,
-    headers: token.AUTH
+    headers: token.AUTH,
   };
-
-  console.log('options', options);
+  axios.defaults.headers.common['Authorization'] = token.TOKEN;
 
   axios(options)
     .then(({ data }) => {
-      return (Promise.all(data.map((id) => {
-        const builtUrl = url + `/products/${id}`;
-        const options = {
-          method: 'get',
-          url: builtUrl,
-          headers: token.AUTH
-        }
-        return axios(options)
-          .then(({ data }) => {
-            itemData[data.id] = data;
-          });
-      })));
+      return (
+        Promise.all(data.map((id) => {
+          return axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`)
+            .then(({ data }) => {
+              return itemData[data.id] = data;
+            });
+        }))
+      );
     }).then((itemData) => {
       res.send(itemData);
     }).catch((err) => {
