@@ -1,22 +1,78 @@
-.reviews-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.review-summary {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 52ch;
+  font-weight: bold;
 }
 
-.reviews-column-container {
-  display: flex;
-  flex-direction: row;
+.review-photo {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+
+
+
+html {
+  height: 100%;
+
 }
 
-.reviews-left {
-  width: 25%;
-  height: auto;
-  border: 2px solid red;
+body {
+  color: #505050;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif
+
+  height: 100%;
+  overflow-y: auto;
 }
 
-.reviews-right {
-  width: 75%;
-  border: 2px solid green
+
+table.question {
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif
+
+}
+
+input.questionfield {
+  width:90%;
+}
+
+input[nickname] {
+  width:55%;
+
+}
+
+input[email] {
+  width:55%;
+
+}
+
+#container {
+  height: 100%;
+}
+
+
+th {
+  padding-left: 10px;
+  text-align: left;
+}
+
+td {
+  padding-left: 10px;
+  text-align: left;
+}
+
+
+div.scrollable {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
 }
