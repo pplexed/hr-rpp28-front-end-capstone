@@ -37,8 +37,10 @@ class RelatedItemsModule extends React.Component {
       .then((res) => {
         this.setState({
           relatedItemsData: res.data,
+          isLoading: false,
         });
         this.data = res.data;
+        console.log('this.data in relatedItemsModule: ', this.data)
       })
       .catch((err) => {
         console.log('Catch block in main component', err);
@@ -46,9 +48,9 @@ class RelatedItemsModule extends React.Component {
   }
 
   render() {
-    // if (this.state.isLoading) {
-    //   return <div>... Related Items Loading ...</div>;
-    // }
+    if (this.state.isLoading) {
+      return <div>... Related Items Loading ...</div>;
+    }
     return (
       <div id="relatedItemsModule">
         <div id="relatedItemsList">This is the Related Items Module
