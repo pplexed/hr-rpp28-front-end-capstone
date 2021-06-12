@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
 

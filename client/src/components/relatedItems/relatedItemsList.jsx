@@ -1,6 +1,7 @@
 import React from 'react';
 import RelatedItemCard from './relatedItemCard.jsx';
 
+
 class RelatedItemsList extends React.Component {
   constructor(props) {
     super(props);
