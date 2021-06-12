@@ -27,15 +27,15 @@ class SingleQuestionBar extends React.Component {
   
   render () {
     return (
-      <div>
-        ------THIS IS THE SINGLE QUESTION BAR ------
-        <td>Q: {this.state.question.question_body}</td>
-        <td>
-          <span>Helpful? </span>
-          <span onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
-          <span onClick={this.props.AModalHandler}>| add answer </span>
-        </td>
-      </div>
+      <tr>
+        
+          <span>Q: {this.state.question.question_body}</span>
+          
+            <span>    Helpful?    </span>
+            <span onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
+            <span onClick={this.props.AModalHandler}>| add answer </span>
+          
+      </tr>
     )
   }
 }
