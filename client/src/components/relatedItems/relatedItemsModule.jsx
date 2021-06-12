@@ -1,7 +1,9 @@
 import React from 'react';
+import axios from 'axios';
+
+
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
-import axios from 'axios';
 
 class RelatedItemsModule extends React.Component {
   constructor(props) {
@@ -10,63 +12,59 @@ class RelatedItemsModule extends React.Component {
       relatedItemsData: {},
       isLoading: true
     };
-
-    this.data = {};
-  }
-
-  getRelatedItems() {
-    let product_id = this.props.product_id;
-
-    axios.get(`/products/${product_id}/related`, {
-      params: {
-        product_id: { product_id }
-      }
-    }).then(({ data }) => {
-      return Promise.all(data.map((id) => {
-        return this.getProductData(id);
-      }));
-    }).then(() => {
-      this.setState({
-        isLoading: false,
-        relatedItemsData: this.data
-      });
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
-
-  getProductData(id) {
-    return axios.get(`/products/${id}`, {
-      params: {
-        product_id: id
-      }
-    }).then(({ data }) => {
-      this.data[data.id] = data;
-    });
+    this.data = [];
+    this.product_id = 22134;
+    // this.data = {};
   }
 
   componentDidMount() {
-    this.getRelatedItems();
+    this.getRelatedItemsInfo();
   }
 
   componentWillUnmount() {
-    this.data = {};
+    this.data = [];
+    this.setState = () => {return;};
   }
 
-  render () {
+  getRelatedItemsInfo() {
+    axios({
+      method: 'get',
+      url: '/relatedItems/relatedItems',
+      data: {
+        product_id: this.product_id,
+      },
+    })
+      .then((res) => {
+        this.setState({
+          relatedItemsData: res.data,
+          isLoading: false,
+        });
+        this.data = res.data;
+        console.log('this.data in relatedItemsModule: ', this.data)
+      })
+      .catch((err) => {
+        console.log('Catch block in main component', err);
+      });
+  }
+
+  render() {
+    console.log('THIS>DATA: ', this.data);
+    if (this.state.isLoading) {
+      return <div>... Related Items Loading ...</div>;
+    }
     return (
       <div id="relatedItemsModule">
-        <div id="relatedItemsList">This is the Related items list
-          <RelatedItemsList />
-        </div><br></br>
-        <div id="outfitItemsList">This is the Outfit items list
+        <div id="relatedItemsList">
+          This is the Related Items Module
+          <RelatedItemsList data={this.state.relatedItemsData} />
+        </div><br />
+        <div id="outfitItemsList">
+          This is the Outfit items list
           <OutfitItemsList />
-        </div><br></br>
+        </div><br />
       </div>
     );
   }
 };
-
-
 
 export default RelatedItemsModule;
