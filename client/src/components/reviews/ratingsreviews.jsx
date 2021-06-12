@@ -44,7 +44,6 @@ class RatingsReviews extends React.Component {
 
   render() {
     let allReviews = this.state.reviewList || [];
-
     let reviewList = this.state.reviewList.map((item, index) => {
       return (
       <div key={index}>
