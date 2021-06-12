@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Overview from './components/overview/overview.jsx';
 import QuestionAnswer from './components/questionanswer/questionanswer.jsx';
 import RatingsReviews from './components/reviews/ratingsreviews.jsx';
+import Breakdown from './components/reviews/breakdown.jsx';
 import RelatedItemsModule from './components/relatedItems/relatedItemsModule.jsx';
 import axios from 'axios';
 
@@ -14,10 +15,40 @@ class App extends React.Component {
     this.state = {
       // Tim will need a property for current product id to make a GET request for related items
       // The team will need a product review rating to render on multiple components
-      reviews: {}
     };
   }
 
+
+
+// //Ratings and Reviews Sections
+//   reviews() {
+//     axios.get('/reviews/product')
+//       .then((response) => {
+//         this.setState({
+//           reviewList: response.data
+//         });
+//         this.breakdown();
+//       })
+//   }
+
+//   breakdown() {
+//     axios.get('/reviews/breakdown')
+//       .then((response) => {
+//         this.setState({
+//           reviewBreakdown: response.data
+//         });
+//       })
+//   }
+
+// //end of Ratings and Reviews Section
+
+
+  componentDidMount() {
+
+
+    // this.reviews()
+
+  }
   render () {
     return (
       <div>
@@ -27,11 +58,9 @@ class App extends React.Component {
         {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>
         <br></br>
-        <div className="reviews-container">
-          <div className="reviews-column-container">
-            <div className="reviews-left">Ratings and Product</div>
-            <div className="reviews-right"><RatingsReviews /></div>
-          </div>
+        <div className="reviews-container"> Ratings and Reviews
+             <div className="reviews-left"><Breakdown /></div>
+            <div className="reviews-right"><RatingsReviews  /></div>
         </div>
         <QuestionAnswer/>
       </div>
