@@ -77,7 +77,8 @@ class QuestionAnswer extends React.Component {
     });
 
     return (
-      <table width='90%' border='1px' align='left' font-family='arial'>
+      <table width='90%' border='1px' align='left' fontFamily='arial'>
+      <tbody>
       <tr className='qatable'>
         <th align='left'>
               <SearchQuestionBar/>
@@ -103,6 +104,7 @@ class QuestionAnswer extends React.Component {
           </td>
       </tr>
 
+    </tbody>
     </table>
     )
   }
