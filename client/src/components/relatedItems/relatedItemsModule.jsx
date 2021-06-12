@@ -21,8 +21,7 @@ class RelatedItemsModule extends React.Component {
   }
 
   componentWillUnmount() {
-    // fix Warning: Can't perform a React state update on an unmounted component
-    this.data = {};
+    this.data = [];
     this.setState = () => {return;};
   }
 
@@ -48,17 +47,20 @@ class RelatedItemsModule extends React.Component {
   }
 
   render() {
+    console.log('THIS>DATA: ', this.data);
     if (this.state.isLoading) {
       return <div>... Related Items Loading ...</div>;
     }
     return (
       <div id="relatedItemsModule">
-        <div id="relatedItemsList">This is the Related Items Module
-          <RelatedItemsList data={this.data} />
-        </div><br></br>
-        <div id="outfitItemsList">This is the Outfit items list
+        <div id="relatedItemsList">
+          This is the Related Items Module
+          <RelatedItemsList data={this.state.relatedItemsData} />
+        </div><br />
+        <div id="outfitItemsList">
+          This is the Outfit items list
           <OutfitItemsList />
-        </div><br></br>
+        </div><br />
       </div>
     );
   }
