@@ -2,7 +2,7 @@ import React from 'react';
 import Skus from './skus.jsx';
 
 const Styles = (props) => {
-  console.log('current styles props:', props);
+  //console.log('current styles props:', props);
   const styleOptions = props.results.map((result) =>
     <option value={result.style_id}>{result.name}</option>,
   );
