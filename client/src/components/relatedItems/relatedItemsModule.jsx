@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-
+import CarouselWrapper from './carouselWrapper.jsx';
+import RelatedCarousel from './relatedCarousel.jsx';
+import OutfitCarousel from './outfitCarousel.jsx';
 import RelatedItemsList from './relatedItemsList.jsx';
 import OutfitItemsList from './outfitItemsList.jsx';
 
@@ -10,6 +12,7 @@ class RelatedItemsModule extends React.Component {
     super(props);
     this.state = {
       relatedItemsData: {},
+      relatedItemsStyles: {},
       isLoading: true
     };
     this.data = [];
@@ -18,6 +21,9 @@ class RelatedItemsModule extends React.Component {
   }
 
   componentDidMount() {
+    // this.setState({
+    //   product_id: this.props.product_id,
+    // });
     this.getRelatedItemsInfo();
   }
 
@@ -40,20 +46,44 @@ class RelatedItemsModule extends React.Component {
           isLoading: false,
         });
         this.data = res.data;
-        console.log('this.data in relatedItemsModule: ', this.data)
       })
       .catch((err) => {
         console.log('Catch block in main component', err);
       });
   }
 
+  getRelatedItemsStyles() {
+    // Axios call, set state
+    axios({
+      method: 'get',
+      url: 'relatedItems/styles',
+      params: {
+        // product_id: this.state.product_id
+        product_id: this.product_id
+      },
+    })
+      .then((res) => {
+        this.setState({
+
+        })
+      })
+  }
+
   render() {
-    console.log('THIS>DATA: ', this.data);
     if (this.state.isLoading) {
       return <div>... Related Items Loading ...</div>;
     }
     return (
       <div id="relatedItemsModule">
+        {/* <CarouselWrapper>
+          <div id="relatedCarousel">
+            <RelatedCarousel />
+          </div>
+          <div id="outfitCarousel">
+            <OutfitCarousel />
+          </div>
+        </CarouselWrapper> */}
+
         <div id="relatedItemsList">
           This is the Related Items Module
           <RelatedItemsList data={this.state.relatedItemsData} />
@@ -68,3 +98,19 @@ class RelatedItemsModule extends React.Component {
 };
 
 export default RelatedItemsModule;
+
+      // return (
+      //   <div>
+      //     <CarouselWrapper name="Related Products" data={this.state.relatedItemsData} render={(data) => {
+      //       return <RelatedCarousel data={data} currrentProduct={this.product_id} />
+      //     }} />
+      //     <CarouselWrapper
+      //       name='Outfit'
+      //       data={{}}
+      //       render={(data) => {
+      //         return <OutfitCarousel
+      //           currentProduct={this.props.product}
+      //           data={data} />;
+      //       }} />
+      //   </div>
+      // );

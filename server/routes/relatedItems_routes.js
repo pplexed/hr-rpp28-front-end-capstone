@@ -47,4 +47,20 @@ router.get('/relatedItems', (req, res) => {
     });
 });
 
+router.get(`/relatedItems/products/:product_id/styles`, (req, res) => {
+  const options = {
+    method: 'get',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${product_id}/styles`,
+    headers: token.AUTH,
+  };
+
+  axios(options)
+    .then( (data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log('Error fetching styles data: ', err);
+    });
+});
+
 module.exports = router;
