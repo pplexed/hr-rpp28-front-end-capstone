@@ -53,7 +53,6 @@ router.get('/getproductstyle', (req, res) => {
       console.log('server error: ', err);
       res.status(404).send(err);
     } else {
-      console.log('product came back:', data);
       res.status(200).send(data);
     }
   });

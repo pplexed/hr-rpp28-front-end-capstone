@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.post('/uploadphoto', (req, res) => {
   console.log('upload post received');
 
-  console.log(Object.keys(req.files));
+  // console.log(Object.keys(req.files));
 
   if (req.files.answerpic) {
     fs.writeFile(`./client/dist/${req.files.answerpic.name}`, req.files.answerpic.data, function(err) {
