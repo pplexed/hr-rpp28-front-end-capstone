@@ -15,11 +15,7 @@ class App extends React.Component {
     this.state = {
       // Tim will need a property for current product id to make a GET request for related items
       // The team will need a product review rating to render on multiple components
-      // reviewList: [],
-      // reviewBreakdown: []
     };
-    // this.reviews = this.reviews.bind(this);
-    // this.breakdown = this.breakdown.bind(this);
   }
 
 
