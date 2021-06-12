@@ -22,7 +22,7 @@ describe('Question and Answer Tests', () => {
   render(<QuestionAnswer/>);
 
   test('Does it render a Question & Answer Widget', () => {
-    screen.debug();
+   // screen.debug();
   });
 
 
