@@ -8,7 +8,7 @@ function IRT(props) {
   const date = new Date(props.review.date.toString()).toLocaleString('en-us', {month: 'long', day: 'numeric', year : 'numeric'});
 
   return(
-    <div>
+    <div className=".reviews-container">
       <div><StarRating rating={props.review.rating}/> {props.review.recommend} {date} </div>
       <div className="review-summary">{props.review.summary}</div>
       <div>{props.review.body}</div>

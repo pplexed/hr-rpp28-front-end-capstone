@@ -15,11 +15,7 @@ class App extends React.Component {
     this.state = {
       // Tim will need a property for current product id to make a GET request for related items
       // The team will need a product review rating to render on multiple components
-      // reviewList: [],
-      // reviewBreakdown: []
     };
-    // this.reviews = this.reviews.bind(this);
-    // this.breakdown = this.breakdown.bind(this);
   }
 
 
@@ -62,14 +58,9 @@ class App extends React.Component {
         {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>
         <br></br>
-        <div className="reviews-container">
-          <div className="reviews-column-container"> Ratings and Reviews
-             {/* <div className="reviews-left"><Breakdown /></div> */}
+        <div className="reviews-container"> Ratings and Reviews
+             <div className="reviews-left"><Breakdown /></div>
             <div className="reviews-right"><RatingsReviews  /></div>
-
-            {/* <div className="reviews-left"><Breakdown breakdown={this.state.reviewBreakdown}/></div>
-            <div className="reviews-right"><RatingsReviews reviewInfo={this.state.reviewList} /></div> */}
-          </div>
         </div>
         <QuestionAnswer/>
       </div>

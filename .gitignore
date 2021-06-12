@@ -1,5 +1,7 @@
 node_modules
 config.js
+config.copy
 bundle.js
+coverage/lcov-report/hr-rpp28-front-end-capstone
 
 

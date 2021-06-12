@@ -7,7 +7,7 @@
     "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/index.js",
     "lint": "eslint --ext .jsx --ext .js ./client/src",
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom --coverage"
   },
   "repository": {
     "type": "git",
