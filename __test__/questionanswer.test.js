@@ -26,7 +26,7 @@ describe('Question and Answer Tests', () => {
   });
 
 
-  test('Does it display the text "Have a question? Search for answers…"', () => {
+  test('Does it display the text "Search Question"', () => {
 
     render(<QuestionAnswer/>);
     expect(screen.getByText('Search Question')).toBeInTheDocument();
