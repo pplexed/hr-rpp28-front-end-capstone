@@ -5,7 +5,7 @@ class SearchQuestionBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputField: 'HAVE A QUESTION?  SEARCH FOR ANSWERS...'
+      inputField: 'Have a question? Search for answers…',
     };
   }
 
