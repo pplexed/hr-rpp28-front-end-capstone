@@ -10,8 +10,8 @@ class Photobar extends React.Component {
     if ((!this.props.photos) || (this.props.photos.length === 0)) {
       return null;
     }
-    
-    console.log('this photo array', this.props.photos[0]);
+
+    // console.log('this photo array', this.props.photos[0]);
 
     return (
       <span>

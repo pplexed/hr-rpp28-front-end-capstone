@@ -21,7 +21,7 @@ class AddQuestionModal extends React.Component {
   }
 
   checkInput() {
-    let validateTest = this.state.nickname && this.state.email && this.state.question; 
+    let validateTest = this.state.nickname && this.state.email && this.state.question;
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
       let emailtest = false;
@@ -34,7 +34,7 @@ class AddQuestionModal extends React.Component {
 
     // validate email here
     if (!validateTest) {
-      console.log('implement a warning here');
+      // console.log('implement a warning here');
     }
 
     return validateTest;
@@ -54,20 +54,20 @@ class AddQuestionModal extends React.Component {
         question: this.state.question
       })
         .then((response) => {
-          console.log('question submitted returned with', response);
+          // console.log('question submitted returned with', response);
         })
         .catch((err) => {
-          console.log('error in submitting question', err);
+          // console.log('error in submitting question', err);
         });
     }
     else {
-      console.log('error data not validated');
+      // console.log('error data not validated');
     }
   }
 
   changeHandler(e) {
     this.setState({[e.target.name]: e.target.value });
-    console.log(`change handler fired! value: ${e.target.value}`);
+    // console.log(`change handler fired! value: ${e.target.value}`);
   }
 
   clickHandlerNickname(e) {
@@ -103,10 +103,10 @@ class AddQuestionModal extends React.Component {
             </div>
 
             <div className='modal-body-q'>
-              
+
               {/* <form className='InputQuestion' method='POST' action='http://localhost:3000/qa/questions'> */}
 
-              <form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}> 
+              <form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}>
                 <textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}>
                 </textarea>
                 <br></br>

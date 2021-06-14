@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1623527962568" clover="3.2.0">
-  <project timestamp="1623527962568" name="All files">
+<coverage generated="1623529541517" clover="3.2.0">
+  <project timestamp="1623529541517" name="All files">
     <metrics statements="287" coveredstatements="68" conditionals="66" coveredconditionals="5" methods="123" coveredmethods="25" elements="476" coveredelements="98" complexity="0" loc="287" ncloc="287" packages="10" files="28" classes="28"/>
     <package name="hr-rpp28-front-end-capstone">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

@@ -35,7 +35,7 @@ class QuestionAnswer extends React.Component {
     super(props);
     this.state = {
       questions: { results: []},
-      product_id: '', 
+      product_id: '',
       showQModal: false,
       defaultlength: 2,
     }
@@ -45,24 +45,24 @@ class QuestionAnswer extends React.Component {
 
     axios.get('http://localhost:3000/qa/questions/')
       .then((response) => {
-        console.log('this is the axios data upon load up', response.data);
+        // console.log('this is the axios data upon load up', response.data);
         this.setState({
           product_id: response.data.product_id,
           questions: response.data,
         });
       })
       .catch(err => {
-        console.log('error in loadup', err);
+        // console.log('error in loadup', err);
         this.setState({
           product_id: '22122',
         });
       });
-    
+
   }
 
   showQModalHandler() {
-    console.log('passed event handler clicked for show Question Modal Window!');
-    console.log('passing this into props', this.state.showQModal);
+    // console.log('passed event handler clicked for show Question Modal Window!');
+    // console.log('passing this into props', this.state.showQModal);
     this.setState({showQModal: !this.state.showQModal});
   }
 
@@ -82,7 +82,7 @@ class QuestionAnswer extends React.Component {
       <tr className='qatable'>
         <th align='left'>
               <SearchQuestionBar/>
-              <p>view questions</p> 
+              <p>view questions</p>
         </th>
       </tr>
 

@@ -20,10 +20,10 @@ const options = {
 }
 
 router.get('/review-product', (req, res) => {
-  console.log('this is the req:', req.query.count)
+  // console.log('this is the req:', req.query.count)
   getReviews(req.query.count, (err, data) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
     } else {
       res.send(data);
     }
@@ -31,11 +31,11 @@ router.get('/review-product', (req, res) => {
 });
 
 router.get('/breakdown', (req, res) => {
-  console.log('working');
+  // console.log('working');
   getMeta((err, data) => {
-    console.log('we are here');
+    // console.log('we are here');
     if (err) {
-      console.log(err);
+      // console.log(err);
     } else {
       res.send(data);
     }

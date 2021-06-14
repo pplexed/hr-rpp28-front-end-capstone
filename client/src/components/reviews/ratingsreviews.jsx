@@ -42,11 +42,11 @@ class RatingsReviews extends React.Component {
       }
     })
       .then((response) => {
-        console.log('these is the reponse: ', response.data.results);
+        // console.log('these is the reponse: ', response.data.results);
         this.setState({
           reviewList: response.data.results
         });
-        console.log('thsis the after: ', this.state.reviewList);
+        // console.log('thsis the after: ', this.state.reviewList);
         // this.breakdown();
       })
 
@@ -71,7 +71,7 @@ class RatingsReviews extends React.Component {
   render() {
     let allReviews = this.state.reviewList || [];
     let reviewList = this.state.reviewList.map((item, index) => {
-      {console.log(this.state.reviewList)}
+      // {console.log(this.state.reviewList)}
       return (
       <div key={index}>
       <IRT review={item} />
@@ -82,8 +82,10 @@ class RatingsReviews extends React.Component {
     return (
       <div>
         <div>sort will go here</div>
-          {reviewList}
-        <div><button type="button" onClick={this.moreReviews}>MORE REVIEWS {this.state.numberOfReviews}</button></div>
+        <div className = {(this.state.numberOfReviews >= 6) ? "reviews-scroll" : null  }>
+            {reviewList}
+        </div>
+          <div><button type="button" onClick={this.moreReviews}>MORE REVIEWS {this.state.numberOfReviews}</button></div>
       </div>
     );
   }

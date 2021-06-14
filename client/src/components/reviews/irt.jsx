@@ -9,9 +9,10 @@ function IRT(props) {
 
   return(
     <div className=".reviews-container">
-      <div><StarRating rating={props.review.rating}/> {props.review.recommend} {date} </div>
-      <div className="review-summary">{props.review.summary}</div>
+      <div><StarRating rating={props.review.rating}/> {date} </div>
+      <div className="reviews-summary">{props.review.summary}</div>
       <div>{props.review.body}</div>
+      <div>{props.review.recommend}</div>
       <div><ReviewPhotos photos={props.review.photos}/></div>
       <div>Helpful? Yes({props.review.helpfulness}) | Report</div>
       <div>{props.review.summary}</div>

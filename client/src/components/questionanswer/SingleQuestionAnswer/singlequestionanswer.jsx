@@ -23,67 +23,67 @@ class SingleQuestionAnswer extends React.Component {
   }
 
   componentDidMount() {
-    console.log('in Component did mount', this.props.question);
+    // console.log('in Component did mount', this.props.question);
 
   }
 
 
   showAModalHandler() {
-    console.log('Event handler clicked for Show Modal Answer Window!');
-    console.log('passing this into props', this.state.showAModal);
+    // console.log('Event handler clicked for Show Modal Answer Window!');
+    // console.log('passing this into props', this.state.showAModal);
     this.setState({showAModal: !this.state.showAModal});
   }
 
- 
+
   loadMoreAnswers() {
     this.setState({ defaultlength: (this.state.defaultlength + 2) });
-    console.log('load more answers event handler triggered!', this.state.defaultlength);
+    // console.log('load more answers event handler triggered!', this.state.defaultlength);
   }
 
   render() {
-    let answerBars = Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(key =>  
+    let answerBars = Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(key =>
       <tr><SingleAnswerBar answer = { this.props.question.answers[key] }/></tr>);
 
-    // let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key => 
+    // let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key =>
     //   <SingleAnswerBar answer={key} />);
 
     return (
       <div>
         <br></br>
-        
+
         <SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/>
 
-        
-          
+
+
             {answerBars}
-          
-      
+
+
 
         <tr>
-          
+
             <div>
               {/*moreAnswers*/}
             </div>
-      
+
         </tr>
 
         <tr>
-          
+
             <div onClick={this.loadMoreAnswers.bind(this)}>
               load more answers
             </div>
-          
+
         </tr>
-        
+
         <tr>
-              
+
           <table border='1px'>
             {<AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal} product_name={'passed in data:'} question_body={this.props.question.question_body}/>}
           </table>
-        
-  
+
+
         </tr>
-    
+
       </div>
     )
   }
@@ -92,8 +92,8 @@ class SingleQuestionAnswer extends React.Component {
 export default SingleQuestionAnswer;
 
 //Note to self:
-// in the questions get response, for each question there is a field called answers.  
-// the answers field in the question object is an object of objects. 
+// in the questions get response, for each question there is a field called answers.
+// the answers field in the question object is an object of objects.
 
 
 //old return

@@ -17,8 +17,8 @@ class RelatedItemsList extends React.Component {
       relatedItemsData: this.props.data
     });
     this.dataArray = this.props.data;
-    console.log('Props', this.props);
-    console.log('dataArray', this.dataArray);
+    // console.log('Props', this.props);
+    // console.log('dataArray', this.dataArray);
   }
 
   componentWillUnmount() {
@@ -27,8 +27,8 @@ class RelatedItemsList extends React.Component {
   }
 
   render() {
-    console.log('render data array', this.dataArray);
-    console.log('render state', this.state.relatedItemsData);
+    // console.log('render data array', this.dataArray);
+    // console.log('render state', this.state.relatedItemsData);
     return (
       <div id="relatedItemsList">
         This is the Related Items List

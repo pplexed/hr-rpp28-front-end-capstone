@@ -58,7 +58,8 @@ class App extends React.Component {
         {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>
         <br></br>
-        <div className="reviews-container"> Ratings and Reviews
+        Ratings and Reviews
+        <div className="reviews-container">
              <div className="reviews-left"><Breakdown /></div>
             <div className="reviews-right"><RatingsReviews  /></div>
         </div>

@@ -28,7 +28,7 @@ const getProducts = (callback) => {
       callback(null, response.data);
     })
     .catch((error) => {
-      console.log('error', error.response);
+      // console.log('error', error.response);
     });
 };
 
@@ -37,7 +37,7 @@ router.get('/getoneproduct', (req, res) => {
   prodUrl = req.url;
   getProducts((err, data) => {
     if (err) {
-      console.log('server error: ', err);
+      // console.log('server error: ', err);
       res.status(404).send(err);
     } else {
       res.status(200).send(data);
@@ -50,7 +50,7 @@ router.get('/getproductstyle', (req, res) => {
   addParams = '/styles';
   getProducts((err, data) => {
     if (err) {
-      console.log('server error: ', err);
+      // console.log('server error: ', err);
       res.status(404).send(err);
     } else {
       res.status(200).send(data);

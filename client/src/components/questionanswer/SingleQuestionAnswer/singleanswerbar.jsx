@@ -13,14 +13,14 @@ class SingleAnswerBar extends React.Component {
   handleHelpful = event => {
     axios.put(`http://localhost:3000/qa/answers/${this.state.answer_id}/helpful`)
     .then((response) => {
-      console.log('helpful clicked, sent to server, returned with', response);
+      // console.log('helpful clicked, sent to server, returned with', response);
     })
   }
 
   handleReport = event => {
     axios.put(`http://localhost:3000/qa/answers/${this.state.answer_id}/report`)
     .then((response) => {
-      console.log('report clicked, sent to server, returned with', response);
+      // console.log('report clicked, sent to server, returned with', response);
       this.setState({reported: true});
     })
   }
@@ -32,24 +32,24 @@ class SingleAnswerBar extends React.Component {
     return (
       <div>
         -------------------
-        <div>A: {this.state.body} </div>    
-              
-        
+        <div>A: {this.state.body} </div>
+
+
         <div>
             <span>By {this.state.answerer_name}, {this.state.date.substring(0,10)}  </span>
-           
-            
+
+
             <span>| helpful? </span>
-            <span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}>Yes({this.state.helpfulness})</span>  
+            <span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}>Yes({this.state.helpfulness})</span>
             <span> | </span>
             {this.state.reported ? reportedTag : notReportedTag}
-           
+
         </div>
 
         <div>
           <Photobar photos={this.state.photos}/>
         </div>
-    
+
       </div>
     )
   }

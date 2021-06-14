@@ -15,7 +15,7 @@ class SearchQuestionBar extends React.Component {
     if (this.state.inputField.length > 1) {
       axios.get(`http://localhost:3000/qa/search/${this.state.inputField}`)
         .then((response) => {
-          console.log('response: ', response);
+          // console.log('response: ', response);
         });
     }
   }
@@ -23,7 +23,7 @@ class SearchQuestionBar extends React.Component {
   clickHandler() {
     this.setState({ inputField: '' });
   }
- 
+
   render() {
     return (
       <div>Search Question

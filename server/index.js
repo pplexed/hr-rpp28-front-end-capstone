@@ -22,16 +22,7 @@ app.use('/qa', QAroutes);
 app.use('/reviews', review);
 app.use('/overview', overview);
 
-// app.get('/reviews', (req, res) => {
-//   review.getReviews((err, data) => {
-//     console.log('we are here');
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// });
+
 
 
 
@@ -41,12 +32,12 @@ app.use('/relatedItems', RIroutes);
 app.get('/', (req, res) => {
 
   //res.send('basic get request received');
-  console.log('received a request at /');
+  // console.log('received a request at /');
 
   res.send(data);
 });
 
 
 app.listen(PORT, () => {
-  console.log(`Now listening on port ${PORT}`);
+  // console.log(`Now listening on port ${PORT}`);
 });
