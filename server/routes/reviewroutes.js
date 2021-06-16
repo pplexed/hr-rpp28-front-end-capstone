@@ -6,7 +6,7 @@ const fs = require('fs');
 const axios = require('axios');
 const token = require('../../config.js')
 const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22217&count=2'
-const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22217'
+const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22128'
 
 // default options as middleware
 router.use(fileUpload());

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AverageNum from './breakdown-number.jsx';
 import StarRating from './starsrating.jsx';
 import Ratings from './breakdown-rating.jsx';
+import Product from './breakdown-product.jsx';
 import axios from 'axios';
 
 
@@ -11,7 +12,7 @@ class Breakdown extends React.Component {
     super(props);
     this.state = {
       reviewBreakdown: {},
-      recommendations: 0
+      recommendations: 0,
     }
     //this.bind goes here
     this.metaData = this.metaData.bind(this);
@@ -28,8 +29,10 @@ class Breakdown extends React.Component {
           reviewBreakdown: response.data,
           recommendations: response.data.recommended['true']
         });
+        console.log('inside',this.state)
       });
   }
+
 
   componentDidMount() {
     this.metaData(); //I will need to pass a product number in to here at some point
@@ -41,7 +44,8 @@ class Breakdown extends React.Component {
       <div>
         {/* average number will go here && along with the star rating */}
         <AverageNum ratings={this.state.reviewBreakdown.ratings} recommendations={this.state.recommendations}/>
-        <Ratings />
+        <Ratings ratings={this.state.reviewBreakdown.ratings}/>
+        <Product characteristics={this.state.reviewBreakdown.characteristics}/>
         {/* the charractics will fgo here */}
       </div>
     );

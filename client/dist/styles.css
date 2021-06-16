@@ -72,17 +72,23 @@ div.scrollable {
   flex-direction: row;
 
 
+
 }
 
 .reviews-left{
   width: 25%;
+  margin-right: 2%;
   flex-direction: column;
+  border: 1px solid blue;
 
 }
 
 .reviews-right{
+  width: 75%;
   display: flex;
   flex-direction: column;
+  border: 1px solid red;
+
 
 }
 
@@ -100,28 +106,128 @@ div.scrollable {
 }
 
 
-/* This section for the rewiew stars */
-
-/* :root {
-  --star-size: 120%;
-  --star-color: blue;
-  --star-background: gray;
+/* This section for the star rating progress bar */
+progress[value] {
+  appearance: none;
+  width: 35%;
+  height: 10px;
 }
 
-.Stars {
-  --percent: calc(var(--rating) / 5 * 100%);
-  display: inline-block;
-  font-size: var(--star-size);
-  font-family: Times;
-  line-height: 1;
+label {
+  padding-right:10px;
 }
-.Stars::before {
-  content: '★★★★★';
-  letter-spacing: 3px;
-  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
+
+
+
+
+/* This section for the product breakdown section */
+input[type=range] {
+  height: 8px;
+  -webkit-appearance: none;
+  width: 50%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 9px;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #A9A9A9;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 8px;
+  width: 10px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  -webkit-appearance: none;
+  margin-top: -0.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #A9A9A9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 9px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #A9A9A9;
+  border-radius: 10px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 8px;
+  width: 10px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 9px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #A9A9A9;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #A9A9A9;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 8px;
+  width: 10px;
+  border-radius: 0px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #A9A9A9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #A9A9A9;
+}
+
+
+
+/* This is for the textbox around product breakdown */
+
+#textbox {display:flex; flex-flow:row wrap;}
+
+.alignleft {
+width:16.66666%;
+text-align:left;
+}
+.aligncenter {
+width:16.66666%;
+text-align:center;
+}
+.alignright {
+width:16.66666%;
+text-align:right;
+}
+
+
+
 
 /* This section is for the review photos and how they are displayed */
 
