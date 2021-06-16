@@ -6,12 +6,11 @@ import axios from 'axios';
 const Ratings = (props) => {
   let ratings = props.ratings;
   console.log('rating insied of the breakdown: ', ratings)
-  let totalRatings = 0;
+  let totalRatings = props.totalRatings;
   let ratingArray = [];
   //need to get each number and add them all together - people who posted a review
   //get all of the ratings
   for (let key in ratings) {
-    totalRatings += (Number(key) * Number(ratings[key]));
     ratingArray[key] = (Number(ratings[key]));
   }
   let max = `${totalRatings}`;

@@ -21,7 +21,7 @@ router.use(bodyParser.json());
 router.post('/uploadphoto', (req, res) => {
   console.log('upload post received');
 
-  console.log(Object.keys(req.files));
+  // console.log(Object.keys(req.files));
 
   if (req.files.answerpic) {
     fs.writeFile(`./client/dist/${req.files.answerpic.name}`, req.files.answerpic.data, (err) => {
@@ -37,7 +37,7 @@ router.post('/uploadphoto', (req, res) => {
 
 // NON-API SEARCH LOGIC
 router.get('/search/:searchterm', (req, res) => {
-  console.log('search request received!', req.params.searchterm);
+  // console.log('search request received!', req.params.searchterm);
   res.send('GET search request received: ');
 });
 
@@ -50,7 +50,7 @@ router.get('/questions', (req, res) => {
   axios.get(builtPath)
     .then((response) => {
       res.send(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch((err) => {
       res.send('error at /questions', err);
@@ -65,13 +65,13 @@ router.get('/questions/:question_id/answers', (req, res) => {
 
   axios.defaults.headers.common['Authorization'] = TOKEN;
 
-  
+
   console.log('route reached');
 
   axios.get(builtPath)
     .then((response) => {
       res.send(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch((err) => {
       res.send('error at /questions/:question_id/answers', err);
@@ -90,7 +90,7 @@ router.post('/questions/:question_id/answers', (req, res) => {
   //   photos: [],
   // };
 
-  
+
   // NOTE TO SELF UNCOMMENT THIS and ADD Product_ID to the initial axios request.
   const answerToBePosted = {
     body: req.body.answerbody,

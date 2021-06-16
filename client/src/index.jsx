@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Overview from './components/overview/overview.jsx';
 import QuestionAnswer from './components/questionanswer/questionanswer.jsx';
-import RatingsReviews from './components/reviews/ratingsreviews.jsx';
+import Reviews from './components/reviews/reviews.jsx';
 import Breakdown from './components/reviews/breakdown.jsx';
 import RelatedItemsModule from './components/relatedItems/relatedItemsModule.jsx';
 import axios from 'axios';
@@ -17,31 +17,6 @@ class App extends React.Component {
       // The team will need a product review rating to render on multiple components
     };
   }
-
-
-
-// //Ratings and Reviews Sections
-//   reviews() {
-//     axios.get('/reviews/product')
-//       .then((response) => {
-//         this.setState({
-//           reviewList: response.data
-//         });
-//         this.breakdown();
-//       })
-//   }
-
-//   breakdown() {
-//     axios.get('/reviews/breakdown')
-//       .then((response) => {
-//         this.setState({
-//           reviewBreakdown: response.data
-//         });
-//       })
-//   }
-
-// //end of Ratings and Reviews Section
-
 
   componentDidMount() {
 
@@ -59,10 +34,7 @@ class App extends React.Component {
         <br></br>
         <br></br>
         Ratings and Reviews
-        <div className="reviews-container">
-             <div className="reviews-left"><Breakdown /></div>
-            <div className="reviews-right"><RatingsReviews  /></div>
-        </div>
+        <div><Reviews /></div>
         <QuestionAnswer/>
       </div>
     );

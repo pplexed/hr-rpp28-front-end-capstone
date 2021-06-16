@@ -15,27 +15,13 @@ class Breakdown extends React.Component {
       recommendations: 0,
     }
     //this.bind goes here
-    this.metaData = this.metaData.bind(this);
   }
 
   //functions go here
 
 
-  //Ratings and Reviews Sections
-  metaData() {
-    axios.get('/reviews/breakdown')
-      .then((response) => {
-        this.setState({
-          reviewBreakdown: response.data,
-          recommendations: response.data.recommended['true']
-        });
-        console.log('inside',this.state)
-      });
-  }
-
-
   componentDidMount() {
-    this.metaData(); //I will need to pass a product number in to here at some point
+
   }
 
   render() {
@@ -43,9 +29,9 @@ class Breakdown extends React.Component {
     return (
       <div>
         {/* average number will go here && along with the star rating */}
-        <AverageNum ratings={this.state.reviewBreakdown.ratings} recommendations={this.state.recommendations}/>
-        <Ratings ratings={this.state.reviewBreakdown.ratings}/>
-        <Product characteristics={this.state.reviewBreakdown.characteristics}/>
+        <AverageNum ratings={this.props.ratings} recommendations={this.props.recommendations}/>
+        <Ratings ratings={this.props.ratings} totalRatings={this.props.totalRatings}/>
+        <Product characteristics={this.props.characteristics}/>
         {/* the charractics will fgo here */}
       </div>
     );

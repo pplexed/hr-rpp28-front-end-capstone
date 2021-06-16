@@ -6,7 +6,7 @@ const fs = require('fs');
 const axios = require('axios');
 const token = require('../../config.js')
 const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22217&count=2'
-const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22128'
+const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22147'
 
 // default options as middleware
 router.use(fileUpload());
@@ -20,7 +20,7 @@ const options = {
 }
 
 router.get('/review-product', (req, res) => {
-  // console.log('this is the req:', req.query.count)
+  console.log('this is the req should see 30:', req)
   getReviews(req.query.count, (err, data) => {
     if (err) {
       // console.log(err);
@@ -49,7 +49,7 @@ router.get('/breakdown', (req, res) => {
 //Gets the reviews for the individual review tile
 const getReviews = (num, callback) => {
 let count = num || 2;
- let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22217&count=${count}`
+ let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22147&count=${count}`
   axios({
     method: 'get',
     url: url,

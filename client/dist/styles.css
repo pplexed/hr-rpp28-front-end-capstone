@@ -79,7 +79,7 @@ div.scrollable {
   width: 25%;
   margin-right: 2%;
   flex-direction: column;
-  border: 1px solid blue;
+
 
 }
 
@@ -87,7 +87,7 @@ div.scrollable {
   width: 75%;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+
 
 
 }
