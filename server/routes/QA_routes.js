@@ -7,7 +7,7 @@ const fs = require('fs');
 const axios = require('axios');
 
 const QA_RouteConfig = require('../../config.js');
-const TOKEN = QA_RouteConfig.AUTH.Authorization;
+// const TOKEN = QA_RouteConfig.AUTH.Authorization;
 const AUTH_HEADER = QA_RouteConfig.AUTH;
 const API_PATH = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/';
 
@@ -65,7 +65,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
 
   axios.defaults.headers.common['Authorization'] = TOKEN;
 
-  
+
   console.log('route reached');
 
   axios.get(builtPath)
@@ -90,7 +90,7 @@ router.post('/questions/:question_id/answers', (req, res) => {
     photos: [],
   };
 
-  
+
   // NOTE TO SELF UNCOMMENT THIS and ADD Product_ID to the initial axios request.
   // const answerToBePosted = {
   //   body: req.body.answer

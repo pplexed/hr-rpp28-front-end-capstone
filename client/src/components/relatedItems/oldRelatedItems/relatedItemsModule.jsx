@@ -75,16 +75,16 @@ class RelatedItemsModule extends React.Component {
     }
     return (
       <div id="relatedItemsModule">
-        {/* <CarouselWrapper>
+        <CarouselWrapper>
           <div id="relatedCarousel">
             <RelatedCarousel />
           </div>
           <div id="outfitCarousel">
             <OutfitCarousel />
           </div>
-        </CarouselWrapper> */}
+        </CarouselWrapper>
 
-        <div id="relatedItemsList">
+        {/* <div id="relatedItemsList">
           This is the Related Items Module
           <RelatedItemsList data={this.state.relatedItemsData} />
         </div><br />
@@ -92,10 +92,10 @@ class RelatedItemsModule extends React.Component {
           This is the Outfit items list
           <OutfitItemsList />
         </div><br />
-      </div>
+      </div> */}
     );
-  }
-};
+  };
+}
 
 export default RelatedItemsModule;
 

@@ -20,7 +20,7 @@ const options = {
 }
 
 router.get('/review-product', (req, res) => {
-  console.log('this is the req:', req)
+  // console.log('this is the req:', req)
   getReviews((err, data) => {
     if (err) {
       console.log(err);
