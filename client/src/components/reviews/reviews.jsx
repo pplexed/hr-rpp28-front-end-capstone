@@ -44,8 +44,6 @@ class Reviews extends React.Component {
   numberOfReviews(ratings) {
     let totalRatings = 0;
     let ratingArray = [];
-    //need to get each number and add them all together - people who posted a review
-    //get all of the ratings
     for (let key in ratings) {
       totalRatings += (Number(ratings[key]));
       ratingArray[key] = (Number(ratings[key]));

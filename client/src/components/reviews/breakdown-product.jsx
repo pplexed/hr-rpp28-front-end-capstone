@@ -9,6 +9,7 @@ const Product = (props) => {
   let quality;
   let size;
   let width;
+  let fit;
 
   for (let key in characteristics) {
     if (key === 'Comfort') {
@@ -23,92 +24,83 @@ const Product = (props) => {
     if (key === 'Width') {
       width = Number(characteristics[key].value).toFixed(1);
     }
+    if (key === 'Fit') {
+      fit = Number(characteristics[key].value).toFixed(1);
+    }
   }
 
-  console.log('comfort: ', comfort)
-  console.log('quality: ', quality)
-  console.log('size: ', size)
-  console.log('width: ', width)
+  // console.log('comfort: ', comfort)
+  // console.log('quality: ', quality)
+  // console.log('size: ', size)
+  // console.log('width: ', width)
 
   return (
     <div>
       <div>
-        <div>Size</div>
+        <div className={size ? null : "product-hidden"}>Size</div>
         <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
+          min="1" max="5" value={size}></input></div>
           <div id="textbox">
-            <p class="alignleft">Too small</p>
-            <p class="aligncenter">Perfect</p>
-            <p class="alignright">Too large</p>
+            <p className="alignleft">Too small</p>
+            <p className="aligncenter">Perfect</p>
+            <p className="alignright">Too large</p>
           </div>
       </div>
 
-      <div>
+      <div className={width ? null : "product-hidden"}>
         <div>Width</div>
         <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
+          min="1" max="5" value={width}></input></div>
           <div id="textbox">
-            <p class="alignleft">Too narrow</p>
-            <p class="aligncenter">Perfect</p>
-            <p class="alignright">Too wide</p>
+            <p className="alignleft">Too narrow</p>
+            <p className="aligncenter">Perfect</p>
+            <p className="alignright">Too wide</p>
           </div>
       </div>
 
-      <div>
+      <div className={comfort ? null : "product-hidden"}>
         <div>Comfort</div>
         <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
+          min="1" max="5" value={comfort}></input></div>
           <div id="textbox">
-            <p class="alignleft">Uncomfortable</p>
-            <p class="aligncenter">Ok</p>
-            <p class="alignright">Perfect</p>
+            <p className="alignleft">Uncomfortable</p>
+            <p className="aligncenter">Ok</p>
+            <p className="alignright">Perfect</p>
           </div>
       </div>
 
-      <div>
+      <div className={quality ? null : "product-hidden"}>
         <div>Quality</div>
         <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
+          min="1" max="5" value={quality}></input></div>
           <div id="textbox">
-            <p class="alignleft">Poor</p>
-            <p class="aligncenter">What I expected</p>
-            <p class="alignright">Perfect</p>
+            <p className="alignleft">Poor</p>
+            <p className="aligncenter">What I expected</p>
+            <p className="alignright">Perfect</p>
           </div>
       </div>
 
-      <div>
+      <div className={length ? null : "product-hidden"}>
         <div>Length</div>
         <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
+          min="1" max="5" value={length}></input></div>
           <div id="textbox">
-            <p class="alignleft">Runs short</p>
-            <p class="aligncenter">Perfect</p>
-            <p class="alignright">Runs long</p>
+            <p className="alignleft">Runs short</p>
+            <p className="aligncenter">Perfect</p>
+            <p className="alignright">Runs long</p>
           </div>
       </div>
 
-      <div>
+      <div className={fit ? null : "product-hidden"}>
         <div>Fit</div>
         <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
+          min="1" max="5" value={fit}></input></div>
           <div id="textbox">
-            <p class="alignleft">Runs tight</p>
-            <p class="aligncenter">Perfect</p>
-            <p class="alignright">Runs long</p>
+            <p className="alignleft">Runs tight</p>
+            <p className="aligncenter">Perfect</p>
+            <p className="alignright">Runs long</p>
           </div>
       </div>
-
-      <div>
-        <div>Size</div>
-        <div><input type="range" id="volume" name="volume"
-          min="0" max="81" value="22"></input></div>
-          <div id="textbox">
-            <p class="alignleft">Too small</p>
-            <p class="aligncenter">Perfect</p>
-            <p class="alignright">Too large</p>
-          </div>
-      </div>
-
 
     </div>
   )

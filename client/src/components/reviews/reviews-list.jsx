@@ -18,17 +18,16 @@ class ReviewsList extends  React.Component {
   }
 
   moreReviews(count) {
-    axios.get('/reviews/review-product')
-      .then((response) => {
         this.setState({
           allReviews: this.props.reviews,
           count: this.state.count += 2
         });
-      })
   }
 
   componentDidMount() {
-    console.log('these are the reviews: ', this.props.reviews);
+    this.setState({
+      count: 2
+    })
   }
   render() {
     let allReviews = (this.state.allReviews.length >=1) ? this.state.allReviews : this.props.reviews
@@ -41,11 +40,11 @@ class ReviewsList extends  React.Component {
     });
     return (
       <div>
-      <div>there are {this.props.totalRatings}sort will go here</div>
+      <div>{this.props.totalRatings} reviews, sorted by</div>
       <div className={(this.state.count >= 6) ? "reviews-scroll" : null  }>
             {reviewList}
       </div>
-      <div><button type="button" onClick={() => {this.moreReviews(this.props.totalRatings)}}>MORE REVIEWS </button></div>
+      <div><button className={(this.state.count >= this.props.reviews.length) ? "morereviews-hidden" : null}type="button" onClick={() => {this.moreReviews(this.props.totalRatings)}}>MORE REVIEWS </button></div>
       </div>
     );
   }

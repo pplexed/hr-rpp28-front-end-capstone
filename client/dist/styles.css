@@ -94,7 +94,7 @@ div.scrollable {
 
 .reviews-scroll {
   max-height: 75vh;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .reviews-summary {
@@ -105,8 +105,13 @@ div.scrollable {
   font-weight: bold;
 }
 
+/* Review & Ratings - This section for the more reviews functionality */
+.morereviews-hidden {
+  display: none;
+}
 
-/* This section for the star rating progress bar */
+
+/* Review & Ratings - This section for the star rating progress bar */
 progress[value] {
   appearance: none;
   width: 35%;
@@ -120,7 +125,7 @@ label {
 
 
 
-/* This section for the product breakdown section */
+/* Review & Ratings - This section for the product breakdown section */
 input[type=range] {
   height: 8px;
   -webkit-appearance: none;
@@ -207,7 +212,9 @@ input[type=range]:focus::-ms-fill-upper {
   background: #A9A9A9;
 }
 
-
+.product-hidden {
+  display: none;
+}
 
 /* This is for the textbox around product breakdown */
 
