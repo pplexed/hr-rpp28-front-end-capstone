@@ -21,6 +21,7 @@ class SingleQuestionBar extends React.Component {
     })
   }
 
+<<<<<<< HEAD
   addAnswerHandler = event => {
     // console.log('add answer handler clicked!');
   }
@@ -36,6 +37,18 @@ class SingleQuestionBar extends React.Component {
             <span onClick={this.props.AModalHandler}>| add answer </span>
 
       </tr>
+=======
+  render () {
+    return (
+      <div>
+        
+          <span key={1}>Q: {this.state.question.question_body}</span>
+          <span key={2}>    Helpful?    </span>
+          <span key={3} onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
+          <span key={4} onClick={this.props.AModalHandler}>| add answer </span>
+          
+      </div>
+>>>>>>> main
     )
   }
 }
