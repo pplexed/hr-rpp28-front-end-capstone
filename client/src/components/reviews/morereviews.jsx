@@ -17,26 +17,6 @@ class MoreReviews extends React.Component {
 
   //functions go here
 
-  // moreReviews() {
-  //   //will need to reset number of reviews when a new product is introduced
-  //   let more = this.state.numberOfReviews += 2;
-  //   this.setState =({
-  //     numberOfReviews: more
-  //   });
-  //   axios.get('/reviews/review-product', {
-  //     params: {
-  //       count: more
-  //     }
-  //   })
-  //     .then((response) => {
-  //       console.log('thsis the repsonse: ', this.state.numberOfReviews);
-  //       this.setState( current => {
-  //         return { reviewList: response.data.results};
-  //       });
-  //       // this.breakdown();
-  //     })
-
-  // }
   onClickHandler() {
     let more = this.state.numberOfReviews += 2;
     this.setState =({

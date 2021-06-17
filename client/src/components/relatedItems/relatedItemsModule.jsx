@@ -40,10 +40,10 @@ class RelatedItemsModule extends React.Component {
           isLoading: false,
         });
         this.data = res.data;
-        console.log('this.data in relatedItemsModule: ', this.data)
+        // console.log('this.data in relatedItemsModule: ', this.data)
       })
       .catch((err) => {
-        console.log('Catch block in main component', err);
+        // console.log('Catch block in main component', err);
       });
   }
 

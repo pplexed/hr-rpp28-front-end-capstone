@@ -28,17 +28,17 @@ class SearchQuestionBar extends React.Component {
 
   clickHandler() {
 
-    // I only want it to clear the input field at the initial load with the default text.  
+    // I only want it to clear the input field at the initial load with the default text.
     //other wise, it should do nothing
     if (this.state.initialLoad) {
-      this.setState({ 
+      this.setState({
         inputField: '' ,
         initialLoad: false,
       });
-    }     
-    
+    }
+
   }
- 
+
   render() {
     return (
       <div>Search Question

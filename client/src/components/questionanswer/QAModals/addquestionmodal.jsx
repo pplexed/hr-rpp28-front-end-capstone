@@ -35,7 +35,7 @@ class AddQuestionModal extends React.Component {
     });
 
 
-    let validateTest = this.state.nickname && this.state.email && this.state.question; 
+    let validateTest = this.state.nickname && this.state.email && this.state.question;
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
       let emailtest = false;
@@ -116,9 +116,9 @@ class AddQuestionModal extends React.Component {
 
     // no email message takes priority over improperly formatted email address
     if (this.state.emailIsInvalid) {
-      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div> 
-    } 
-                
+      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div>
+    }
+
 
 
     return (
@@ -133,19 +133,19 @@ class AddQuestionModal extends React.Component {
             {this.state.questionbodyIsInvalid ?  <div style={alertstyle}>You must enter a question</div> : <div></div>}
 
             <div className='modal-body-q'>
-              
+
               {/* <form className='InputQuestion' method='POST' action='http://localhost:3000/qa/questions'> */}
 
-              <form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}> 
+              <form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}>
                 <textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}>
                 </textarea>
                 <br></br>
-                
-                <div>What is your Nickname? </div>     
+
+                <div>What is your Nickname? </div>
                 {this.state.nicknameIsInvalid ?  <div style={alertstyle}>You must enter a Nickname</div> : <div></div>}
-                
+
                 <input type='text' onClick={this.clickHandlerNickname.bind(this)} maxLength='60' name='nickname' value={this.state.nickname}onChange={this.changeHandler.bind(this)}></input>
-  
+
                 <br></br>
                 <div>Your E-mail</div>
                 {emailAlertMessage}

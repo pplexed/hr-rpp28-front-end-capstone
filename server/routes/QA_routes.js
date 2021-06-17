@@ -72,7 +72,7 @@ router.get('/questions', (req, res) => {
   var builtPath = API_PATH + `questions/?product_id=${req.query.product_id}&page=1&count=10`;
 
   axios.defaults.headers.common['Authorization'] = TOKEN;
-  
+
   axios.get(builtPath)
     .then((response) => {
       res.send(response.data);
@@ -92,7 +92,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
 
   axios.defaults.headers.common['Authorization'] = TOKEN;
 
-  
+
   // console.log('route reached');
 
   axios.get(builtPath)
@@ -135,7 +135,7 @@ router.post('/questions/:question_id/answers', (req, res) => {
   //   photos: [],
   // };
 
-  
+
   // NOTE TO SELF UNCOMMENT THIS and ADD Product_ID to the initial axios request.
   const answerToBePosted = {
     body: req.body.answerbody,

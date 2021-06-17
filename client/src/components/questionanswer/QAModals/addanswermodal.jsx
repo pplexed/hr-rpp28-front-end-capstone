@@ -44,8 +44,8 @@ class UploadPhotos extends React.Component {
 
 
   onChangeHandler (e) {
-    console.log('photo load handler fired');
-    console.log(e.target.files);
+    // console.log('photo load handler fired');
+    // console.log(e.target.files);
 
     var formData = new FormData();
 
@@ -55,7 +55,7 @@ class UploadPhotos extends React.Component {
           'Content-Type': 'multipart/form-data'
         }
     }).then((response) => {
-      console.log('returned hyperlink', response.data)
+      // console.log('returned hyperlink', response.data)
       let newarray = this.state.photos;
       newarray.push(response.data);
 
@@ -117,12 +117,12 @@ class AddAnswerModal extends React.Component {
       answerbodyIsInvalid: !this.state.answerbody,
     });
 
-    
-    let validateTest = this.state.nickname && this.state.email && this.state.answerbody; 
-    
+
+    let validateTest = this.state.nickname && this.state.email && this.state.answerbody;
+
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-      
+
       let emailtest = false;
       if (this.state.email.match(regex)) {
         emailtest = true;
@@ -150,7 +150,6 @@ class AddAnswerModal extends React.Component {
       })
       .then((response) => {
         // console.log('answer submitted returned with', response.data);
-        
 
       })
       .catch((err) => {
@@ -166,7 +165,7 @@ class AddAnswerModal extends React.Component {
   changeHandler(e) {
      this.setState({[e.target.name]: e.target.value});
      // console.log(`change handler fired! value: ${e.target.value}`);
-     
+
   }
 
   clickHandlerNickname(e) {
@@ -205,14 +204,14 @@ class AddAnswerModal extends React.Component {
 
     // no email message takes priority over improperly formatted email address
     if (this.state.emailIsInvalid) {
-      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div> 
-    } 
-                
+      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div>
+    }
+
 
 
     return (
         <div className='modal-a' >
-          
+
           <div className='modal-content-a'>
 
             <div className='modal-header-a'>
@@ -221,24 +220,24 @@ class AddAnswerModal extends React.Component {
             </div>
 
             <div className='modal-body-a'>
-              
+
               {/* <form className='InputQuestion' method='POST' action='http://localhost:3000/qa/questions'> */}
 
-              <form className='SubmitAnswer' onSubmit={this.submitHandler.bind(this)}> 
+              <form className='SubmitAnswer' onSubmit={this.submitHandler.bind(this)}>
                 <div>your answer </div>
-                
+
                 {this.state.answerbodyIsInvalid ?  <div style={alertstyle}>You must enter an answer</div> : <div></div>}
-                
+
                 <textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}>
                 </textarea>
-              
-                <div>What is your Nickname? </div> 
-                
+
+                <div>What is your Nickname? </div>
+
                 {this.state.nicknameIsInvalid ?  <div style={alertstyle}>You must enter a Nickname</div> : <div></div>}
-                
+
                 <input type='text' onClick={this.clickHandlerNickname.bind(this)} maxLength='60' name='nickname' value={this.state.nickname}onChange={this.changeHandler.bind(this)}></input>
                 <br></br>
-                
+
                 <div>Your E-mail</div>
 
                 {emailAlertMessage}

@@ -37,7 +37,7 @@ class ReviewPhotos extends React.Component {
     let allPhotos = this.props.photos
     let photos = allPhotos.map((item, index) => {
       return (
-        <li><img id="myImg" key={index} src={item.url} onClick={() => {this.openModal(event.target.src)}}></img>
+        <li key={index}><img id="myImg" src={item.url} onClick={() => {this.openModal(event.target.src)}}></img>
           <div id="myModal" className="modal">
           <span className="close" onClick={this.closeModal}>&times;</span>
           <img className="modal-content" id="img01"></img>

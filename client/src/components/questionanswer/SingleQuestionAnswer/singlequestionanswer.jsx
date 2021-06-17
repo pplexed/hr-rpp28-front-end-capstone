@@ -59,7 +59,7 @@ class SingleQuestionAnswer extends React.Component {
   }
 
   componentDidMount() {
-    
+
 
     //let sortedArrayOfAnswers = this.sortIncomingAnswers();
 
@@ -76,7 +76,7 @@ class SingleQuestionAnswer extends React.Component {
     this.setState({showAModal: !this.state.showAModal});
   }
 
- 
+
   loadMoreAnswers() {
     this.setState({ defaultlength: (this.state.defaultlength + 2) });
     // console.log('load more answers event handler triggered!', this.state.defaultlength);
@@ -86,7 +86,7 @@ class SingleQuestionAnswer extends React.Component {
 
     let sortedAnswers = this.sortIncomingAnswers();
 
-    let answerBars = sortedAnswers.slice(0, this.state.defaultlength).map(key => { 
+    let answerBars = sortedAnswers.slice(0, this.state.defaultlength).map(key => {
       if (key.answerer_name === 'Seller') {
         return <div className='Seller' key={key.id+'div'}>⍟⍟★★Seller's Response★★⍟⍟ <SingleAnswerBar answer={key} key={key.id} reloadQuestionAnswer={this.props.reloadQuestionAnswer}/></div>
       } else {
@@ -100,14 +100,14 @@ class SingleQuestionAnswer extends React.Component {
       seeMoreAnswers = null;
     }
 
-    // let answerBars = Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(key =>  
+    // let answerBars = Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(key =>
     //   <tr><SingleAnswerBar answer = {this.props.question.answers[key]} reloadQuestionAnswer={this.props.reloadQuestionAnswer}/></tr>);
 
     return (
       <td>
         <br></br>
         <div className='singlequestionbar'>
-        <SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/>  
+        <SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/>
         </div>
         {answerBars}
           {seeMoreAnswers}
@@ -120,5 +120,5 @@ class SingleQuestionAnswer extends React.Component {
 export default SingleQuestionAnswer;
 
 //Note to self:
-// in the questions get response, for each question there is a field called answers.  
-// the answers field in the question object is an object of objects. 
+// in the questions get response, for each question there is a field called answers.
+// the answers field in the question object is an object of objects.

@@ -94,7 +94,7 @@ class Overview extends React.Component {
         this.setState({
           price: styles[i].original_price,
         });
-        console.log('price should now be: ', styles[i].original_price);
+        // console.log('price should now be: ', styles[i].original_price);
       }
     }
   }

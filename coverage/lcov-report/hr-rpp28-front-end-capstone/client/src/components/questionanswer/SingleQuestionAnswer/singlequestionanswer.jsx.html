@@ -25,7 +25,11 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
+<<<<<<< HEAD
+                <span class='fraction'>0/7</span>
+=======
                 <span class='fraction'>0/33</span>
+>>>>>>> main
             </div>
         
             
@@ -46,7 +50,11 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
+<<<<<<< HEAD
+                <span class='fraction'>0/7</span>
+=======
                 <span class='fraction'>0/30</span>
+>>>>>>> main
             </div>
         
             
@@ -200,11 +208,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+=======
+>>>>>>> main
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+=======
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+>>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -322,6 +347,10 @@ class SingleQuestionAnswer extends React.Component {
     };
   }
 &nbsp;
+<<<<<<< HEAD
+<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
+    // console.log('in Component did mount', this.props.question);
+=======
 <span class="fstat-no" title="function not covered" >  so</span>rtIncomingAnswers() {
 &nbsp;
     let nonSellerArray = <span class="cstat-no" title="statement not covered" >[];</span>
@@ -356,6 +385,7 @@ class SingleQuestionAnswer extends React.Component {
 &nbsp;
     // console.log('nonsellerarray: ', nonSellerArray);
     // console.log('Sellerarray: ', SellerArray);
+>>>>>>> main
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    sortedArrayOfAnswers = SellerArray.concat(nonSellerArray);</span>
     // console.log('final array length: ', sortedArrayOfAnswers.length);
@@ -381,13 +411,20 @@ class SingleQuestionAnswer extends React.Component {
 <span class="cstat-no" title="statement not covered" >    this.setState({showAModal: !this.state.showAModal});</span>
   }
 &nbsp;
- 
+&nbsp;
 <span class="fstat-no" title="function not covered" >  lo</span>adMoreAnswers() {
 <span class="cstat-no" title="statement not covered" >    this.setState({ defaultlength: (this.state.defaultlength + 2) });</span>
     // console.log('load more answers event handler triggered!', this.state.defaultlength);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nder() {
+<<<<<<< HEAD
+    let answerBars = <span class="cstat-no" title="statement not covered" >Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(<span class="fstat-no" title="function not covered" >ke</span>y =&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;tr&gt;&lt;SingleAnswerBar answer = { this.props.question.answers[key] }/&gt;&lt;/tr&gt;)</span>;
+&nbsp;
+    // let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key =&gt;
+    //   &lt;SingleAnswerBar answer={key} /&gt;);
+=======
 &nbsp;
     let sortedAnswers = <span class="cstat-no" title="statement not covered" >this.sortIncomingAnswers();</span>
 &nbsp;
@@ -407,10 +444,48 @@ class SingleQuestionAnswer extends React.Component {
 &nbsp;
     // let answerBars = Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(key =&gt;  
     //   &lt;tr&gt;&lt;SingleAnswerBar answer = {this.props.question.answers[key]} reloadQuestionAnswer={this.props.reloadQuestionAnswer}/&gt;&lt;/tr&gt;);
+>>>>>>> main
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;td&gt;
         &lt;br&gt;&lt;/br&gt;
+<<<<<<< HEAD
+&nbsp;
+        &lt;SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/&gt;
+&nbsp;
+&nbsp;
+&nbsp;
+            {answerBars}
+&nbsp;
+&nbsp;
+&nbsp;
+        &lt;tr&gt;
+&nbsp;
+            &lt;div&gt;
+              {/*moreAnswers*/}
+            &lt;/div&gt;
+&nbsp;
+        &lt;/tr&gt;
+&nbsp;
+        &lt;tr&gt;
+&nbsp;
+            &lt;div onClick={this.loadMoreAnswers.bind(this)}&gt;
+              load more answers
+            &lt;/div&gt;
+&nbsp;
+        &lt;/tr&gt;
+&nbsp;
+        &lt;tr&gt;
+&nbsp;
+          &lt;table border='1px'&gt;
+            {&lt;AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal} product_name={'passed in data:'} question_body={this.props.question.question_body}/&gt;}
+          &lt;/table&gt;
+&nbsp;
+&nbsp;
+        &lt;/tr&gt;
+&nbsp;
+      &lt;/div&gt;
+=======
         &lt;div className='singlequestionbar'&gt;
         &lt;SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/&gt;  
         &lt;/div&gt;
@@ -418,6 +493,7 @@ class SingleQuestionAnswer extends React.Component {
           {seeMoreAnswers}
             {&lt;AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal} product_name={'passed in data:'} question_body={this.props.question.question_body}/&gt;}
       &lt;/td&gt;
+>>>>>>> main
     )
   }
 }
@@ -425,15 +501,52 @@ class SingleQuestionAnswer extends React.Component {
 export default SingleQuestionAnswer;
 &nbsp;
 //Note to self:
+<<<<<<< HEAD
+// in the questions get response, for each question there is a field called answers.
+// the answers field in the question object is an object of objects.
+&nbsp;
+&nbsp;
+//old return
+&nbsp;
+//      &lt;table className='question' border='1px'&gt;
+      //   &lt;tr&gt;
+      //   &lt;div className= 'scrollable'&gt;
+      //     &lt;div&gt;
+      //       &lt;SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/&gt;
+      //     &lt;/div&gt;
+      //     &lt;div&gt;
+      //       {answerBars}
+      //     &lt;/div&gt;
+      //     &lt;div&gt;
+      //       {/*moreAnswers*/}
+      //     &lt;/div&gt;
+      //     &lt;div onClick={this.loadMoreAnswers.bind(this)}&gt;
+      //       load more answers
+      //     &lt;/div&gt;
+&nbsp;
+&nbsp;
+&nbsp;
+      //   &lt;/div&gt;
+      //   &lt;/tr&gt;
+      //   &lt;tr&gt;
+      //        {&lt;AddAnswerModal qid='153661' show={this.state.showAModal} key={this.state.showAModal}/&gt;}
+      //   &lt;/tr&gt;
+      // &lt;/table&gt;</pre></td></tr></table></pre>
+=======
 // in the questions get response, for each question there is a field called answers.  
 // the answers field in the question object is an object of objects. </pre></td></tr></table></pre>
+>>>>>>> main
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
+<<<<<<< HEAD
+                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
+=======
                 at Wed Jun 16 2021 23:20:23 GMT-0400 (Eastern Daylight Time)
+>>>>>>> main
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>

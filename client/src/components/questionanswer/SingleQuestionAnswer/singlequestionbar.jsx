@@ -7,7 +7,7 @@ class SingleQuestionBar extends React.Component {
     super(props);
     this.state = {
       question: this.props.question,
-    } 
+    }
 
   }
 
@@ -24,12 +24,12 @@ class SingleQuestionBar extends React.Component {
   render () {
     return (
       <div>
-        
+
           <span key={1}>Q: {this.state.question.question_body}</span>
           <span key={2}>    Helpful?    </span>
-          <span key={3} onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
+          <span key={3} onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span>
           <span key={4} onClick={this.props.AModalHandler}>| add answer </span>
-          
+
       </div>
     )
   }
