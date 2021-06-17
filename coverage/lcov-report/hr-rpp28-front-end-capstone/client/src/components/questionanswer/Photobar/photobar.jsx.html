@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -82,7 +82,16 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -91,15 +100,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,37 +123,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 &nbsp;
-class Photobar extends React.Component {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
-<span class="cstat-no" title="statement not covered" >    super(props);</span>
-<span class="cstat-no" title="statement not covered" >    this.state = {};</span>
-  }
+function <span class="fstat-no" title="function not covered" >Photobar(</span>props) {
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder () {
-<span class="cstat-no" title="statement not covered" >    if ((!this.props.photos) || (this.props.photos.length === 0)) {</span>
-<span class="cstat-no" title="statement not covered" >      return null;</span>
+&nbsp;
+  //render () {
+<span class="cstat-no" title="statement not covered" >    if ((!props.photos) || (props.photos.length === 0)) {</span>
+<span class="cstat-no" title="statement not covered" >      return &lt;&gt;&lt;/&gt;;</span>
     }
     
-<span class="cstat-no" title="statement not covered" >    console.log('this photo array', this.props.photos[0]);</span>
+    //console.log('this photo array', this.props.photos[0]);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;span&gt;
-        {this.props.photos.map(<span class="fstat-no" title="function not covered" >(p</span>hoto) =&gt; <span class="cstat-no" title="statement not covered" >&lt;img src={photo} width="75" height="75"&gt;&lt;/img&gt;)</span>}
+        {React.Children.toArray(props.photos.map(<span class="fstat-no" title="function not covered" >(p</span>hoto, i) =&gt; <span class="cstat-no" title="statement not covered" >&lt;img className='tomphotobar' src={photo} key={i}&gt;&lt;/img&gt;)</span>)}
       &lt;/span&gt;
     )
-  }
+  //}
 }
 &nbsp;
 export default Photobar;
 &nbsp;
-//removed photo.url</pre></td></tr></table></pre>
+//removed photo.url
+&nbsp;
+{/* React.Children.toArray(
+  employees.map((employee, i) =&gt; (
+      &lt;div className="card"&gt;
+          &lt;p&gt;Name: {employee.name}&lt;/p&gt;
+          &lt;p&gt;Lastname: {employee.name} &lt;/p&gt;
+      &lt;img src={employee.imageSrc} alt={employee.name} /&gt;
+  &lt;/div&gt;
+  ));
+); */}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Jun 12 2021 12:59:22 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 23:13:24 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>

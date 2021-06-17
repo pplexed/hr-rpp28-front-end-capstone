@@ -17,8 +17,9 @@ class SubmitPhotoForm extends React.Component {
       return null;
     }
 
+    // changed enctype to encType based on warning.  was working with enctype
     return (
-      <form method='POST' action='http://127.0.0.1:3000/qa/uploadphoto' enctype='multipart/form-data'>
+      <form method='POST' action='http://127.0.0.1:3000/qa/uploadphoto' encType='multipart/form-data'>
         <label for='answerpic'>Upload your photos!</label><br></br>
         <input type="file" name='answerpic' onChange={this.props.onChangeHandler} multiple></input>
         <input type="submit" value='Submit Photo'></input>
@@ -98,7 +99,7 @@ class AddAnswerModal extends React.Component {
       nicknameIsInvalid: false,
       emailIsInvalid: false,
       answerbodyIsInvalid: false,
-  
+      emailFormatValid: true,
     };
   }
 
@@ -112,7 +113,7 @@ class AddAnswerModal extends React.Component {
 
     this.setState({
       nicknameIsInvalid: !this.state.nickname,
-      emailIsInvalid: !this.state.nickname,
+      emailIsInvalid: !this.state.email,
       answerbodyIsInvalid: !this.state.answerbody,
     });
 
@@ -128,11 +129,7 @@ class AddAnswerModal extends React.Component {
       }
 
       validateTest = validateTest && emailtest;
-    }
-
-    //validate email here
-    if (!emailField) {
-      console.log('Invalid Email Entered');
+      this.setState({emailFormatValid: emailtest});
     }
 
     return validateTest;
@@ -152,23 +149,23 @@ class AddAnswerModal extends React.Component {
         answerbody: this.state.answerbody
       })
       .then((response) => {
-        console.log('answer submitted returned with', response.data);
+        // console.log('answer submitted returned with', response.data);
         
 
       })
       .catch((err) => {
-        console.log('error in submitting answer', err);
+        // console.log('error in submitting answer', err);
       })
     }
     else {
-      console.log('error data not validated');
+      // console.log('error data not validated');
     }
   }
 
 
   changeHandler(e) {
      this.setState({[e.target.name]: e.target.value});
-     console.log(`change handler fired! value: ${e.target.value}`);
+     // console.log(`change handler fired! value: ${e.target.value}`);
      
   }
 
@@ -200,6 +197,19 @@ class AddAnswerModal extends React.Component {
       color: 'red',
     };
 
+    let emailAlertMessage = <div></div>
+
+    if (!this.state.emailFormatValid) {
+      emailAlertMessage = <div style={alertstyle}>You must enter a properly formatted e-mail address</div>
+    }
+
+    // no email message takes priority over improperly formatted email address
+    if (this.state.emailIsInvalid) {
+      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div> 
+    } 
+                
+
+
     return (
         <div className='modal-a' >
           
@@ -230,8 +240,10 @@ class AddAnswerModal extends React.Component {
                 <br></br>
                 
                 <div>Your E-mail</div>
-                {this.state.emailIsInvalid ?  <div style={alertstyle}>You must enter an e-mail address</div> : <div></div>}
-                
+
+                {emailAlertMessage}
+                {/* {this.state.emailIsInvalid ?  <div style={alertstyle}>You must enter an e-mail address</div> : <div></div>}
+                 */}
                 <input type='text' onClick={this.clickHandlerEmail.bind(this)} maxLength='60' name='email' value={this.state.email} onChange={this.changeHandler.bind(this)}></input>
                 <br></br>
                 <br></br>

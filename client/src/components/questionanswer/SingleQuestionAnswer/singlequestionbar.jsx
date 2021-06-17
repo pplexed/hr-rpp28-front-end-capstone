@@ -14,28 +14,23 @@ class SingleQuestionBar extends React.Component {
   handleHelpful = event => {
     axios.put(`http://localhost:3000/qa/questions/${this.state.question.question_id}/helpful`)
     .then((response) => {
-      console.log('helpful question clicked, sent to server, returned with', response);
+      // console.log('helpful question clicked, sent to server, returned with', response);
     })
     .catch((err) => {
-      console.log('error in the return of reporting question helpful', err);
+      // console.log('error in the return of reporting question helpful', err);
     })
   }
 
-  addAnswerHandler = event => {
-    console.log('add answer handler clicked!');
-  }
-  
   render () {
     return (
-      <tr>
+      <div>
         
-          <span>Q: {this.state.question.question_body}</span>
+          <span key={1}>Q: {this.state.question.question_body}</span>
+          <span key={2}>    Helpful?    </span>
+          <span key={3} onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
+          <span key={4} onClick={this.props.AModalHandler}>| add answer </span>
           
-            <span>    Helpful?    </span>
-            <span onClick={this.handleHelpful.bind(this)}>Yes({this.state.question.question_helpfulness}) </span> 
-            <span onClick={this.props.AModalHandler}>| add answer </span>
-          
-      </tr>
+      </div>
     )
   }
 }
