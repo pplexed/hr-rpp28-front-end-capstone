@@ -13,13 +13,6 @@ class SearchQuestionBar extends React.Component {
   updatedInput(e) {
     this.setState({ inputField: e.target.value });
 
-<<<<<<< HEAD
-    if (this.state.inputField.length > 1) {
-      axios.get(`http://localhost:3000/qa/search/${this.state.inputField}`)
-        .then((response) => {
-          // console.log('response: ', response);
-        });
-=======
     if (this.state.inputField.length >= 2) {
       // axios.get(`http://localhost:3000/qa/search/${this.state.inputField}`)
       //   .then((response) => {
@@ -30,21 +23,20 @@ class SearchQuestionBar extends React.Component {
     }
     else { //if the inputfield is less than 2, we should fire off the sort by searching with a blank term.
       this.props.sortBySearch('');
->>>>>>> main
     }
   }
 
   clickHandler() {
 
-    // I only want it to clear the input field at the initial load with the default text.  
+    // I only want it to clear the input field at the initial load with the default text.
     //other wise, it should do nothing
     if (this.state.initialLoad) {
-      this.setState({ 
+      this.setState({
         inputField: '' ,
         initialLoad: false,
       });
-    }     
-    
+    }
+
   }
 
   render() {

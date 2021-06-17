@@ -18,7 +18,7 @@ function AdditionalQuestionBar(props) {
     moreAnsweredQuestions = <p>No More Questions to Show</p>
 
   }
-  
+
   return (
     <div>
       This is the Additional Question Bar!!
@@ -57,7 +57,7 @@ class QuestionAnswer extends React.Component {
     } else {
 
       let listLimitBySearch = [];
-      
+
       for (var i = 0; i < this.state.questions.results.length; i++) {
         let answers = JSON.stringify(this.state.questions.results[i].answers);
 
@@ -67,7 +67,7 @@ class QuestionAnswer extends React.Component {
             (answers.match(searchTerm))) {
               //only push in if there is a regex match of the search term
               listLimitBySearch.push(this.state.questions.results[i]);
-            } 
+            }
       }
       //once we create the reduced list, we setState and render off the reduced list
       this.setState({sortedQuestionList: {
@@ -77,13 +77,13 @@ class QuestionAnswer extends React.Component {
       });
     }
   }
-  
+
 
   reloadQuestionAnswer() {
-    
+
     axios.get(`http://localhost:3000/qa/questions/`, {params: {product_id: this.props.currentProduct.id}})
     .then((response) => {
-  
+
       this.setState({
         product_id: response.data.product_id,
         questions: response.data,
@@ -117,11 +117,8 @@ class QuestionAnswer extends React.Component {
       })
       .catch(err => {
         // console.log('error in loadup', err);
-<<<<<<< HEAD
-=======
 
         // if axious fails load up a default product.
->>>>>>> main
         this.setState({
           product_id: '22122',
         });
@@ -157,13 +154,8 @@ class QuestionAnswer extends React.Component {
       <tbody>
       <tr className='qatable' key={11}>
         <th align='left'>
-<<<<<<< HEAD
-              <SearchQuestionBar/>
-              <p>view questions</p>
-=======
               <SearchQuestionBar sortBySearch={this.sortBySearch.bind(this)}/>
               <p>view questions for product () {this.state.product_id}</p>
->>>>>>> main
         </th>
       </tr>
 

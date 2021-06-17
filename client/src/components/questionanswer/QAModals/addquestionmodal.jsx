@@ -26,9 +26,6 @@ class AddQuestionModal extends React.Component {
   }
 
   checkInput() {
-<<<<<<< HEAD
-    let validateTest = this.state.nickname && this.state.email && this.state.question;
-=======
 
 
     this.setState({
@@ -38,8 +35,7 @@ class AddQuestionModal extends React.Component {
     });
 
 
-    let validateTest = this.state.nickname && this.state.email && this.state.question; 
->>>>>>> main
+    let validateTest = this.state.nickname && this.state.email && this.state.question;
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
       let emailtest = false;
@@ -51,13 +47,6 @@ class AddQuestionModal extends React.Component {
       this.setState({emailFormatValid: emailtest});
     }
 
-<<<<<<< HEAD
-    // validate email here
-    if (!validateTest) {
-      // console.log('implement a warning here');
-    }
-=======
->>>>>>> main
 
     return validateTest;
   }
@@ -127,9 +116,9 @@ class AddQuestionModal extends React.Component {
 
     // no email message takes priority over improperly formatted email address
     if (this.state.emailIsInvalid) {
-      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div> 
-    } 
-                
+      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div>
+    }
+
 
 
     return (
@@ -151,12 +140,12 @@ class AddQuestionModal extends React.Component {
                 <textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}>
                 </textarea>
                 <br></br>
-                
-                <div>What is your Nickname? </div>     
+
+                <div>What is your Nickname? </div>
                 {this.state.nicknameIsInvalid ?  <div style={alertstyle}>You must enter a Nickname</div> : <div></div>}
-                
+
                 <input type='text' onClick={this.clickHandlerNickname.bind(this)} maxLength='60' name='nickname' value={this.state.nickname}onChange={this.changeHandler.bind(this)}></input>
-  
+
                 <br></br>
                 <div>Your E-mail</div>
                 {emailAlertMessage}

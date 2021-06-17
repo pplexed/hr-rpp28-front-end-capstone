@@ -99,11 +99,7 @@ class AddAnswerModal extends React.Component {
       nicknameIsInvalid: false,
       emailIsInvalid: false,
       answerbodyIsInvalid: false,
-<<<<<<< HEAD
-
-=======
       emailFormatValid: true,
->>>>>>> main
     };
   }
 
@@ -133,15 +129,7 @@ class AddAnswerModal extends React.Component {
       }
 
       validateTest = validateTest && emailtest;
-<<<<<<< HEAD
-    }
-
-    //validate email here
-    if (!emailField) {
-      // console.log('Invalid Email Entered');
-=======
       this.setState({emailFormatValid: emailtest});
->>>>>>> main
     }
 
     return validateTest;
@@ -162,11 +150,6 @@ class AddAnswerModal extends React.Component {
       })
       .then((response) => {
         // console.log('answer submitted returned with', response.data);
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> main
 
       })
       .catch((err) => {
@@ -181,13 +164,8 @@ class AddAnswerModal extends React.Component {
 
   changeHandler(e) {
      this.setState({[e.target.name]: e.target.value});
-<<<<<<< HEAD
-    //  console.log(`change handler fired! value: ${e.target.value}`);
-
-=======
      // console.log(`change handler fired! value: ${e.target.value}`);
-     
->>>>>>> main
+
   }
 
   clickHandlerNickname(e) {
@@ -226,9 +204,9 @@ class AddAnswerModal extends React.Component {
 
     // no email message takes priority over improperly formatted email address
     if (this.state.emailIsInvalid) {
-      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div> 
-    } 
-                
+      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div>
+    }
+
 
 
     return (
@@ -261,15 +239,10 @@ class AddAnswerModal extends React.Component {
                 <br></br>
 
                 <div>Your E-mail</div>
-<<<<<<< HEAD
-                {this.state.emailIsInvalid ?  <div style={alertstyle}>You must enter an e-mail address</div> : <div></div>}
-
-=======
 
                 {emailAlertMessage}
                 {/* {this.state.emailIsInvalid ?  <div style={alertstyle}>You must enter an e-mail address</div> : <div></div>}
                  */}
->>>>>>> main
                 <input type='text' onClick={this.clickHandlerEmail.bind(this)} maxLength='60' name='email' value={this.state.email} onChange={this.changeHandler.bind(this)}></input>
                 <br></br>
                 <br></br>

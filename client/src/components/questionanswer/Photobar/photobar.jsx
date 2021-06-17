@@ -7,12 +7,7 @@ function Photobar(props) {
     if ((!props.photos) || (props.photos.length === 0)) {
       return <></>;
     }
-<<<<<<< HEAD
-
-    // console.log('this photo array', this.props.photos[0]);
-=======
     //console.log('this photo array', this.props.photos[0]);
->>>>>>> main
 
     return (
       <span>
