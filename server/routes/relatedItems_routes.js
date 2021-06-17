@@ -28,7 +28,10 @@ const handleRequest = (query, callback) => {
   const urlInfo = {};
   urlInfo.product_id = deconstructQuery(query.product_id);
   urlInfo.flag = deconstructQuery(query.flag);
+
   console.log('built string ', urlInfo.product_id + urlInfo.flag);
+  const axiosVar = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`;
+  console.log('Axios Var: ', axiosVar);
 
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`, {
     headers: {
@@ -45,7 +48,6 @@ const handleRequest = (query, callback) => {
 };
 
 router.get('/products', (req, res) => {
-  console.log('REQ.QUERY: ', req.query)
   handleRequest(req.query, (err, data) => {
     if (err) {
       res.send(err);

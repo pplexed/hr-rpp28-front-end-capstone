@@ -86,7 +86,7 @@ class RelatedProductList extends React.Component {
           ) : null}
         <ListContainer id="productCarousel" onLoad={this.overflow}>
           {relatedProducts.map((data) => (
-            <RelatedProductSlide
+            <RelatedItemSlide
               key={product_id}
               product_id={data}
               parent_id={product_id}

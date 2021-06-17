@@ -18,8 +18,6 @@ class RelatedItemSlide extends React.Component {
       clickModal: false,
       compareFeatures: '',
       salePrice: '',
-      averageRating: '',
-      ratingLoaded: false,
     };
 
     this.newProduct = this.newProduct.bind(this);
@@ -46,7 +44,7 @@ class RelatedItemSlide extends React.Component {
         let thumbnail = '';
         const mainProductDescription = data.results.find((product) => product['default'] === true);
         if (!mainProductDescription) {
-          thumbnail = data.results[0].photos[0]
+          thumbnail = data.results[0].photos[0];
           this.setState({
             salePrice: data.results[0].salePrice,
           });
@@ -70,9 +68,9 @@ class RelatedItemSlide extends React.Component {
       })
       .catch((err) => {
         console.log('Error fetching photos in relatedItemSlide: ', err);
-      })
+      });
 
-      // Axios reqquest for reviews and stars
+    // Axios reqquest for reviews and stars
   }
 
   handleModalClick() {
@@ -127,68 +125,70 @@ class RelatedItemSlide extends React.Component {
     updateProduct(product_id);
   }
 
-render() {
-  const {
-    parentData,
-    productInfo,
-    photoURL,
-    photoLoaded,
-    compareFeatures,
-    salePrice,
-    averageRating,
-    ratingLoaded,
-  } = this.state;
+  render() {
+    const {
+      parentData,
+      productInfo,
+      photoURL,
+      photoLoaded,
+      compareFeatures,
+      salePrice,
+      clickModal
+    } = this.state;
 
-  const sale = {
-    color: salePrice ? 'red' : 'black',
-    textDecoration: salePrice ? 'line-through' : 'none',
-  };
+    const sale = {
+      color: salePrice ? 'red' : 'black',
+      textDecoration: salePrice ? 'line-through' : 'none',
+    };
 
-  const loadPhoto = {
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    // Should there be a default image for when images are loading?
-  };
+    const loadPhoto = {
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      // Should there be a default image for when images are loading?
+    };
 
-  return (
-    <div>
-      {
-        photoLoaded < 2 && <SlideContainer style={loadPhoto} />
-      }
-      {
-        photoLoaded === 2 && (
-          <SlideContainer>
-            <ButtonWrapper>
-              <CompareButton
-                onClick={this.handleModalClick}
+    return (
+      <div>
+        {
+          photoLoaded < 2 && <SlideContainer style={loadPhoto} />
+        }
+        {
+          photoLoaded === 2
+          && (
+            <SlideContainer>
+              <ButtonWrapper>
+                <CompareButton
+                  onClick={this.handleModalClick}
+                />
+              </ButtonWrapper>
+              <ImageWrapper onClick={this.newProduct}>
+                <Image src={photoURL} alt={productInfo.name} />
+              </ImageWrapper>
+              <ProductContentWrapper style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrapper>
+              <ProductContentWrapper onClick={this.newProduct()} style={{ fontSize: '15px' }}>{productInfo.name}</ProductContentWrapper>
+              <ProductContentWrapper style={sale}>${productInfo.default_price}</ProductContentWrapper>
+              {salePrice ? <ProductContentWrapper style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrapper> : null}
+              {salePrice ? <LowerBorderDiv /> : <BorderDiv />}
+            </SlideContainer>
+          )
+        }
+        {
+          clickModal
+          && (
+            <div>
+              <Modal
+                close={this.handleModalClick}
+                parentName={parentData.name}
+                compareName={productInfo.name}
+                compareFeatures={compareFeatures}
               />
-            </ButtonWrapper>
-            <ImageWrapper onClick={this.newProduct}>
-              <Image src={photoURL} alt={productInfo.name} />
-            </ImageWrapper>
-            <ProductContentWrapper style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrapper>
-            <ProductContentWrapper onClick={newProduct} style={{ fontSize: '15px' }}>{productInfo.name}</ProductContentWrapper>
-            <ProductContentWrapper style={sale}>${productInfo.default_price}</ProductContentWrapper>
-            {salePrice ? <ProductContentWrapper style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrapper> : null}
-            {salePRice ? <LowerBorderDiv /> : <BorderDiv />}
-          </SlideContainer>
-        )
-      }
-      {clickModal && (
-        <div>
-          <Modal
-            close={this.handleModalClick}
-            parentName={parentData.name}
-            compareName={productInfo.name}
-            compareFeatures={compareFeatures}
-            />
             </div>
-      )}
-    </div>
+          )
+        }
+      </div>
     );
   }
 }
-
 
 export default RelatedItemSlide;
 

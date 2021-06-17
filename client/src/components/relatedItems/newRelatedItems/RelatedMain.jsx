@@ -11,23 +11,50 @@ class RelatedProductsMain extends React.Component {
     this.state = {
       relatedProducts: []
     };
+    this.wierdStuff = this.wierdStuff.bind(this);
   };
+
+
 
   componentDidMount() {
     // const { product_id } = this.props.product_id;
+    // const product_id = 22134;
+    // console.log('product_id in CDM relatedMain', product_id);
+    // axios.get(`relatedItems/products/?product_id=${product_id}&flag=related`)
+    //   .then((relatedIds) => {
+    //     // This block can be replaced with just a set state call?
+    //     let relatedIdArray = [];
+    //     console.log('relatedIds: ', relatedIds.data);
+    //     relatedIds.data.forEach((id) => {
+    //       relatedIdArray.push(id);
+    //     });
+    //     console.log('RealtedArray:', relatedIdArray);
+    //     wierdStuff(relatedIdArray);
+    //     // this.setState({
+    //     //   relatedProducts: relatedIds.data,
+    //     // });
+    //     // console.log('STATE: ', this.state.relatedProducts);
+    //   })
+    //   .catch((err) => {
+    //     console.log('Error fetching Related Product IDs: ', err);
+    //   });
+    this.wierdStuff();
+  }
+
+  wierdStuff() {
     const product_id = 22134;
-    console.log('product_id in CDM relatedMain', product_id);
     axios.get(`relatedItems/products/?product_id=${product_id}&flag=related`)
-      .then(({ relatedIds }) => {
-        // This block can be replaced with just a set state call?
+      .then((relatedIds) => {
         let relatedIdArray = [];
-        console.log('relatedIds: ', relatedIds);
-        relatedIds.forEach((id) => {
-          relatedIdArray.push(id);
-        });
+        console.log('relatedIds: ', relatedIds.data);
+        // relatedIds.data.forEach((id) => {
+        //   relatedIdArray.push(id);
+        // });
+        // console.log('RealtedArray:', relatedIdArray);
         this.setState({
-          relatedProducts: relatedIdArray,
+          relatedProducts: relatedIds.data
         });
+        console.log('STATE: ', this.state);
       })
       .catch((err) => {
         console.log('Error fetching Related Product IDs: ', err);
