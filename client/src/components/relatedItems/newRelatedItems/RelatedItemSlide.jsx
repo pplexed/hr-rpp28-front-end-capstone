@@ -133,7 +133,7 @@ class RelatedItemSlide extends React.Component {
       photoLoaded,
       compareFeatures,
       salePrice,
-      clickModal
+      clickModal,
     } = this.state;
 
     const sale = {
