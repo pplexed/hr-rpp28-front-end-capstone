@@ -72,7 +72,7 @@ class RelatedItemSlide extends React.Component {
         console.log('Error fetching photos in relatedItemSlide: ', err);
       })
 
-      // Axios reqquest for reviews or preloaded stars
+      // Axios reqquest for reviews and stars
   }
 
   handleModalClick() {

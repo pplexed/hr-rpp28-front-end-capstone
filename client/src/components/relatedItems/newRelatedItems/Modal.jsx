@@ -69,33 +69,33 @@ const CompareDiv = styled.div`
 
 const ModalContent = styled.div`
 background-color: white;
-width: 75%; /* Width in proportion to its parent container*/
-max-width: 600px; /* Max width where it stops expanding */
-height: 35%; /* Height in proportion to its parent container */
-margin: auto; /* Auto margin according to the element width */
+width: 75%;
+max-width: 600px;
+height: 35%;
+margin: auto;
 justify-content: center;
 align-items: center;
 padding: 10px;
 border: 1px solid black;
-border-radius: 20px; /* Optional. Rounds container corners */
+border-radius: 20px;
 overflow: auto;
 `;
 
 const ModalWrap = styled.div`
-background-color: rgb(0,0,0); /* Fallback color */
-background-color: rgba(0,0,0,0.4); /* Overlay effect: translucent background: black w/ partial opacity */
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0,0.4);
 background: rgba(0,0,0,0.55);
-z-index: 1; /* Overlay effect: positioned over other containers */
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-position: fixed; /* Fix position on the top-left corner*/
+z-index: 1;
+width: 100%;
+height: 100%;
+position: fixed;
 top: 0;
 left: 0;
 display: flex;
 justify-content: center;
 align-items: center;
-overflow: auto; /* Enable scroll if needed */
-padding-top: 80px; /* Location of the content container */
+overflow: auto;
+padding-top: 80px;
 font-size: calc(10px + 2vmin);
 color: black;
 z-index: 150;
@@ -105,7 +105,7 @@ backdrop-filter: blur(8px) contrast(70%);
 const CloseWindowButton = styled.span`
   color: #aaaaaa;
   position: relative;
-  float: right; /* Positioned to the right of the parent container whichever size it is */
+  float: right;
   font-size: 25px;
   font-weight: bold;
 `;

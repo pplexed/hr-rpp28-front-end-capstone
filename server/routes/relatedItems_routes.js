@@ -30,7 +30,7 @@ const handleRequest = (query, callback) => {
   urlInfo.flag = deconstructQuery(query.flag);
   console.log('built string ', urlInfo.product_id + urlInfo.flag);
 
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products` + `${urlInfo.product_id + urlInfo.flag}`, {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`, {
     headers: {
       'User-Agent': 'request',
       Authorization: TOKEN,

@@ -73,9 +73,7 @@ class RelatedProductList extends React.Component {
   render() {
     const { relatedProducts, product_id } = this.props;
     const { parentInfo, showScrollLeft, showScrollRight } = this.state;
-    // if (!parentInfo.length) {
-    //   return null;
-    // }
+
     return (
       <div>
         {showScrollRight
