@@ -48,7 +48,7 @@ class RelatedItemsModule extends React.Component {
   }
 
   render() {
-    console.log('THIS>DATA: ', this.data);
+    // console.log('THIS>DATA: ', this.data);
     if (this.state.isLoading) {
       return <div>... Related Items Loading ...</div>;
     }
