@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/28</span>
+                <span class='fraction'>0/23</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/28</span>
+                <span class='fraction'>0/23</span>
             </div>
         
             
@@ -230,21 +230,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,16 +244,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -354,7 +354,7 @@ class AddQuestionModal extends React.Component {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ch</span>eckInput() {
-    let validateTest = <span class="cstat-no" title="statement not covered" >this.state.nickname &amp;&amp; this.state.email &amp;&amp; this.state.question; </span>
+    let validateTest = <span class="cstat-no" title="statement not covered" >this.state.nickname &amp;&amp; this.state.email &amp;&amp; this.state.question;</span>
 <span class="cstat-no" title="statement not covered" >    if (validateTest) {</span>
       const regex = <span class="cstat-no" title="statement not covered" >/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/</span>
       let emailtest = <span class="cstat-no" title="statement not covered" >false;</span>
@@ -367,7 +367,7 @@ class AddQuestionModal extends React.Component {
 &nbsp;
     // validate email here
 <span class="cstat-no" title="statement not covered" >    if (!validateTest) {</span>
-<span class="cstat-no" title="statement not covered" >      console.log('implement a warning here');</span>
+      // console.log('implement a warning here');
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return validateTest;</span>
@@ -387,20 +387,20 @@ class AddQuestionModal extends React.Component {
         question: this.state.question
       })
         .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-<span class="cstat-no" title="statement not covered" >          console.log('question submitted returned with', response);</span>
+          // console.log('question submitted returned with', response);
         })
         .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-<span class="cstat-no" title="statement not covered" >          console.log('error in submitting question', err);</span>
+          // console.log('error in submitting question', err);
         });
     }
     else {
-<span class="cstat-no" title="statement not covered" >      console.log('error data not validated');</span>
+      // console.log('error data not validated');
     }
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ch</span>angeHandler(e) {
 <span class="cstat-no" title="statement not covered" >    this.setState({[e.target.name]: e.target.value });</span>
-<span class="cstat-no" title="statement not covered" >    console.log(`change handler fired! value: ${e.target.value}`);</span>
+    // console.log(`change handler fired! value: ${e.target.value}`);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  cl</span>ickHandlerNickname(e) {
@@ -436,10 +436,10 @@ class AddQuestionModal extends React.Component {
             &lt;/div&gt;
 &nbsp;
             &lt;div className='modal-body-q'&gt;
-              
+&nbsp;
               {/* &lt;form className='InputQuestion' method='POST' action='http://localhost:3000/qa/questions'&gt; */}
 &nbsp;
-              &lt;form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}&gt; 
+              &lt;form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}&gt;
                 &lt;textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}&gt;
                 &lt;/textarea&gt;
                 &lt;br&gt;&lt;/br&gt;
@@ -475,7 +475,7 @@ export default AddQuestionModal;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Jun 12 2021 13:25:41 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>

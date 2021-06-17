@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
@@ -205,21 +205,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,67 +328,67 @@ class SingleQuestionAnswer extends React.Component {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
-<span class="cstat-no" title="statement not covered" >    console.log('in Component did mount', this.props.question);</span>
+    // console.log('in Component did mount', this.props.question);
 &nbsp;
   }
 &nbsp;
 &nbsp;
 <span class="fstat-no" title="function not covered" >  sh</span>owAModalHandler() {
-<span class="cstat-no" title="statement not covered" >    console.log('Event handler clicked for Show Modal Answer Window!');</span>
-<span class="cstat-no" title="statement not covered" >    console.log('passing this into props', this.state.showAModal);</span>
+    // console.log('Event handler clicked for Show Modal Answer Window!');
+    // console.log('passing this into props', this.state.showAModal);
 <span class="cstat-no" title="statement not covered" >    this.setState({showAModal: !this.state.showAModal});</span>
   }
 &nbsp;
- 
+&nbsp;
 <span class="fstat-no" title="function not covered" >  lo</span>adMoreAnswers() {
 <span class="cstat-no" title="statement not covered" >    this.setState({ defaultlength: (this.state.defaultlength + 2) });</span>
-<span class="cstat-no" title="statement not covered" >    console.log('load more answers event handler triggered!', this.state.defaultlength);</span>
+    // console.log('load more answers event handler triggered!', this.state.defaultlength);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nder() {
-    let answerBars = <span class="cstat-no" title="statement not covered" >Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(<span class="fstat-no" title="function not covered" >ke</span>y =&gt;  </span>
+    let answerBars = <span class="cstat-no" title="statement not covered" >Object.keys(this.props.question.answers).slice(0, this.state.defaultlength).map(<span class="fstat-no" title="function not covered" >ke</span>y =&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;tr&gt;&lt;SingleAnswerBar answer = { this.props.question.answers[key] }/&gt;&lt;/tr&gt;)</span>;
 &nbsp;
-    // let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key =&gt; 
+    // let moreAnswers = this.state.answers.slice(0, this.state.defaultlength).map(key =&gt;
     //   &lt;SingleAnswerBar answer={key} /&gt;);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div&gt;
         &lt;br&gt;&lt;/br&gt;
-        
+&nbsp;
         &lt;SingleQuestionBar question={this.props.question} AModalHandler={this.showAModalHandler.bind(this)}/&gt;
 &nbsp;
-        
-          
+&nbsp;
+&nbsp;
             {answerBars}
-          
-      
+&nbsp;
+&nbsp;
 &nbsp;
         &lt;tr&gt;
-          
+&nbsp;
             &lt;div&gt;
               {/*moreAnswers*/}
             &lt;/div&gt;
-      
+&nbsp;
         &lt;/tr&gt;
 &nbsp;
         &lt;tr&gt;
-          
+&nbsp;
             &lt;div onClick={this.loadMoreAnswers.bind(this)}&gt;
               load more answers
             &lt;/div&gt;
-          
+&nbsp;
         &lt;/tr&gt;
-        
+&nbsp;
         &lt;tr&gt;
-              
+&nbsp;
           &lt;table border='1px'&gt;
             {&lt;AddAnswerModal qid={this.state.question_id} show={this.state.showAModal} key={this.state.showAModal} product_name={'passed in data:'} question_body={this.props.question.question_body}/&gt;}
           &lt;/table&gt;
-        
-  
+&nbsp;
+&nbsp;
         &lt;/tr&gt;
-    
+&nbsp;
       &lt;/div&gt;
     )
   }
@@ -397,8 +397,8 @@ class SingleQuestionAnswer extends React.Component {
 export default SingleQuestionAnswer;
 &nbsp;
 //Note to self:
-// in the questions get response, for each question there is a field called answers.  
-// the answers field in the question object is an object of objects. 
+// in the questions get response, for each question there is a field called answers.
+// the answers field in the question object is an object of objects.
 &nbsp;
 &nbsp;
 //old return
@@ -433,7 +433,7 @@ export default SingleQuestionAnswer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Jun 12 2021 13:25:41 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>
