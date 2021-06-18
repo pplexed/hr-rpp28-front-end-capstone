@@ -65,7 +65,6 @@ class Reviews extends React.Component {
         this.setState({
           reviewList: response.data.results
         });
-        console.log('Refactor this is the state Initial: ', this.state);
       })
   }
 

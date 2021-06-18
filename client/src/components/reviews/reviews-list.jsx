@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IRT from  './reviews-irt.jsx';
+import Sorted from './reviews-sorted.jsx';
 import axios from 'axios';
 
 
@@ -9,7 +10,6 @@ class ReviewsList extends  React.Component {
     super(props);
     this.state = {
       allReviews: [],
-      numberOfReviews: 0,
       count: 2
     }
     //this.bind here
@@ -30,6 +30,7 @@ class ReviewsList extends  React.Component {
     })
   }
   render() {
+    console.log('this is the state of reviews: ', this.state);
     let allReviews = (this.state.allReviews.length >=1) ? this.state.allReviews : this.props.reviews
     let reviewList = allReviews.slice(0, this.state.count).map((item, index) => {
       return (
@@ -40,7 +41,7 @@ class ReviewsList extends  React.Component {
     });
     return (
       <div>
-      <div>{this.props.totalRatings} reviews, sorted by</div>
+      <div><Sorted totalRatings={this.props.totalRatings}/></div>
       <div className={(this.state.count >= 6) ? "reviews-scroll" : null  }>
             {reviewList}
       </div>

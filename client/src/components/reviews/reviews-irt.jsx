@@ -18,7 +18,8 @@ function IRT(props) {
       <div><ReviewBody body={props.review.body}/></div>
       <div><ReviewPhotos photos={props.review.photos}/></div>
       <div className={props.review.recommend ? null : "product-hidden" }>{`${check}` + ' ' + "I recommend this product"}</div>
-      <div>Helpful? Yes({props.review.helpfulness}) | Report</div>
+      <div className={props.review.response ? null: "product-hidden"}><span className="review-seller">Response from Seller: {props.review.response}</span></div>
+      <div>Helpful? Yes ({props.review.helpfulness}) | Report</div>
     </div>
   );
 }

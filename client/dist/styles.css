@@ -122,7 +122,11 @@ label {
   padding-right:10px;
 }
 
+/* Review & Ratings - This section for the seller response */
+.review-seller {
 
+  background-color: #d3d3d3;
+}
 
 
 /* Review & Ratings - This section for the product breakdown section */
