@@ -42,7 +42,7 @@ class OutfitList extends React.Component {
             parentStyles: data
           });
         })
-        .catch((error) => {
+        .catch((err) => {
           console.log('Error fetching product styles in OutfitList CDM: ', err);
         });
 
@@ -82,9 +82,9 @@ class OutfitList extends React.Component {
         outfits: [],
       });
 
-      axios.post('/outfit', newOutfitInfoObject)
+      axios.post('relatedItems/interactions', newOutfitInfoObject)
         .then((data) => {
-          console.log('data at OutfitList (post - need route created: ', data);
+          console.log('data at OutfitList (post - need route created): ', data);
           this.setState({
             outfits: data,
             loaded: true,
@@ -103,9 +103,9 @@ class OutfitList extends React.Component {
     this.setState({
       outfits: [],
     }, () => {
-      axios.delete('/outfit', { data: outfitToRemove })
+      axios.delete('relatedItems/interactions', { data: outfitToRemove })
         .then((data) => {
-          console.log('data at OutfitList (delete - need route created: ', data);
+          console.log('data at OutfitList (delete - need route created): ', data);
           if (data.length > 0) {
             this.setState({
               outfits:data,

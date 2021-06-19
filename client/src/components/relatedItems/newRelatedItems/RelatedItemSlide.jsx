@@ -26,34 +26,45 @@ class RelatedItemSlide extends React.Component {
   }
 
   componentDidMount() {
-    const { product_id, parent_id } = this.props;
+    this.getData();
+  }
+
+  handleModalClick() {
+    const { clickModal, parentFeature, productFeature } = this.state;
+    this.setState({
+      clickModal: !clickModal,
+    });
+    this.compareFeatures(parentFeature, productFeature);
+  }
+
+  getData() {
+    const { product_id, parentInfo } = this.props;
     axios.get(`/relatedItems/products/?product_id=${product_id}`)
-      .then(({ data }) => {
-        console.log('data at RelatedItemSlide axios 1: ', data);
+      .then((data) => {
         this.setState({
-          productInfo: data,
-          parentFeature: parent_id.features,
-          productFeature: data.features,
+          productInfo: data.data,
+          parentFeature: parentInfo.features,
+          productFeature: data.data.features,
           photoLoaded: this.state.photoLoaded++,
         });
       })
       .catch((err) => {
         console.log('Error fetching product info for RelatedItemSlide: ', err);
       });
+
     axios.get(`relatedItems/products/?product_id=${product_id}&flag=styles`)
-      .then(({ data }) => {
-        console.log('data at RelatedItemSlide axios 2 (styles/photo):', data);
+      .then((data) => {
         let thumbnail = '';
-        const mainProductDescription = data.results.find((product) => product['default'] === true);
+        const mainProductDescription = data.data.results.find((product) => product['default?'] === true);
         if (!mainProductDescription) {
-          thumbnail = data.results[0].photos[0];
+          thumbnail = data.data.results[0].photos[0].thumbnail_url;
           this.setState({
-            salePrice: data.results[0].salePrice,
+            salePrice: data.data.results[0].salePrice,
           });
         } else {
-          thumbnail =  mainProductDescription.photos[0].thumbnail_url;
+          thumbnail = mainProductDescription.photos[0].thumbnail_url;
           this.setState({
-            salePrice: mainProductDescription.sale_price
+            salePrice: mainProductDescription.sale_price,
           });
           if (thumbnail === '') {
             this.setState({
@@ -71,17 +82,9 @@ class RelatedItemSlide extends React.Component {
       .catch((err) => {
         console.log('Error fetching photos in relatedItemSlide: ', err);
       });
-
     // Axios reqquest for reviews and stars
   }
 
-  handleModalClick() {
-    const { clickModal, parentFeature, productFeature } = this.state;
-    this.setState({
-      clickModal: !clickModal,
-    });
-    this.compareFeatures(parentFeature, productFeature);
-  }
 
   compareFeatures(parentFeature, productFeature) {
     const compare = {};
@@ -137,6 +140,8 @@ class RelatedItemSlide extends React.Component {
       salePrice,
       clickModal,
     } = this.state;
+
+    console.log('This.state in render in RIS: ', this.state);
 
     const sale = {
       color: salePrice ? 'red' : 'black',

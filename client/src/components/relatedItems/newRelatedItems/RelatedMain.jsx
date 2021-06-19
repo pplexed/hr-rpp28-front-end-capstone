@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-import RelatedProductList from './RelatedItemsList.jsx';
+import RelatedItemsList from './RelatedItemsList.jsx';
 import OutfitList from './OutfitList.jsx';
 
-class RelatedProductsMain extends React.Component {
+class RelatedMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,30 +14,7 @@ class RelatedProductsMain extends React.Component {
     this.getRelatedIds = this.getRelatedIds.bind(this);
   };
 
-
-
   componentDidMount() {
-    // const { product_id } = this.props.product_id;
-    // const product_id = 22134;
-    // console.log('product_id in CDM relatedMain', product_id);
-    // axios.get(`relatedItems/products/?product_id=${product_id}&flag=related`)
-    //   .then((relatedIds) => {
-    //     // This block can be replaced with just a set state call?
-    //     let relatedIdArray = [];
-    //     console.log('relatedIds: ', relatedIds.data);
-    //     relatedIds.data.forEach((id) => {
-    //       relatedIdArray.push(id);
-    //     });
-    //     console.log('RealtedArray:', relatedIdArray);
-    //     wierdStuff(relatedIdArray);
-    //     // this.setState({
-    //     //   relatedProducts: relatedIds.data,
-    //     // });
-    //     // console.log('STATE: ', this.state.relatedProducts);
-    //   })
-    //   .catch((err) => {
-    //     console.log('Error fetching Related Product IDs: ', err);
-    //   });
     this.getRelatedIds();
   }
 
@@ -45,16 +22,9 @@ class RelatedProductsMain extends React.Component {
     const product_id = 22134;
     axios.get(`relatedItems/products/?product_id=${product_id}&flag=related`)
       .then((relatedIds) => {
-        let relatedIdArray = [];
-        console.log('relatedIds: ', relatedIds.data);
-        // relatedIds.data.forEach((id) => {
-        //   relatedIdArray.push(id);
-        // });
-        // console.log('RealtedArray:', relatedIdArray);
         this.setState({
-          relatedProducts: relatedIds.data
+          relatedProducts: relatedIds.data,
         });
-        console.log('STATE: ', this.state);
       })
       .catch((err) => {
         console.log('Error fetching Related Product IDs: ', err);
@@ -70,7 +40,7 @@ class RelatedProductsMain extends React.Component {
           <h3>Related items you may also like</h3>
         </div>
         <ListWrap>
-          <RelatedProductList
+          <RelatedItemsList
             product_id={product_id}
             relatedProducts={relatedProducts}
             updateProduct={updateProduct}
@@ -106,4 +76,4 @@ position: relative;
 width: 100%;
 `;
 
-export default RelatedProductsMain;
+export default RelatedMain;

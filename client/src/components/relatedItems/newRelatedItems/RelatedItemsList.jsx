@@ -23,10 +23,9 @@ class RelatedProductList extends React.Component {
   componentDidMount() {
     const { product_id } = this.props;
     axios.get(`relatedItems/products/?product_id=${product_id}`)
-      .then(({ parentData }) => {
-        console.log('parentData at axios call in RelatedItemsList: ', parentData);
+      .then((parentData) => {
         this.setState({
-          parentInfo: parentData,
+          parentInfo: parentData.data,
         });
       })
       .catch((err) => {
@@ -73,7 +72,6 @@ class RelatedProductList extends React.Component {
   render() {
     const { relatedProducts, product_id } = this.props;
     const { parentInfo, showScrollLeft, showScrollRight } = this.state;
-
     return (
       <div>
         {showScrollRight
