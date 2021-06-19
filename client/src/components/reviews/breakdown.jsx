@@ -7,35 +7,17 @@ import Product from './breakdown-product.jsx';
 import axios from 'axios';
 
 
-class Breakdown extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviewBreakdown: {},
-      recommendations: 0,
-    }
-    //this.bind goes here
-  }
-
-  //functions go here
-
-
-  componentDidMount() {
-
-  }
-
-  render() {
+function Breakdown(props) {
 
     return (
       <div>
         {/* average number will go here && along with the star rating */}
-        <AverageNum ratings={this.props.ratings} recommendations={this.props.recommendations}/>
-        <Ratings ratings={this.props.ratings} totalRatings={this.props.totalRatings}/>
-        <Product characteristics={this.props.characteristics}/>
+        <AverageNum ratings={props.ratings} recommendations={props.recommendations}/>
+        <Ratings ratings={props.ratings} totalRatings={props.totalRatings} starSort={props.starSort}/>
+        <Product characteristics={props.characteristics}/>
         {/* the charractics will fgo here */}
       </div>
     );
-  }
 }
 
 

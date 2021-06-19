@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Promise from 'bluebird';
 
 
 class Sorted extends React.Component {
@@ -16,23 +17,44 @@ class Sorted extends React.Component {
     this.helpful = this.helpful.bind(this);
     this.newest = this.newest.bind(this);
     this.relevant = this.relevant.bind(this);
+    this.dateDiff = this.dateDiff.bind(this);
   }
 
   //functions here
   onChangehandler(event) {
     let sortType = event.target.value;
     if (sortType === 'helpful') {
-      this.helpful();
+      this.helpful()
+        .then((array) => {
+          this.setState({
+            helpful: array
+          });
+        })
+        .then( () => {
+          this.props.sortedReviews(this.state.helpful);
+        });
     }
     if (sortType === 'newest') {
-      this.newest();
-      let newest = this.state.newest;
-      this.props.sortedReviews(this.state.newest);
+      this.newest()
+        .then( (array) => {
+          this.setState({
+            newest: array
+          });
+        })
+        .then( () => {
+          this.props.sortedReviews(this.state.newest);
+        });
     }
     if (sortType === 'relevant') {
-      this.relevant();
-      let relevant = this.state.relevant;
-      this.props.sortedReviews(this.state.relevant);
+      this.relevant()
+        .then( (array) => {
+          this.setState({
+            relevant: array
+          });
+        })
+        .then( () => {
+          this.props.sortedReviews(this.state.relevant);
+        });
     }
   }
 
@@ -43,31 +65,36 @@ class Sorted extends React.Component {
   // set the state and then send that state back to review
 
   helpful() {
-    let helpful = [ ... this.props.reviews];
-    helpful.sort( (a, b) => {
-      return b.helpfulness - a.helpfulness;
-    })
-    this.setState({
-      helpful: helpful
+    return new Promise ( (resolve, reject) => {
+      let helpful = [ ... this.props.reviews];
+      resolve(helpful.sort( (a, b) => {
+        return b.helpfulness - a.helpfulness;
+      }));
     });
   }
 
   newest() {
-    let newest = [ ... this.props.reviews];
-    newest.sort( (a, b) => {
-      return new Date(b.date) - new Date(a.date);
-    })
-    this.setState({
-      newest: newest
+    return new Promise ( (resolve, reject) => {
+      let newest = [ ... this.props.reviews];
+      resolve(newest.sort( (a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      }));
     });
   }
 
   relevant() {
-    let relevant = [ ... this.props.reviews];
-    this.setState({
-      relevant: relevant
+    return new Promise ( (resolve, reject) => {
+      let helpful = [ ... this.props.reviews];
+      resolve(helpful.sort( (a, b) => {
+        return b.helpfulness - a.helpfulness;
+      }));
     });
   }
+    dateDiff(d1, d2) {
+    let diff = Math.abs(d1.getTime() - d2.getTime());
+    return diff / (1000 * 60 * 60 * 24);
+  }
+
 
   componentDidMount() {
 
@@ -93,3 +120,25 @@ class Sorted extends React.Component {
 export default Sorted;
 
 {/* <div onClick={this.onChangehandler} >{this.props.totalRatings} reviews, sorted by </div> */}
+
+
+// let helpful = [ ... this.props.reviews];
+// helpful.sort( (a, b) => {
+//   return b.helpfulness - a.helpfulness;
+// })
+// this.setState({
+//   helpful: helpful
+// });
+
+// array.sort( (a, b) => {
+//   if (this.dateDiff(new Date(b.date), new Date(a.date)) > 30) {
+//     return -1;
+//   }
+//   if (this.dateDiff(new Date(b.date), new Date(a.date)) < 30) {
+//    return 1;
+//  }
+//  if (this.dateDiff(new Date(b.date), new Date(a.date)) === 0) {
+//    return 0;
+//  }
+
+//  })
