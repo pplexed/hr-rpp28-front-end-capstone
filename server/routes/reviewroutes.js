@@ -5,8 +5,8 @@ const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const axios = require('axios');
 const token = require('../../config.js')
-const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22217'
-const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22216'
+const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22161&count=2'
+const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22147'
 
 // default options as middleware
 router.use(fileUpload());
@@ -20,10 +20,10 @@ const options = {
 }
 
 router.get('/review-product', (req, res) => {
-  // console.log('this is the req:', req)
-  getReviews((err, data) => {
+  console.log('this is the req should see 30:', req)
+  getReviews(req.query.count, (err, data) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
     } else {
       res.send(data);
     }
@@ -31,11 +31,11 @@ router.get('/review-product', (req, res) => {
 });
 
 router.get('/breakdown', (req, res) => {
-  console.log('working');
+  // console.log('working');
   getMeta((err, data) => {
-    console.log('we are here');
+    // console.log('we are here');
     if (err) {
-      console.log(err);
+      // console.log(err);
     } else {
       res.send(data);
     }
@@ -47,11 +47,19 @@ router.get('/breakdown', (req, res) => {
 //Helpers to get the actual data to pass back to the requests//
 
 //Gets the reviews for the individual review tile
-const getReviews = (callback) => {
-
-  axios(options)
+const getReviews = (num, callback) => {
+let count = num || 2;
+ let url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22161&count=${count}`
+  axios({
+    method: 'get',
+    url: url,
+    headers: token.AUTH
+  })
     .then((response) => {
       callback(null, response.data);
+    })
+    .catch((err) => {
+      callback(err, null);
     });
 };
 

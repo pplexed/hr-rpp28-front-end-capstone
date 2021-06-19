@@ -1,6 +1,9 @@
 import React from 'react';
+import axios from 'axios';
+
 import FeaturesList from './features.jsx';
 import Styles from './styles.jsx';
+
 import { sampleProductInfo, sampleStyleInfo } from '../../../../sampleDataSets';
 
 class Overview extends React.Component {
@@ -9,12 +12,12 @@ class Overview extends React.Component {
 
     // default state
     this.state = {
-      id: '',
+      id: 22125,
       name: '',
       slogan: '',
       description: '',
       category: '',
-      defaultPrice: 0,
+      price: '65.00',
       productOverview: '',
       features: [{
         feature: '',
@@ -23,29 +26,77 @@ class Overview extends React.Component {
       results: [{
         style_id: 0,
         name: '',
-        original_price: 0,
-        sale_price: 0,
+        original_price: '0.00',
+        sale_price: '0.00',
         default: true,
-        photos:[{
+        photos: [{
           thumbnail_url: '',
           url: '',
         }],
-        skus: {}
+        skus: {},
       }],
       styleChosen: 0,
     };
   }
 
   componentDidMount() {
-    this.setState(sampleProductInfo);
-    this.setState(sampleStyleInfo);
+    // this.setState(sampleStyleInfo);
+    const productId = this.state.id;
+    try {
+      this.updateProductState(productId);
+    } catch (error) {
+      console.error(error);
+    }
+    try {
+      // console.log('trying to get style');
+      this.updateStyleState(productId);
+    } catch (error) {
+      console.error(error);
+    }
+    // const defaultStylePrice = this.state.results[0].original_price;
+    // console.log('original results array: ', this.state.results);
+    // this.setState({ price: defaultStylePrice });
   }
 
   onChange(e) {
-    // may need 1) conditional logic 2) another onChange on lower lvl 3) change to track spec comp)
     this.setState({
       styleChosen: e.target.value,
     });
+    this.updatePriceBasedOnStyle(e.target.value);
+  }
+
+  updateProductState(productId) {
+    var context = this;
+    return axios.get('/overview/getoneproduct?productId=' + productId)
+      .then(function ({ data }) {
+        context.setState(data);
+      })
+      .catch(function (error) {
+        //console.log('client axios error: ', error);
+      });
+  }
+
+  updateStyleState(productId) {
+    var context = this;
+    return axios.get('/overview/getproductstyle?productId=' + productId)
+      .then(function ({ data }) {
+        context.setState(data);
+      })
+      .catch(function (error) {
+        //console.log('client axios error: ', error);
+      });
+  }
+
+  updatePriceBasedOnStyle(styleId) {
+    const styles = this.state.results;
+    for (let i = 0; i < styles.length; i++) {
+      if (styles[i].style_id.toString() === styleId) {
+        this.setState({
+          price: styles[i].original_price,
+        });
+        // console.log('price should now be: ', styles[i].original_price);
+      }
+    }
   }
 
   render() {
@@ -55,7 +106,7 @@ class Overview extends React.Component {
       slogan,
       description,
       category,
-      defaultPrice,
+      price,
       productOverview,
       features,
       results,
@@ -78,7 +129,7 @@ class Overview extends React.Component {
           </tr>
           {/* this will require passing back up through components, price is derived from style */}
           <tr>
-            <div id="defaultPrice">{ defaultPrice }</div>
+            <div id="price">{ price }</div>
           </tr>
           <tr>
             <div id="slogan">{ slogan }</div>

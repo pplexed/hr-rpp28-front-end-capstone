@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
-class AddQuestionModal extends React.Component {
 
+class AddQuestionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,28 +12,30 @@ class AddQuestionModal extends React.Component {
       validated: false,
       firstclicknickname: true,
       firstclickemail: true,
-      show: this.props.show
+      show: this.props.show,
+      nicknameIsInvalid: false,
+      emailIsInvalid: false,
+      questionbodyIsInvalid: false,
+      emailFormatValid: true,
     };
   }
 
-  // componentDidMount () {
-  //   this.setState({show: this.props.show});
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if(prevProps.show !== this.props.show) {
-  //     this.setState({show: this.props.show});
-  //     console.log('component did update called');
-  //   }
-  // }
-
   closeButtonHandler (e) {
-    //close the window when the button is clicked
+    // close the window when the button is clicked
     this.setState({show: false});
   }
 
   checkInput() {
-    let validateTest = this.state.nickname && this.state.email && this.state.question; 
+
+
+    this.setState({
+      nicknameIsInvalid: !this.state.nickname,
+      emailIsInvalid: !this.state.email,
+      questionbodyIsInvalid: !this.state.question,
+    });
+
+
+    let validateTest = this.state.nickname && this.state.email && this.state.question;
     if (validateTest) {
       const regex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
       let emailtest = false;
@@ -42,44 +44,40 @@ class AddQuestionModal extends React.Component {
       }
 
       validateTest = validateTest && emailtest;
+      this.setState({emailFormatValid: emailtest});
     }
 
-    // validate email here
-    if (!validateTest) {
-      console.log('implement a warning here');
-    }
 
     return validateTest;
-
-    // this.setState({validated : validateTest});
   }
 
 
   submitHandler(e) {
     e.preventDefault();
 
-    // if (this.state.validated) {
+
     if (this.checkInput()) {
       axios.post(`http://localhost:3000/qa/questions/`, {
         nickname: this.state.nickname,
         email: this.state.email,
-        question: this.state.question
+        question: this.state.question,
+        product_id: this.props.currentProduct.id,
       })
         .then((response) => {
-          console.log('question submitted returned with', response);
+          // console.log('question submitted returned with', response);
         })
         .catch((err) => {
-          console.log('error in submitting question', err);
+          // console.log('error in submitting question', err);
         });
     }
     else {
-      console.log('error data not validated');
+      // console.log('error data not validated');
     }
   }
 
   changeHandler(e) {
     this.setState({[e.target.name]: e.target.value });
-    console.log(`change handler fired! value: ${e.target.value}`);
+    // console.log(`change handler fired! value: ${e.target.value}`);
   }
 
   clickHandlerNickname(e) {
@@ -100,10 +98,28 @@ class AddQuestionModal extends React.Component {
     }
   }
 
+
   render() {
     if (!this.state.show) {
       return null;
     }
+
+    let alertstyle = {
+      color: 'red',
+    };
+
+    let emailAlertMessage = <div></div>
+
+    if (!this.state.emailFormatValid) {
+      emailAlertMessage = <div style={alertstyle}>You must enter a properly formatted e-mail address</div>
+    }
+
+    // no email message takes priority over improperly formatted email address
+    if (this.state.emailIsInvalid) {
+      emailAlertMessage = <div style={alertstyle}>You must enter an e-mail address</div>
+    }
+
+
 
     return (
         <div className='modal-q' >
@@ -114,20 +130,25 @@ class AddQuestionModal extends React.Component {
               about your product []
             </div>
 
+            {this.state.questionbodyIsInvalid ?  <div style={alertstyle}>You must enter a question</div> : <div></div>}
+
             <div className='modal-body-q'>
-              
+
               {/* <form className='InputQuestion' method='POST' action='http://localhost:3000/qa/questions'> */}
 
-              <form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}> 
+              <form className='InputQuestion' onSubmit={this.submitHandler.bind(this)}>
                 <textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}>
                 </textarea>
                 <br></br>
-                What is your Nickname?
-                <br></br>
+
+                <div>What is your Nickname? </div>
+                {this.state.nicknameIsInvalid ?  <div style={alertstyle}>You must enter a Nickname</div> : <div></div>}
+
                 <input type='text' onClick={this.clickHandlerNickname.bind(this)} maxLength='60' name='nickname' value={this.state.nickname}onChange={this.changeHandler.bind(this)}></input>
+
                 <br></br>
-                Your E-mail
-                <br></br>
+                <div>Your E-mail</div>
+                {emailAlertMessage}
                 <input type='text' onClick={this.clickHandlerEmail.bind(this)} maxLength='60' name='email' value={this.state.email} onChange={this.changeHandler.bind(this)}></input>
                 <br></br>
                 <br></br>

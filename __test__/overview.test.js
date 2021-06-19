@@ -3,9 +3,6 @@ import {shallow} from 'enzyme';
 import Overview from '../client/src/components/overview/overview.jsx';
 
 test('Text inside Overview', () => {
-
   const wrapper = shallow(<Overview />);
-
-  expect(wrapper.text()).toEqual('This is the overview moduleBasketball ShoesAir Minis 2500Full court supportThis optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.<FeaturesList /><Styles />');
-
+  expect(wrapper.text()).toEqual('This is the overview module65.00<FeaturesList /><Styles />');
 });

@@ -1,20 +1,32 @@
 import React from 'react';
 
-class Photobar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render () {
-    if ((!this.props.photos) || (this.props.photos.length === 0)) {
-      return null;
+function Photobar(props) {
+
+
+  //render () {
+    if ((!props.photos) || (props.photos.length === 0)) {
+      return <></>;
     }
+    //console.log('this photo array', this.props.photos[0]);
+
     return (
       <span>
-        {this.props.photos.map((photo) => <img src={photo.url} width="75" height="75"></img>)}
+        {React.Children.toArray(props.photos.map((photo, i) => <img className='tomphotobar' src={photo} key={i}></img>))}
       </span>
     )
-  }
+  //}
 }
 
 export default Photobar;
+
+//removed photo.url
+
+{/* React.Children.toArray(
+  employees.map((employee, i) => (
+      <div className="card">
+          <p>Name: {employee.name}</p>
+          <p>Lastname: {employee.name} </p>
+      <img src={employee.imageSrc} alt={employee.name} />
+  </div>
+  ));
+); */}
