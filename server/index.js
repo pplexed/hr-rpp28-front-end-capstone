@@ -17,12 +17,6 @@ app.use(express.static('./client/dist'));
 // import routes
 app.use('/qa', QAroutes);
 app.use('/reviews', review);
-app.use('/overview', overview);
-
-
-
-
-
 app.use('/relatedItems', RIroutes);
 
 app.get('/', (req, res) => {
