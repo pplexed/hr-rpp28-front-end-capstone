@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import RelatedItemSlide from './relatedItemSlide.jsx';
+import RelatedItemSlide from './RelatedItemSlide.jsx';
 
 class RelatedProductList extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class RelatedProductList extends React.Component {
     const { product_id } = this.props;
     axios.get(`relatedItems/products/?product_id=${product_id}`)
       .then(({ parentData }) => {
-        console.log('parentData: ', parentData);
+        console.log('parentData at axios call in RelatedItemsList: ', parentData);
         this.setState({
           parentInfo: parentData,
         });

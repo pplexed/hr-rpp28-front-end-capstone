@@ -29,6 +29,7 @@ class RelatedItemSlide extends React.Component {
     const { product_id, parent_id } = this.props;
     axios.get(`/relatedItems/products/?product_id=${product_id}`)
       .then(({ data }) => {
+        console.log('data at RelatedItemSlide axios 1: ', data);
         this.setState({
           productInfo: data,
           parentFeature: parent_id.features,
@@ -41,6 +42,7 @@ class RelatedItemSlide extends React.Component {
       });
     axios.get(`relatedItems/products/?product_id=${product_id}&flag=styles`)
       .then(({ data }) => {
+        console.log('data at RelatedItemSlide axios 2 (styles/photo):', data);
         let thumbnail = '';
         const mainProductDescription = data.results.find((product) => product['default'] === true);
         if (!mainProductDescription) {

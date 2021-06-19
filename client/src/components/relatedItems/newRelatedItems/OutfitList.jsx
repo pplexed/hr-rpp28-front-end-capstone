@@ -84,6 +84,7 @@ class OutfitList extends React.Component {
 
       axios.post('/outfit', newOutfitInfoObject)
         .then((data) => {
+          console.log('data at OutfitList (post - need route created: ', data);
           this.setState({
             outfits: data,
             loaded: true,
@@ -104,6 +105,7 @@ class OutfitList extends React.Component {
     }, () => {
       axios.delete('/outfit', { data: outfitToRemove })
         .then((data) => {
+          console.log('data at OutfitList (delete - need route created: ', data);
           if (data.length > 0) {
             this.setState({
               outfits:data,
