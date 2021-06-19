@@ -163,7 +163,6 @@ class OutfitList extends React.Component {
 
   render() {
     const { outfits, showScrollLeft, showScrollRight, loaded } = this.state;
-    const updateProduct = this.props;
     return (
       <>
         {showScrollRight ? (
@@ -172,28 +171,27 @@ class OutfitList extends React.Component {
                 &#8250;
               </RightButton>
             </RightButtonWrap>
-          ) : null }
+        ) : null }
         <ListWrap id="outifts">
           <CardWrap id="addOutfit" onClick={this.addOutfit} aria-label="Add to outfit list">
             <AddOutfitContent>
               Add to outfit
             </AddOutfitContent>
           </CardWrap>
-        {loaded
-          ? (
-            <>
-              {outfits.map((outfit, idx) => {
-                <OutfitCard
-                  key={idx}
-                  outfit={outfit}
-                  updateProduct={updateProduct}
-                  removeOutfit={this.removeOutfit}
-                />
-              })}
-            </>
-          ) : null
-        }
-        </ ListWrap>
+          {loaded
+            ? (
+              <>
+                {outfits.map((outfit, idx) => {
+                  <OutfitCard
+                    key={idx}
+                    outfit={outfit}
+                    removeOutfit={this.removeOutfit}
+                  />;
+                })}
+              </>
+            ) : null
+          }
+        </ListWrap>
         {showScrollLeft
           ? (
             <LeftButtonWrap>

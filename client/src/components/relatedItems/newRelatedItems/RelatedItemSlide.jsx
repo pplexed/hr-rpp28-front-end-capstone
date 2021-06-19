@@ -85,7 +85,6 @@ class RelatedItemSlide extends React.Component {
     // Axios reqquest for reviews and stars
   }
 
-
   compareFeatures(parentFeature, productFeature) {
     const compare = {};
     parentFeature.forEach((feature) => {
@@ -126,8 +125,8 @@ class RelatedItemSlide extends React.Component {
   }
 
   newProduct() {
-    const { product_id, updateProduct } = this.props;
-    updateProduct(product_id);
+    const { product_id } = this.props;
+    // Need some sort of event handler to handle changing to a new product
   }
 
   render() {
@@ -163,18 +162,18 @@ class RelatedItemSlide extends React.Component {
           photoLoaded === 2
           && (
             <SlideContainer>
-              <ButtonWrapper>
+              <ButtonWrap>
                 <CompareButton
                   onClick={this.handleModalClick}
                 />
-              </ButtonWrapper>
-              <ImageWrapper onClick={this.newProduct}>
+              </ButtonWrap>
+              <ImageWrap onClick={this.newProduct}>
                 <Image src={photoURL} alt={productInfo.name} />
-              </ImageWrapper>
-              <ProductContentWrapper style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrapper>
-              <ProductContentWrapper onClick={this.newProduct()} style={{ fontSize: '15px' }}>{productInfo.name}</ProductContentWrapper>
-              <ProductContentWrapper style={sale}>${productInfo.default_price}</ProductContentWrapper>
-              {salePrice ? <ProductContentWrapper style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrapper> : null}
+              </ImageWrap>
+              <ProductContentWrap style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrap>
+              <ProductContentWrap onClick={this.newProduct()} style={{ fontSize: '15px' }}>{productInfo.name}</ProductContentWrap>
+              <ProductContentWrap style={sale}>${productInfo.default_price}</ProductContentWrap>
+              {salePrice ? <ProductContentWrap style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrap> : null}
               {salePrice ? <LowerBorderDiv /> : <BorderDiv />}
             </SlideContainer>
           )
@@ -242,13 +241,13 @@ position: relative;
 bottom: 0px;
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrap = styled.div`
 height: 200px;
 width: auto;
 margin-bottom: 30px;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonWrap = styled.div`
 position: absolute;
 top: 0px;
 right: 0px;
@@ -268,7 +267,7 @@ const CompareButton = styled.button`
   }
 `;
 
-const ProductContentWrapper = styled.div`
+const ProductContentWrap = styled.div`
   margin: 5px 15px;
 `;
 

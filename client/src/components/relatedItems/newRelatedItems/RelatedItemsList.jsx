@@ -89,7 +89,6 @@ class RelatedProductList extends React.Component {
               product_id={data}
               parent_id={product_id}
               parentInfo={parentInfo}
-              updateProduct={this.props.udpateProduct}
             />
           ))}
         </ListContainer>
