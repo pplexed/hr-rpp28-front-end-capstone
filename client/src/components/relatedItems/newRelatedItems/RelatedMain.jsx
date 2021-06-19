@@ -9,9 +9,9 @@ class RelatedProductsMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      relatedProducts: []
+      relatedProducts: [],
     };
-    this.wierdStuff = this.wierdStuff.bind(this);
+    this.getRelatedIds = this.getRelatedIds.bind(this);
   };
 
 
@@ -38,10 +38,10 @@ class RelatedProductsMain extends React.Component {
     //   .catch((err) => {
     //     console.log('Error fetching Related Product IDs: ', err);
     //   });
-    this.wierdStuff();
+    this.getRelatedIds();
   }
 
-  wierdStuff() {
+  getRelatedIds() {
     const product_id = 22134;
     axios.get(`relatedItems/products/?product_id=${product_id}&flag=related`)
       .then((relatedIds) => {
@@ -82,7 +82,8 @@ class RelatedProductsMain extends React.Component {
         <ListWrap>
           <OutfitList
             parentId={product_id}
-            updateProduct={updateProduct} />
+            updateProduct={updateProduct}
+          />
         </ListWrap>
       </RelatedModuleWrap>
 
@@ -90,19 +91,19 @@ class RelatedProductsMain extends React.Component {
   }
 }
 
-export default RelatedProductsMain;
-
 const RelatedModuleWrap = styled.div`
-  padding: 5px 40px 0px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 10px auto;
-  max-width: 1200px;
+padding: 5px 40px 0px 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin: 10px auto;
+max-width: 1200px;
 `;
 
 const ListWrap = styled.div`
-  margin: 10px 0px 0px;
-  position: relative;
-  width: 100%;
-  `;
+margin: 10px 0px 0px;
+position: relative;
+width: 100%;
+`;
+
+export default RelatedProductsMain;

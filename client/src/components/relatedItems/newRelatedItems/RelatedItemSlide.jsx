@@ -190,8 +190,6 @@ class RelatedItemSlide extends React.Component {
   }
 }
 
-export default RelatedItemSlide;
-
 const SlideContainer = styled.div`
 height: 400px;
 width: 275px;
@@ -266,3 +264,5 @@ const CompareButton = styled.button`
 const ProductContentWrapper = styled.div`
   margin: 5px 15px;
 `;
+
+export default RelatedItemSlide;

@@ -108,8 +108,6 @@ class RelatedProductList extends React.Component {
   }
 }
 
-export default RelatedProductList;
-
 const ListContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -175,3 +173,5 @@ const RightButton = styled.button`
     color: white;
   }
 `;
+
+export default RelatedProductList;
