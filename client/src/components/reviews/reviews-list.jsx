@@ -25,12 +25,11 @@ class ReviewsList extends  React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      count: 2
-    })
+    // let promise = new Promise ( (resolve, reject) => {
+    //   let reviews =
+    // });
   }
   render() {
-    console.log('this is the state of reviews: ', this.state);
     let allReviews = (this.state.allReviews.length >=1) ? this.state.allReviews : this.props.reviews
     let reviewList = allReviews.slice(0, this.state.count).map((item, index) => {
       return (
@@ -41,7 +40,7 @@ class ReviewsList extends  React.Component {
     });
     return (
       <div>
-      <div><Sorted totalRatings={this.props.totalRatings}/></div>
+      <div><Sorted totalRatings={this.props.totalRatings} reviews={this.props.reviews} sortedReviews={this.props.sortedReviews}/></div>
       <div className={(this.state.count >= 6) ? "reviews-scroll" : null  }>
             {reviewList}
       </div>

@@ -20,6 +20,7 @@ class Reviews extends React.Component {
     this.metaData = this.metaData.bind(this);
     this.initialReviews = this.initialReviews.bind(this);
     this.numberOfReviews = this.numberOfReviews.bind(this);
+    this.sortedReviews = this.sortedReviews.bind(this);
   }
   //functions go here
   metaData() {
@@ -68,6 +69,10 @@ class Reviews extends React.Component {
       })
   }
 
+  sortedReviews(e) {
+    console.log('this was passed back!', e);
+  }
+
   componentDidMount() {
     this.metaData();
     // this.initialReviews();
@@ -79,7 +84,7 @@ class Reviews extends React.Component {
     return(
       <div className="reviews-container">
             <div className="reviews-left"><Breakdown ratings={this.state.ratingsBreakdown} recommendations={this.state.recommendations} totalRatings={this.state.totalRatings} characteristics={this.state.productBreakdown}/></div>
-            <div className="reviews-right"><ReviewsList reviews={this.state.reviewList} totalRatings={this.state.totalRatings} /></div>
+            <div className="reviews-right"><ReviewsList reviews={this.state.reviewList} totalRatings={this.state.totalRatings} sortedReviews={this.sortedReviews}/></div>
       </div>
     )
   }
