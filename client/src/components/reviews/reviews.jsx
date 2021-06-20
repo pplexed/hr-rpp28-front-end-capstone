@@ -106,7 +106,6 @@ class Reviews extends React.Component {
       this.setState({
         stars: starHolder
       });
-      console.log('right after setting state: ', this.state.stars);
       return review
     })
       .filter(review => {

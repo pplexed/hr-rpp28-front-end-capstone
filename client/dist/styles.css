@@ -310,6 +310,14 @@ img {
   max-width: 700px;
 }
 
+.modal-content-addReview {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
 #caption {
   margin: auto;
@@ -323,7 +331,7 @@ img {
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
+.modal-content, #caption, .modal-content-addReview {
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -344,8 +352,17 @@ img {
   transition: 0.3s;
 }
 
+.close-addReview {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .close:hover,
-.close:focus {
+.close:focus,
+.close-addReview:hover,
+.close-addReview:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
