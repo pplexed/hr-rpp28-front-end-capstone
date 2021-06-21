@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1624306789660" clover="3.2.0">
-  <project timestamp="1624306789660" name="All files">
+<coverage generated="1624307266549" clover="3.2.0">
+  <project timestamp="1624307266549" name="All files">
     <metrics statements="354" coveredstatements="98" conditionals="152" coveredconditionals="28" methods="134" coveredmethods="30" elements="640" coveredelements="156" complexity="0" loc="354" ncloc="354" packages="11" files="31" classes="31"/>
     <package name="hr-rpp28-front-end-capstone">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -87,12 +87,12 @@
       <metrics statements="26" coveredstatements="10" conditionals="12" coveredconditionals="1" methods="13" coveredmethods="4"/>
       <file name="questionanswer.jsx" path="/Users/Tom1/Desktop/fec22/hr-rpp28-front-end-capstone/client/src/components/questionanswer/questionanswer.jsx">
         <metrics statements="26" coveredstatements="10" conditionals="12" coveredconditionals="1" methods="13" coveredmethods="4"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="17" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
         <line num="55" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="56" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
@@ -104,15 +104,15 @@
         <line num="84" count="0" type="stmt"/>
         <line num="87" count="0" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
-        <line num="109" count="3" type="stmt"/>
+        <line num="109" count="2" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
         <line num="122" count="0" type="stmt"/>
         <line num="132" count="0" type="stmt"/>
         <line num="136" count="0" type="stmt"/>
-        <line num="142" count="3" type="stmt"/>
-        <line num="144" count="3" type="stmt"/>
+        <line num="142" count="2" type="stmt"/>
+        <line num="144" count="2" type="stmt"/>
         <line num="145" count="0" type="stmt"/>
-        <line num="152" count="3" type="stmt"/>
+        <line num="152" count="2" type="stmt"/>
       </file>
     </package>
     <package name="hr-rpp28-front-end-capstone.client.src.components.questionanswer.Photobar">
@@ -179,8 +179,8 @@
       </file>
       <file name="addquestionmodal.jsx" path="/Users/Tom1/Desktop/fec22/hr-rpp28-front-end-capstone/client/src/components/questionanswer/QAModals/addquestionmodal.jsx">
         <metrics statements="30" coveredstatements="4" conditionals="25" coveredconditionals="1" methods="10" coveredmethods="2"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="38" count="0" type="cond" truecount="0" falsecount="3"/>
@@ -200,8 +200,8 @@
         <line num="85" count="0" type="stmt"/>
         <line num="93" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="94" count="0" type="stmt"/>
-        <line num="103" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="104" count="3" type="stmt"/>
+        <line num="103" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="104" count="2" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
         <line num="111" count="0" type="stmt"/>
         <line num="113" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -215,15 +215,15 @@
       <metrics statements="9" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="searchquestionbar.jsx" path="/Users/Tom1/Desktop/fec22/hr-rpp28-front-end-capstone/client/src/components/questionanswer/SearchQuestionBar/searchquestionbar.jsx">
         <metrics statements="9" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="43" count="3" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
       </file>
     </package>
     <package name="hr-rpp28-front-end-capstone.client.src.components.questionanswer.SingleQuestionAnswer">
