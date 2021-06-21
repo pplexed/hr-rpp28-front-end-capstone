@@ -76,7 +76,7 @@ router.get('/questions', (req, res) => {
   axios.get(builtPath)
     .then((response) => {
       res.send(response.data);
-     // console.log('succesfully build with dynamic product id: ', response.data);
+     //console.log('succesfully build with dynamic product id: ', response.data);
     })
     .catch((err) => {
       res.send('error at /questions', err);

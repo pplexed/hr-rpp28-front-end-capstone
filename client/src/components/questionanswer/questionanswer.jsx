@@ -108,7 +108,7 @@ class QuestionAnswer extends React.Component {
     // this is equivalent to http://.../?product_id=xxxxx
     axios.get(`http://localhost:3000/qa/questions/`, {params: {product_id: this.props.currentProduct.id}})
       .then((response) => {
-        // console.log('this is the axios data upon load up', response.data);
+        //console.log('this is the axios data upon load up', response.data);
         this.setState({
           product_id: this.props.currentProduct.id,
           questions: response.data,
