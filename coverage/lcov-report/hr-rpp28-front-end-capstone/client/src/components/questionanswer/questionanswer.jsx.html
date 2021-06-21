@@ -23,15 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">38.46% </span>
-                <span class="quiet">Statements</span>
-                <span class='fraction'>5/13</span>
-=======
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>0/27</span>
->>>>>>> main
             </div>
         
             
@@ -50,15 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-<<<<<<< HEAD
-                <span class="strong">38.46% </span>
-                <span class="quiet">Lines</span>
-                <span class='fraction'>5/13</span>
-=======
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>0/26</span>
->>>>>>> main
             </div>
         
             
@@ -360,8 +348,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -372,7 +358,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -381,8 +366,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -390,19 +373,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -417,7 +387,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -508,7 +487,7 @@ function <span class="fstat-no" title="function not covered" >AdditionalQuestion
 <span class="cstat-no" title="statement not covered" >    moreAnsweredQuestions = &lt;p&gt;No More Questions to Show&lt;/p&gt;</span>
 &nbsp;
   }
-  
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div&gt;
       This is the Additional Question Bar!!
@@ -547,7 +526,7 @@ class QuestionAnswer extends React.Component {
     } else {
 &nbsp;
       let listLimitBySearch = <span class="cstat-no" title="statement not covered" >[];</span>
-      
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      for (var i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; this.state.questions.results.length; i++) {</span>
         let answers = <span class="cstat-no" title="statement not covered" >JSON.stringify(this.state.questions.results[i].answers);</span>
 &nbsp;
@@ -557,7 +536,7 @@ class QuestionAnswer extends React.Component {
             (answers.match(searchTerm))) {
               //only push in if there is a regex match of the search term
 <span class="cstat-no" title="statement not covered" >              listLimitBySearch.push(this.state.questions.results[i]);</span>
-            } 
+            }
       }
       //once we create the reduced list, we setState and render off the reduced list
 <span class="cstat-no" title="statement not covered" >      this.setState({sortedQuestionList: {</span>
@@ -567,13 +546,13 @@ class QuestionAnswer extends React.Component {
       });
     }
   }
-  
+&nbsp;
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>loadQuestionAnswer() {
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    axios.get(`http://localhost:3000/qa/questions/`, {params: {product_id: this.props.currentProduct.id}})</span>
     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-  
+&nbsp;
 <span class="cstat-no" title="statement not covered" >      this.setState({</span>
         product_id: response.data.product_id,
         questions: response.data,
@@ -607,11 +586,8 @@ class QuestionAnswer extends React.Component {
       })
       .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; {
         // console.log('error in loadup', err);
-<<<<<<< HEAD
-=======
 &nbsp;
         // if axious fails load up a default product.
->>>>>>> main
 <span class="cstat-no" title="statement not covered" >        this.setState({</span>
           product_id: '22122',
         });
@@ -647,13 +623,8 @@ class QuestionAnswer extends React.Component {
       &lt;tbody&gt;
       &lt;tr className='qatable' key={11}&gt;
         &lt;th align='left'&gt;
-<<<<<<< HEAD
-              &lt;SearchQuestionBar/&gt;
-              &lt;p&gt;view questions&lt;/p&gt;
-=======
               &lt;SearchQuestionBar sortBySearch={this.sortBySearch.bind(this)}/&gt;
               &lt;p&gt;view questions for product () {this.state.product_id}&lt;/p&gt;
->>>>>>> main
         &lt;/th&gt;
       &lt;/tr&gt;
 &nbsp;
@@ -708,11 +679,7 @@ export default QuestionAnswer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
-=======
-                at Wed Jun 16 2021 23:20:23 GMT-0400 (Eastern Daylight Time)
->>>>>>> main
+                at Mon Jun 21 2021 15:03:59 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>

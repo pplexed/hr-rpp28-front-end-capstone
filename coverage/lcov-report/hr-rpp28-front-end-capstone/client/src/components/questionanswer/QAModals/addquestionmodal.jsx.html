@@ -25,11 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-<<<<<<< HEAD
-                <span class='fraction'>0/23</span>
-=======
                 <span class='fraction'>0/30</span>
->>>>>>> main
             </div>
         
             
@@ -50,11 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-<<<<<<< HEAD
-                <span class='fraction'>0/23</span>
-=======
                 <span class='fraction'>0/30</span>
->>>>>>> main
             </div>
         
             
@@ -287,24 +279,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,12 +310,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -440,9 +425,6 @@ class AddQuestionModal extends React.Component {
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ch</span>eckInput() {
-<<<<<<< HEAD
-    let validateTest = <span class="cstat-no" title="statement not covered" >this.state.nickname &amp;&amp; this.state.email &amp;&amp; this.state.question;</span>
-=======
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.setState({</span>
@@ -452,8 +434,7 @@ class AddQuestionModal extends React.Component {
     });
 &nbsp;
 &nbsp;
-    let validateTest = <span class="cstat-no" title="statement not covered" >this.state.nickname &amp;&amp; this.state.email &amp;&amp; this.state.question; </span>
->>>>>>> main
+    let validateTest = <span class="cstat-no" title="statement not covered" >this.state.nickname &amp;&amp; this.state.email &amp;&amp; this.state.question;</span>
 <span class="cstat-no" title="statement not covered" >    if (validateTest) {</span>
       const regex = <span class="cstat-no" title="statement not covered" >/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/</span>
       let emailtest = <span class="cstat-no" title="statement not covered" >false;</span>
@@ -465,13 +446,6 @@ class AddQuestionModal extends React.Component {
 <span class="cstat-no" title="statement not covered" >      this.setState({emailFormatValid: emailtest});</span>
     }
 &nbsp;
-<<<<<<< HEAD
-    // validate email here
-<span class="cstat-no" title="statement not covered" >    if (!validateTest) {</span>
-      // console.log('implement a warning here');
-    }
-=======
->>>>>>> main
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return validateTest;</span>
   }
@@ -541,9 +515,9 @@ class AddQuestionModal extends React.Component {
 &nbsp;
     // no email message takes priority over improperly formatted email address
 <span class="cstat-no" title="statement not covered" >    if (this.state.emailIsInvalid) {</span>
-<span class="cstat-no" title="statement not covered" >      emailAlertMessage = &lt;div style={alertstyle}&gt;You must enter an e-mail address&lt;/div&gt; </span>
-    } 
-                
+<span class="cstat-no" title="statement not covered" >      emailAlertMessage = &lt;div style={alertstyle}&gt;You must enter an e-mail address&lt;/div&gt;</span>
+    }
+&nbsp;
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
@@ -565,12 +539,12 @@ class AddQuestionModal extends React.Component {
                 &lt;textarea rows='10' cols='50' name='question' onChange={this.changeHandler.bind(this)}&gt;
                 &lt;/textarea&gt;
                 &lt;br&gt;&lt;/br&gt;
-                
-                &lt;div&gt;What is your Nickname? &lt;/div&gt;     
+&nbsp;
+                &lt;div&gt;What is your Nickname? &lt;/div&gt;
                 {this.state.nicknameIsInvalid ?  &lt;div style={alertstyle}&gt;You must enter a Nickname&lt;/div&gt; : &lt;div&gt;&lt;/div&gt;}
-                
+&nbsp;
                 &lt;input type='text' onClick={this.clickHandlerNickname.bind(this)} maxLength='60' name='nickname' value={this.state.nickname}onChange={this.changeHandler.bind(this)}&gt;&lt;/input&gt;
-  
+&nbsp;
                 &lt;br&gt;&lt;/br&gt;
                 &lt;div&gt;Your E-mail&lt;/div&gt;
                 {emailAlertMessage}
@@ -600,11 +574,7 @@ export default AddQuestionModal;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
-=======
-                at Wed Jun 16 2021 23:20:23 GMT-0400 (Eastern Daylight Time)
->>>>>>> main
+                at Mon Jun 21 2021 15:03:59 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>
