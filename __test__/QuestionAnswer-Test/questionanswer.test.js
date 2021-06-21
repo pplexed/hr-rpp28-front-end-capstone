@@ -83,7 +83,7 @@ describe('Integration Test: : <QuestionAnswer/>', () => {
   });
 
 
-  test('dummy integration test', async() => {});
+  test('dummy integration test', () => {});
 
 
   // PASSING!  deactivated because it requires jest.mock('axios) which breaks other tests.
