@@ -50,7 +50,9 @@ describe('Integration Test: : <QuestionAnswer/>', () => {
       // setup a DOM element as a render target
       container = document.createElement("div");
       document.body.appendChild(container);
-      render(<QuestionAnswer currentProduct={secondProduct}/>);
+      /*UNCOMMENT HERE
+      ender(<QuestionAnswer currentProduct={secondProduct}/>);
+      UNCOMMENT HERE */
     });
 
 
