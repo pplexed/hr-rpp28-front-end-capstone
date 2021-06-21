@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import QuestionAnswer from '../client/src/components/questionanswer/questionanswer';
+import QuestionAnswer from '../../client/src/components/questionanswer/questionanswer.jsx';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { act } from "react-dom/test-utils";
