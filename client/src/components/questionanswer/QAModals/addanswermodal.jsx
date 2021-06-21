@@ -228,8 +228,8 @@ class AddAnswerModal extends React.Component {
 
                 {this.state.answerbodyIsInvalid ?  <div style={alertstyle}>You must enter an answer</div> : <div></div>}
 
-                <textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}>
-                </textarea>
+                <label>answerbodylabel<textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}>
+                </textarea></label>
 
                 <div>What is your Nickname? </div>
 

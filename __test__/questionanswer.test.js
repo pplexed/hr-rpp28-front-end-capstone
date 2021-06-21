@@ -114,7 +114,7 @@ describe('Integration Test: : <QuestionAnswer/>', () => {
 
       let submitOfAnswerModalWindow = screen.getByText(/submit answer/i);
       expect(submitOfAnswerModalWindow).toBeInTheDocument();
-      //await waitFor(() => expect(screen.getByText('answer')).toBeInTheDocument()); 
+      
     });
       
   });
