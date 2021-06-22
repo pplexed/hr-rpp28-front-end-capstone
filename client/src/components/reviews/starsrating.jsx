@@ -48,6 +48,9 @@ const StarRating = (props) => {
  </linearGradient>
  </defs></svg>
 
+  let getNum = (item) => {
+    props.starpicker(item + 1);
+  };
 
   const starArray = [0,0,0,0,0];
   let rating = props.rating;
@@ -73,7 +76,7 @@ const StarRating = (props) => {
     }
 
     return (
-      <span key={index}>{star}</span>
+      <span key={index} onClick={() => {getNum(index)}}>{star}</span>
     );
   });
 

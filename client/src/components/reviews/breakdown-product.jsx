@@ -38,7 +38,7 @@ const Product = (props) => {
     <div>
       <div>
         <div className={size ? null : "product-hidden"}>Size</div>
-        <div><input type="range" id="volume" name="volume"
+        <div><input type="range" id="size" name="size"
           min="1" max="5" value={size}></input></div>
           <div id="textbox">
             <p className="alignleft">Too small</p>
@@ -49,7 +49,7 @@ const Product = (props) => {
 
       <div className={width ? null : "product-hidden"}>
         <div>Width</div>
-        <div><input type="range" id="volume" name="volume"
+        <div><input type="range" id="width" name="width"
           min="1" max="5" value={width}></input></div>
           <div id="textbox">
             <p className="alignleft">Too narrow</p>
@@ -60,7 +60,7 @@ const Product = (props) => {
 
       <div className={comfort ? null : "product-hidden"}>
         <div>Comfort</div>
-        <div><input type="range" id="volume" name="volume"
+        <div><input type="range" id="comfort" name="comfort"
           min="1" max="5" value={comfort}></input></div>
           <div id="textbox">
             <p className="alignleft">Uncomfortable</p>
@@ -71,7 +71,7 @@ const Product = (props) => {
 
       <div className={quality ? null : "product-hidden"}>
         <div>Quality</div>
-        <div><input type="range" id="volume" name="volume"
+        <div><input type="range" id="quality" name="quality"
           min="1" max="5" value={quality}></input></div>
           <div id="textbox">
             <p className="alignleft">Poor</p>
@@ -82,7 +82,7 @@ const Product = (props) => {
 
       <div className={length ? null : "product-hidden"}>
         <div>Length</div>
-        <div><input type="range" id="volume" name="volume"
+        <div><input type="range" id="length" name="length"
           min="1" max="5" value={length}></input></div>
           <div id="textbox">
             <p className="alignleft">Runs short</p>
@@ -93,7 +93,7 @@ const Product = (props) => {
 
       <div className={fit ? null : "product-hidden"}>
         <div>Fit</div>
-        <div><input type="range" id="volume" name="volume"
+        <div><input type="range" id="fit" name="fit"
           min="1" max="5" value={fit}></input></div>
           <div id="textbox">
             <p className="alignleft">Runs tight</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Overview from './components/overview/overview.jsx';
+import Overview from "overview-module";
 import QuestionAnswer from './components/questionanswer/questionanswer.jsx';
 import Reviews from './components/reviews/reviews.jsx';
 import Breakdown from './components/reviews/breakdown.jsx';
@@ -37,6 +37,7 @@ class App extends React.Component {
         created_at: '2021-03-18T16:09:30.589Z',
         updated_at: '2021-03-18T16:09:30.589Z'
       },
+      productId: 22161
     };
   }
 
@@ -50,7 +51,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>FEC React Main App</h1>
-        <Overview/>
+        <Overview apiIP={"http://3.21.164.220"} productId={1}/>
         <br></br>
         {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>

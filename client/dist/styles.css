@@ -70,6 +70,9 @@ div.scrollable {
 .reviews-container{
   display: flex;
   flex-direction: row;
+  width: 55%;
+  margin: auto;
+
 
 
 
@@ -81,15 +84,13 @@ div.scrollable {
   flex-direction: column;
 
 
+
 }
 
 .reviews-right{
   width: 75%;
   display: flex;
   flex-direction: column;
-
-
-
 }
 
 .reviews-scroll {
@@ -114,22 +115,27 @@ div.scrollable {
 /* Review & Ratings - This section for the star rating progress bar */
 progress[value] {
   appearance: none;
-  width: 35%;
+  float: right;
+  width: 80%;
   height: 10px;
 }
 
 label {
-  padding-right:10px;
+  padding-right:8px;
 }
 
+/* Review & Ratings - This section for the seller response */
+.review-seller {
 
+  background-color: #d3d3d3;
+}
 
 
 /* Review & Ratings - This section for the product breakdown section */
 input[type=range] {
   height: 8px;
   -webkit-appearance: none;
-  width: 50%;
+  width: 100%;
 }
 input[type=range]:focus {
   outline: none;
@@ -221,15 +227,15 @@ input[type=range]:focus::-ms-fill-upper {
 #textbox {display:flex; flex-flow:row wrap;}
 
 .alignleft {
-width:16.66666%;
+width:33.33333%;
 text-align:left;
 }
 .aligncenter {
-width:16.66666%;
+width:33.33333%;
 text-align:center;
 }
 .alignright {
-width:16.66666%;
+width:33.3333%;
 text-align:right;
 }
 
@@ -296,6 +302,7 @@ img {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+
 }
 
 /* Modal Content (Image) */
@@ -304,6 +311,23 @@ img {
   display: block;
   width: 80%;
   max-width: 700px;
+
+}
+
+.modal-content-addReview {
+  background-color: #fefefe;
+   /* 15% from the top and centered */
+  margin-top: 0;
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-bottom: 20%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  height: 75vh;
+  overflow: auto;
+  border-radius: 25px;
+
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
@@ -319,7 +343,7 @@ img {
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
+.modal-content, #caption, .modal-content-addReview {
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -340,13 +364,44 @@ img {
   transition: 0.3s;
 }
 
+.close-addReview {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .close:hover,
-.close:focus {
+.close:focus,
+.close-addReview:hover,
+.close-addReview:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }
 
+/* this is for the add-reviews section */
+table.add-review th td {
+  border: 1px solid black;
+  padding: 1px;
+}
+
+table.add-review {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.add-review td {
+  text-align:center;
+}
+table.add-review tr {
+  text-align:left;
+}
+
+/* This is for the stars */
+.stars-noclick {
+  pointer-events: none;
+}
 
 
 /***TOMS additional CSS begin ***/

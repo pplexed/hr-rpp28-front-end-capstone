@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ReviewsList from './reviews-list.jsx';
 import Breakdown from './breakdown.jsx';
+import Promise from 'bluebird';
 
 
 class Reviews extends React.Component {
@@ -13,6 +14,7 @@ class Reviews extends React.Component {
       productBreakdown: {},
       recommendations: '',
       reviewList: [],
+      allReviews: [],
       totalRatings: 0,
       stars: [] //going to use this for sort later
     };
@@ -20,6 +22,8 @@ class Reviews extends React.Component {
     this.metaData = this.metaData.bind(this);
     this.initialReviews = this.initialReviews.bind(this);
     this.numberOfReviews = this.numberOfReviews.bind(this);
+    this.sortedReviews = this.sortedReviews.bind(this);
+    this.starSort = this.starSort.bind(this);
   }
   //functions go here
   metaData() {
@@ -63,10 +67,64 @@ class Reviews extends React.Component {
     })
       .then((response) => {
         this.setState({
-          reviewList: response.data.results
+          reviewList: response.data.results,
+          allReviews: response.data.results
         });
-        console.log('Refactor this is the state Initial: ', this.state);
       })
+  }
+
+  sortedReviews(array) {
+    this.setState({
+      reviewList: array,
+      allReviews: array
+    });
+  }
+
+  // starSort(stars) {
+
+  //   let starsReviews = [... this.state.reviewList];
+  //   console.log(starsReviews, stars[0]);
+  //   let filtered = starsReviews.filter(item => {
+  //     console.log('item: ', item)
+  //     item.rating === stars[0] || stars[1] ||stars[2] || stars[3] ||stars[4]
+  //   });
+  //   this.setState({
+  //     reviewList: filtered
+  //   });
+  // }
+
+  starSort(stars) {
+    let starsReviews = [... this.state.allReviews];
+    let starHolder = [... this.state.stars];
+    if (starHolder.indexOf(stars) !== -1) {
+      starHolder.splice(starHolder.indexOf(stars), 1);
+    } else {
+      starHolder.push(stars);
+    }
+
+    return Promise.map(starsReviews, review => {
+      this.setState({
+        stars: starHolder
+      });
+      return review
+    })
+      .filter(review => {
+
+       return  starHolder.includes(review['rating'])
+    })
+      .then((results) => {
+        console.log('something', this.state.stars);
+        if (this.state.stars.length === 0) {
+          console.log('empty');
+          this.setState({
+            reviewList: this.state.allReviews
+          });
+        } else {
+          this.setState({
+            reviewList: results
+          });
+        }
+      });
   }
 
   componentDidMount() {
@@ -79,8 +137,8 @@ class Reviews extends React.Component {
   render() {
     return(
       <div className="reviews-container">
-            <div className="reviews-left"><Breakdown ratings={this.state.ratingsBreakdown} recommendations={this.state.recommendations} totalRatings={this.state.totalRatings} characteristics={this.state.productBreakdown}/></div>
-            <div className="reviews-right"><ReviewsList reviews={this.state.reviewList} totalRatings={this.state.totalRatings} /></div>
+            <div className="reviews-left"><Breakdown starSort={this.starSort} ratings={this.state.ratingsBreakdown} recommendations={this.state.recommendations} totalRatings={this.state.totalRatings} characteristics={this.state.productBreakdown}/></div>
+            <div className="reviews-right"><ReviewsList reviews={this.state.reviewList} totalRatings={this.state.totalRatings} sortedReviews={this.sortedReviews}/></div>
       </div>
     )
   }

@@ -9,16 +9,17 @@ function IRT(props) {
   const date = new Date(props.review.date.toString()).toLocaleString('en-us', {month: 'long', day: 'numeric', year : 'numeric'});
   const check = '✓';
   return(
-    <div className=".reviews-container">
+    <div >
       <div id="textbox">
-       <p className="alignleft"><StarRating rating={props.review.rating}/></p>
+       <p className="alignleft stars-noclick"><StarRating rating={props.review.rating}/></p>
        <p className="alignright">{props.review.reviewer_name}, {date}</p>
       </div>
       <div className="reviews-summary">{props.review.summary}</div>
       <div><ReviewBody body={props.review.body}/></div>
       <div><ReviewPhotos photos={props.review.photos}/></div>
       <div className={props.review.recommend ? null : "product-hidden" }>{`${check}` + ' ' + "I recommend this product"}</div>
-      <div>Helpful? Yes({props.review.helpfulness}) | Report</div>
+      <div className={props.review.response ? null: "product-hidden"}><span className="review-seller">Response from Seller: {props.review.response}</span></div>
+      <div>Helpful? Yes ({props.review.helpfulness}) | Report</div>
     </div>
   );
 }
