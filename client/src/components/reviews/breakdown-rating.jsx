@@ -22,7 +22,7 @@ const Ratings = (props) => {
     <div>
         <div>
         <label htmlFor="5star" onClick={() => {starholder(5)}}>5 Star</label>
-        <progress id="5star" className=".input-rating" max={max} value={ratingArray[5] || 0}></progress>
+        <progress id="5star"  max={max} value={ratingArray[5] || 0} ></progress>
         </div>
         <div>
         <label htmlFor="4star" onClick={() => {starholder(4)}}>4 Star</label>

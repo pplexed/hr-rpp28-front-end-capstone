@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Stars from './starsrating.jsx';
+import Chars from './reviews-add-characteristics.jsx';
 import axios from 'axios';
 
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      rating: 0,
+      reviewBodyRemaining: 50,
+      reviewBody: ""
+    };
     //this.binds go here
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.chosenStars = this.chosenStars.bind(this);
+    this.reviewBodyRemaining = this.reviewBodyRemaining.bind(this);
   }
   //functions should go here
 
@@ -21,8 +29,27 @@ class AddReview extends React.Component {
   closeModal() {
     let modal = document.getElementById("addReview");
     modal.style.display = "none";
-
   }
+
+  chosenStars(stars) {
+    console.log('you chose: ', stars);
+    this.setState({
+      rating: stars
+    });
+  }
+
+  reviewBodyRemaining() {
+    let totalChar = event.target.value.length;
+    let body = event.target.value
+    let min = 50;
+    let remaining = (min - totalChar);
+    this.setState({
+      reviewBodyRemaining: remaining,
+      reviewBody: body
+    });
+    console.log('thsi should show: ', remaining);
+  }
+
   render() {
     return(
       <span>
@@ -30,7 +57,86 @@ class AddReview extends React.Component {
         <div id="addReview" className="modal">
           <div className="modal-content-addReview">
             <span className="close-addReview" onClick={this.closeModal}>&times;</span>
-            <p>ths form would go here?</p>
+            <form>
+              <h1>Write your Review</h1>
+              <p>About the Product Name here</p>
+              <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
+              <section>
+                <h2>User Information</h2>
+                <p>
+                  <label htmlFor="name">
+                    <span>Nick Name: </span>
+                    <strong><abbr title="required">*</abbr></strong>
+                  </label>
+                  <input type="text" id="name" name="username" />
+                </p>
+                <p>
+                  <label htmlFor="mail">
+                    <span>E-mail: </span>
+                    <strong><abbr title="required">*</abbr></strong>
+                  </label>
+                  <input type="email" id="mail" name="usermail" />
+                </p>
+              </section>
+              <section>
+                <h2>Overall Ratings</h2>
+                {/* Revist to make sure I can do the stars this way */}
+                <p>
+                  <label htmlFor="stars">
+                    <span>Star Review </span>
+                    <strong><abbr title="required">*</abbr></strong>
+                  </label>
+                    <Stars starpicker={this.chosenStars} rating={this.state.rating} />
+                    <p>Poor</p>
+                </p>
+                <p>
+                  <label htmlFor="recommend">
+                    <span>Do you recommend this product?</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                  </label>
+                  <label htmlFor="yes">
+                    <span>Yes</span>
+                  </label>
+                  <input type="radio" id="yes" name="recommend" />
+                  <label htmlFor="no">
+                    <span>No</span>
+                  </label>
+                  <input type="radio" id="no" name="recommend" />
+                </p>
+              </section>
+              <section>
+                <h2>Characteristics</h2>
+                <div>
+                  <Chars />
+                </div>
+              </section>
+              <section>
+                <h2>Review</h2>
+                {/* Revist to make sure I can do the stars this way */}
+                <p>
+                  <label htmlFor="summary">
+                    <span>Review Summary</span>
+                  </label>
+                  <input type="text" id="summary" name="summary" placeholder="Example: Best purchase ever!" />
+                </p>
+                <p>
+                  <label htmlFor="body">
+                    <span>Review Body</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                  </label>
+                    <textarea id="body" name="body" rows="5" cols="50" placeholder="Why did you like the product or not?" onChange={this.reviewBodyRemaining}></textarea>
+                </p>
+                <p className={this.state.reviewBodyRemaining > 0 ? null : "product-hidden"}>Minimum required characters left: {this.state.reviewBodyRemaining}</p>
+                <p className={this.state.reviewBodyRemaining <= 0 ? null :  "product-hidden"}>Minimum reached</p>
+                <p>
+                  <label htmlFor="photos">
+                    <span>Upload Photos</span>
+                  </label>
+                    <input type="file" id="photos" name="photos" />
+                </p>
+              </section>
+              <input type="submit" value="Submit"></input>
+            </form>
           </div>
         </div>
       </span>

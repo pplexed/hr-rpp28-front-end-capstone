@@ -39,9 +39,9 @@ class ReviewPhotos extends React.Component {
       return (
         <li key={index}><img id="myImg" src={item.url} onClick={() => {this.openModal(event.target.src)}} alt="this is a blown up version of the photo"></img>
           <div id="myModal" className="modal">
-          <span className="close" onClick={this.closeModal}>&times;</span>
-          <img className="modal-content" id="img01" alt="this is a blown up version of the photo"></img>
-          <div id="caption"></div>
+            <span className="close" onClick={this.closeModal}>&times;</span>
+            <img className="modal-content" id="img01" alt="this is a blown up version of the photo"></img>
+            <div id="caption"></div>
           </div>
 
 
