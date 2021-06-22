@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Modal = (props) => {
   const { parentName, compareName, compareFeatures } = props;
+  console.log('Modal props:', props);
 
   const closeWindow = (e) => {
     e.stop();

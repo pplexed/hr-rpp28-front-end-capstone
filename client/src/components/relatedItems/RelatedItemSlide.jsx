@@ -87,6 +87,9 @@ class RelatedItemSlide extends React.Component {
 
   compareFeatures(parentFeature, productFeature) {
     const compare = {};
+    console.log('ParentFeature: ', parentFeature);
+    console.log('ProductFeature: ', productFeature);
+
     parentFeature.forEach((feature) => {
       if (feature.value === null) {
         compare[feature.feature] = '-';
@@ -141,8 +144,6 @@ class RelatedItemSlide extends React.Component {
       clickModal,
     } = this.state;
 
-    console.log('This.state in render in RIS: ', this.state);
-
     const sale = {
       color: salePrice ? 'red' : 'black',
       textDecoration: salePrice ? 'line-through' : 'none',
@@ -167,6 +168,7 @@ class RelatedItemSlide extends React.Component {
               <ButtonWrap>
                 <CompareButton
                   onClick={this.handleModalClick}
+                  className="fa fa-star"
                 />
               </ButtonWrap>
               <ImageWrap onClick={this.newProduct}>
@@ -263,7 +265,7 @@ const CompareButton = styled.button`
   border: none;
   background: none;
   font-size: 25px;
-  color: black;
+  color: red;
   &:hover {
     color: gold;
   }

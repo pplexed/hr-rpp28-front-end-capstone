@@ -163,7 +163,6 @@ class OutfitList extends React.Component {
 
   render() {
     const { outfits, showScrollLeft, showScrollRight, loaded } = this.state;
-    console.log('outfits: ', outfits);
     return (
       <>
         {showScrollRight ? (
