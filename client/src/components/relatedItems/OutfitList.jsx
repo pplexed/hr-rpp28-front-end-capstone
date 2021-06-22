@@ -29,7 +29,7 @@ class OutfitList extends React.Component {
       axios.get(`relatedItems/products/?product_id=${parentId}`)
         .then((data) => {
           this.setState({
-            parentInfo: data,
+            parentInfo: data.data,
           });
         })
         .catch((err) => {
@@ -39,7 +39,7 @@ class OutfitList extends React.Component {
       axios.get(`relatedItems/products/?product_id=${parentId}&flag=styles`)
         .then((data) => {
           this.setState({
-            parentStyles: data
+            parentStyles: data.data
           });
         })
         .catch((err) => {
@@ -49,7 +49,7 @@ class OutfitList extends React.Component {
       axios.get('relatedItems/outfits')
         .then((data) => {
           this.setState({
-            outfits: data,
+            outfits: data.data,
             loaded: true,
           });
         })
@@ -86,7 +86,7 @@ class OutfitList extends React.Component {
         .then((data) => {
           console.log('data at OutfitList (post - need route created): ', data);
           this.setState({
-            outfits: data,
+            outfits: data.data,
             loaded: true,
           }, this.overflow);
         })
@@ -106,7 +106,7 @@ class OutfitList extends React.Component {
       axios.delete('relatedItems/interactions', { data: outfitToRemove })
         .then((data) => {
           console.log('data at OutfitList (delete - need route created): ', data);
-          if (data.length > 0) {
+          if (data.data.length > 0) {
             this.setState({
               outfits: data.data,
             });
@@ -182,7 +182,7 @@ class OutfitList extends React.Component {
           {loaded
             ? (
               <>
-                {outfits.data.map((outfit, idx) => {
+                {outfits.map((outfit, idx) => {
                   <OutfitSlide
                     key={idx}
                     outfit={outfit}

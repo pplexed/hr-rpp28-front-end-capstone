@@ -45,7 +45,7 @@ class RelatedItemSlide extends React.Component {
           productInfo: data.data,
           parentFeature: parentInfo.features,
           productFeature: data.data.features,
-          photoLoaded: this.state.photoLoaded++,
+          photoLoaded: this.state.photoLoaded + 1,
         });
       })
       .catch((err) => {
@@ -68,12 +68,12 @@ class RelatedItemSlide extends React.Component {
           });
           if (thumbnail === '') {
             this.setState({
-              photoLoaded: this.state.photoLoaded++,
+              photoLoaded: this.state.photoLoaded + 1,
               // Should there be a 'PHOTO NOT FOUND' gif
             });
           } else {
             this.setState({
-              photoLoaded: this.state.photoLoaded++,
+              photoLoaded: this.state.photoLoaded + 1,
               photoURL: thumbnail,
             });
           }
@@ -126,6 +126,7 @@ class RelatedItemSlide extends React.Component {
 
   newProduct() {
     const { product_id } = this.props;
+    console.log('Need newProduct logic here...');
     // Need some sort of event handler to handle changing to a new product
   }
 
@@ -145,12 +146,13 @@ class RelatedItemSlide extends React.Component {
     const sale = {
       color: salePrice ? 'red' : 'black',
       textDecoration: salePrice ? 'line-through' : 'none',
+      fonstSize: '15px',
     };
 
     const loadPhoto = {
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
-      // Should there be a default image for when images are loading?
+      backgroundImage: 'url("https://mk0wwwpoqcommervacts.kinstacdn.com/wp-content/uploads/2018/11/image3.gif")',
     };
 
     return (
@@ -171,7 +173,7 @@ class RelatedItemSlide extends React.Component {
                 <Image src={photoURL} alt={productInfo.name} />
               </ImageWrap>
               <ProductContentWrap style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrap>
-              <ProductContentWrap onClick={this.newProduct()} style={{ fontSize: '15px' }}>{productInfo.name}</ProductContentWrap>
+              <ProductContentWrap onClick={this.newProduct()} style={{ fontSize: '15px', fontWeight: 'bold' }}>{productInfo.name}</ProductContentWrap>
               <ProductContentWrap style={sale}>${productInfo.default_price}</ProductContentWrap>
               {salePrice ? <ProductContentWrap style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrap> : null}
               {salePrice ? <LowerBorderDiv /> : <BorderDiv />}

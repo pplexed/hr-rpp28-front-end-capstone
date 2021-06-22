@@ -29,9 +29,7 @@ const handleRequest = (query, callback) => {
   urlInfo.product_id = deconstructQuery(query.product_id);
   urlInfo.flag = deconstructQuery(query.flag);
 
-  console.log('built string ', urlInfo.product_id + urlInfo.flag);
   const axiosVar = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`;
-  console.log('Axios Var: ', axiosVar);
 
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`, {
     headers: {
@@ -62,7 +60,7 @@ router.get('/outfits', (req, res) => {
   res.send([1, 2, 3, 4]);
 });
 
-router.post('interactions', (req, res) => {
+router.post('/interactions', (req, res) => {
   console.log('In OufitList API call interactions');
   res.send();
 })
