@@ -71,7 +71,7 @@ router.get('/search/:searchterm', (req, res) => {
 router.get('/questions', (req, res) => {
   var builtPath = API_PATH + `questions/?product_id=${req.query.product_id}&page=1&count=10`;
 
-  axios.defaults.headers.common['Authorization'] = TOKEN;
+  // axios.defaults.headers.common['Authorization'] = TOKEN;
 
   axios.get(builtPath)
     .then((response) => {

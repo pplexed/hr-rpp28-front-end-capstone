@@ -4,7 +4,7 @@ import Overview from "overview-module";
 import QuestionAnswer from './components/questionanswer/questionanswer.jsx';
 import Reviews from './components/reviews/reviews.jsx';
 import Breakdown from './components/reviews/breakdown.jsx';
-import RelatedMain from './components/relatedItems/newRelatedItems/RelatedMain.jsx';
+import RelatedMain from './components/relatedItems/RelatedMain.jsx';
 import axios from 'axios';
 
 class App extends React.Component {

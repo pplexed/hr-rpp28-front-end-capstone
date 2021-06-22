@@ -36,7 +36,7 @@ const handleRequest = (query, callback) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`, {
     headers: {
       'User-Agent': 'request',
-      Authorization: TOKEN,
+      Authorization: TOKEN.TOKEN,
     },
   })
     .then((data) => {
@@ -56,5 +56,20 @@ router.get('/products', (req, res) => {
     }
   });
 });
+
+router.get('/outfits', (req, res) => {
+  console.log('In OutfitList API call outfits');
+  res.send([1, 2, 3, 4]);
+});
+
+router.post('interactions', (req, res) => {
+  console.log('In OufitList API call interactions');
+  res.send();
+})
+
+router.delete('/interactions', (req, res) => {
+  console.log('In OutfitLIst API call delete');
+  res.send();
+})
 
 module.exports = router;

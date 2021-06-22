@@ -36,7 +36,7 @@ class OutfitList extends React.Component {
           console.log('Error fetching parent product info OutfitList CDM: ', err);
         });
 
-      axios.get(`products/?product_id=${parentId}&flag=styles`)
+      axios.get(`relatedItems/products/?product_id=${parentId}&flag=styles`)
         .then((data) => {
           this.setState({
             parentStyles: data
@@ -46,7 +46,7 @@ class OutfitList extends React.Component {
           console.log('Error fetching product styles in OutfitList CDM: ', err);
         });
 
-      axios.get('relatedItems/outfit')
+      axios.get('relatedItems/outfits')
         .then((data) => {
           this.setState({
             outfits: data,
@@ -54,7 +54,7 @@ class OutfitList extends React.Component {
           });
         })
         .catch((err) => {
-          console.log('Error fetching outfit info in OutfitLIst CDM: ', err);
+          console.log('Error fetching outfit info in OutfitList CDM: ', err);
         });
     }
   }
@@ -108,11 +108,11 @@ class OutfitList extends React.Component {
           console.log('data at OutfitList (delete - need route created): ', data);
           if (data.length > 0) {
             this.setState({
-              outfits:data,
+              outfits: data.data,
             });
           } else {
             this.setState({
-                outfits: data,
+                outfits: data.data,
                 loaded: false,
             });
           }
@@ -163,6 +163,7 @@ class OutfitList extends React.Component {
 
   render() {
     const { outfits, showScrollLeft, showScrollRight, loaded } = this.state;
+    console.log('outfits: ', outfits);
     return (
       <>
         {showScrollRight ? (
@@ -181,8 +182,8 @@ class OutfitList extends React.Component {
           {loaded
             ? (
               <>
-                {outfits.map((outfit, idx) => {
-                  <OutfitCard
+                {outfits.data.map((outfit, idx) => {
+                  <OutfitSlide
                     key={idx}
                     outfit={outfit}
                     removeOutfit={this.removeOutfit}
