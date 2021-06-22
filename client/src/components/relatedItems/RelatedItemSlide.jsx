@@ -8,10 +8,8 @@ class RelatedItemSlide extends React.Component {
   constructor(props) {
     super(props);
 
-    const { parentInfo } = this.props;
-
     this.state = {
-      parentData: parentInfo,
+      parentData: this.props.parentInfo,
       productInfo: '',
       photoURL: '',
       photoLoaded: 0,
@@ -88,13 +86,12 @@ class RelatedItemSlide extends React.Component {
   compareFeatures(parentFeature, productFeature) {
     const compare = {};
 
-    // Traversing through parentFeature array and setting a property to compare obj with name of feature as key and value or '-' for null
     parentFeature.forEach((item) => {
       if (!compare[item.feature]) {
         if (item.value === null) {
-          compare[item.feature] = '-';
+          compare[item.feature] = ['N/A'];
         } else {
-          compare[item.feature] = item.value;
+          compare[item.feature] = [item.value];
         }
       }
     });
@@ -103,13 +100,13 @@ class RelatedItemSlide extends React.Component {
       if (!compare[item.feature]) {
         if (item.value === null) {
           compare[item.feature] = [];
-          compare[item.feature][1] = '-';
+          compare[item.feature][1] = 'N/A';
         } else {
           compare[item.feature] = [];
           compare[item.feature][1] = item.value;
         }
       } else if (item.value === null) {
-        compare[item.feature][1] = '-';
+        compare[item.feature][1] = 'N/A';
       } else {
         compare[item.feature][1] = item.value;
       }
@@ -119,8 +116,16 @@ class RelatedItemSlide extends React.Component {
     const keys = Object.keys(compare);
     const compareArray = [];
 
+    console.log('CompareArray RIS: ', compareArray);
+
     for (let i = 0; i < keys.length; i++) {
-      compareArray.push(values[i][0], keys[0], values[i][1]);
+      if (values[i][0] === undefined) {
+        values[i][0] = 'N/A';
+      }
+      if (values[i][1] === undefined) {
+        values[i][1] = 'N/A';
+      }
+      compareArray.push(values[i][0], keys[i], values[i][1]);
     }
 
     this.setState({

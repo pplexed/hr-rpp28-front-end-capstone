@@ -36,7 +36,7 @@ class OutfitSlide extends React.Component {
       this.setState({
         productInfo: outfit.info,
         productStyles: outfit.styles,
-        loaded: this.state.loaded++,
+        loaded: this.state.loaded + 1,
         // Default photo if no photo available?
       });
     } else {
@@ -44,7 +44,7 @@ class OutfitSlide extends React.Component {
         productInfo: outfit.info,
         productStyles: outfit.styles,
         photoURL: thumbnailURL,
-        loaded: this.state.loaded++,
+        loaded: this.state.loaded + 1,
       });
     }
   }
@@ -75,7 +75,7 @@ class OutfitSlide extends React.Component {
         {loaded === 1 && (
           <CardWrap>
             <ButtonWrap>
-              <DeleteButton
+              <RemoveButton
                 onClick={this.removeOutift}
                 aria-label="Remove item from outfit"
               />

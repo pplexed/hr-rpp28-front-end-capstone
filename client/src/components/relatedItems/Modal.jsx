@@ -10,6 +10,10 @@ const Modal = (props) => {
     props.close();
   };
 
+  console.log('ParentName Modal: ', parentName);
+  console.log('compareName Modal: ', compareName);
+  console.log('compareFeatures Modal: ', compareFeatures);
+
   return (
     <ModalWrap className="modal" onClick={closeWindow}>
       <div className="modal_content" onClick={(e) => e.stop()}>
@@ -23,7 +27,7 @@ const Modal = (props) => {
         <CompareWrapper>
           {compareFeatures.map((feature, idx) => {
             if (feature) {
-              if (feature[0] ==='') {
+              if (feature[0] ===' ') {
                 const outputFeature = feature.substring(1, feature.length - 1);
                 return <CompareDiv key={idx}>{outputFeature}</CompareDiv>;
               }
