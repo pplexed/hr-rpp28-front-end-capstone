@@ -6,7 +6,7 @@ const Modal = (props) => {
   console.log('Modal props:', props);
 
   const closeWindow = (e) => {
-    e.stop();
+    e.stopPropagation();
     props.close();
   };
 

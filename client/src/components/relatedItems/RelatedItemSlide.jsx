@@ -87,30 +87,31 @@ class RelatedItemSlide extends React.Component {
 
   compareFeatures(parentFeature, productFeature) {
     const compare = {};
-    console.log('ParentFeature: ', parentFeature);
-    console.log('ProductFeature: ', productFeature);
 
-    parentFeature.forEach((feature) => {
-      if (feature.value === null) {
-        compare[feature.feature] = '-';
-      } else {
-        compare[feature.feature] = feature.value;
+    // Traversing through parentFeature array and setting a property to compare obj with name of feature as key and value or '-' for null
+    parentFeature.forEach((item) => {
+      if (!compare[item.feature]) {
+        if (item.value === null) {
+          compare[item.feature] = '-';
+        } else {
+          compare[item.feature] = item.value;
+        }
       }
     });
 
-    productFeature.forEach((feature) => {
-      if (!compare[feature.feature]) {
-        if (feature.value === null) {
-          compare[feature.feature] = [];
-          compare[feature.feature][1] = '-';
+    productFeature.forEach((item) => {
+      if (!compare[item.feature]) {
+        if (item.value === null) {
+          compare[item.feature] = [];
+          compare[item.feature][1] = '-';
         } else {
-          compare[feature.feature] = [];
-          compare[feature.feature][1] = feature.value;
+          compare[item.feature] = [];
+          compare[item.feature][1] = item.value;
         }
-      } else if (feature.value === null) {
-        compare[feature.feature][1] = '-';
+      } else if (item.value === null) {
+        compare[item.feature][1] = '-';
       } else {
-        compare[feature.feature][1] = feature.value;
+        compare[item.feature][1] = item.value;
       }
     });
 
