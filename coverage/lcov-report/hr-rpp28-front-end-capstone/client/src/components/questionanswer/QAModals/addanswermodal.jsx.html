@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>0/47</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>0/47</span>
             </div>
         
             
@@ -326,8 +326,7 @@
 <a name='L267'></a><a href='#L267'>267</a>
 <a name='L268'></a><a href='#L268'>268</a>
 <a name='L269'></a><a href='#L269'>269</a>
-<a name='L270'></a><a href='#L270'>270</a>
-<a name='L271'></a><a href='#L271'>271</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L270'></a><a href='#L270'>270</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -458,15 +457,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<<<<<<< HEAD
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-=======
-<span class="cline-any cline-no">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -493,26 +484,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-=======
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -717,11 +696,7 @@ class AddAnswerModal extends React.Component {
       nicknameIsInvalid: false,
       emailIsInvalid: false,
       answerbodyIsInvalid: false,
-<<<<<<< HEAD
-&nbsp;
-=======
       emailFormatValid: true,
->>>>>>> main
     };
   }
 &nbsp;
@@ -751,15 +726,7 @@ class AddAnswerModal extends React.Component {
       }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      validateTest = validateTest &amp;&amp; emailtest;</span>
-<<<<<<< HEAD
-    }
-&nbsp;
-    //validate email here
-<span class="cstat-no" title="statement not covered" >    if (!emailField) {</span>
-      // console.log('Invalid Email Entered');
-=======
 <span class="cstat-no" title="statement not covered" >      this.setState({emailFormatValid: emailtest});</span>
->>>>>>> main
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return validateTest;</span>
@@ -780,11 +747,6 @@ class AddAnswerModal extends React.Component {
       })
       .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
         // console.log('answer submitted returned with', response.data);
-<<<<<<< HEAD
-&nbsp;
-=======
-        
->>>>>>> main
 &nbsp;
       })
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
@@ -799,13 +761,8 @@ class AddAnswerModal extends React.Component {
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ch</span>angeHandler(e) {
 <span class="cstat-no" title="statement not covered" >     this.setState({[e.target.name]: e.target.value});</span>
-<<<<<<< HEAD
-    //  console.log(`change handler fired! value: ${e.target.value}`);
-&nbsp;
-=======
      // console.log(`change handler fired! value: ${e.target.value}`);
-     
->>>>>>> main
+&nbsp;
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  cl</span>ickHandlerNickname(e) {
@@ -844,9 +801,9 @@ class AddAnswerModal extends React.Component {
 &nbsp;
     // no email message takes priority over improperly formatted email address
 <span class="cstat-no" title="statement not covered" >    if (this.state.emailIsInvalid) {</span>
-<span class="cstat-no" title="statement not covered" >      emailAlertMessage = &lt;div style={alertstyle}&gt;You must enter an e-mail address&lt;/div&gt; </span>
-    } 
-                
+<span class="cstat-no" title="statement not covered" >      emailAlertMessage = &lt;div style={alertstyle}&gt;You must enter an e-mail address&lt;/div&gt;</span>
+    }
+&nbsp;
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
@@ -868,8 +825,8 @@ class AddAnswerModal extends React.Component {
 &nbsp;
                 {this.state.answerbodyIsInvalid ?  &lt;div style={alertstyle}&gt;You must enter an answer&lt;/div&gt; : &lt;div&gt;&lt;/div&gt;}
 &nbsp;
-                &lt;textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}&gt;
-                &lt;/textarea&gt;
+                &lt;label&gt;answerbodylabel&lt;textarea rows='10' cols='50' name='answerbody' onChange={this.changeHandler.bind(this)}&gt;
+                &lt;/textarea&gt;&lt;/label&gt;
 &nbsp;
                 &lt;div&gt;What is your Nickname? &lt;/div&gt;
 &nbsp;
@@ -879,15 +836,10 @@ class AddAnswerModal extends React.Component {
                 &lt;br&gt;&lt;/br&gt;
 &nbsp;
                 &lt;div&gt;Your E-mail&lt;/div&gt;
-<<<<<<< HEAD
-                {this.state.emailIsInvalid ?  &lt;div style={alertstyle}&gt;You must enter an e-mail address&lt;/div&gt; : &lt;div&gt;&lt;/div&gt;}
-&nbsp;
-=======
 &nbsp;
                 {emailAlertMessage}
                 {/* {this.state.emailIsInvalid ?  &lt;div style={alertstyle}&gt;You must enter an e-mail address&lt;/div&gt; : &lt;div&gt;&lt;/div&gt;}
                  */}
->>>>>>> main
                 &lt;input type='text' onClick={this.clickHandlerEmail.bind(this)} maxLength='60' name='email' value={this.state.email} onChange={this.changeHandler.bind(this)}&gt;&lt;/input&gt;
                 &lt;br&gt;&lt;/br&gt;
                 &lt;br&gt;&lt;/br&gt;
@@ -919,11 +871,7 @@ export default AddAnswerModal;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
-=======
-                at Wed Jun 16 2021 23:20:23 GMT-0400 (Eastern Daylight Time)
->>>>>>> main
+                at Mon Jun 21 2021 16:27:46 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>

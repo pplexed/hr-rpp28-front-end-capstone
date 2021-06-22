@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
@@ -159,10 +159,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-no">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,8 +224,8 @@ class SingleAnswerBar extends React.Component {
 <span class="cstat-no" title="statement not covered" >    this.state = {</span>
       answer: '',
       reported: false,
-    }; 
-  
+    };
+&nbsp;
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
@@ -239,23 +236,15 @@ class SingleAnswerBar extends React.Component {
   handleHelpful = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ev</span>ent =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    axios.put(`http://localhost:3000/qa/answers/${this.state.answer.id}/helpful`)</span>
     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-<<<<<<< HEAD
-      // console.log('helpful clicked, sent to server, returned with', response);
-=======
       // console.log('helpful clicked, sent to server, returned with', response.data);
 <span class="cstat-no" title="statement not covered" >      this.props.reloadQuestionAnswer();</span>
->>>>>>> main
     })
   }
 &nbsp;
   handleReport = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ev</span>ent =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    axios.put(`http://localhost:3000/qa/answers/${this.state.answer.id}/report`)</span>
     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-<<<<<<< HEAD
-      // console.log('report clicked, sent to server, returned with', response);
-=======
       // console.log('report clicked, sent to server, returned with', response.data);
->>>>>>> main
 <span class="cstat-no" title="statement not covered" >      this.setState({reported: true});</span>
     })
   }
@@ -269,41 +258,20 @@ class SingleAnswerBar extends React.Component {
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div&gt;
         -------------------
-<<<<<<< HEAD
-        &lt;div&gt;A: {this.state.body} &lt;/div&gt;
+        &lt;div&gt;A: {this.state.answer.body} &lt;/div&gt;
 &nbsp;
-&nbsp;
-        &lt;div&gt;
-            &lt;span&gt;By {this.state.answerer_name}, {this.state.date.substring(0,10)}  &lt;/span&gt;
-&nbsp;
-&nbsp;
-            &lt;span&gt;| helpful? &lt;/span&gt;
-            &lt;span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}&gt;Yes({this.state.helpfulness})&lt;/span&gt;
-            &lt;span&gt; | &lt;/span&gt;
-            {this.state.reported ? reportedTag : notReportedTag}
-&nbsp;
-        &lt;/div&gt;
-&nbsp;
-        &lt;div&gt;
-          &lt;Photobar photos={this.state.photos}/&gt;
-        &lt;/div&gt;
-&nbsp;
-=======
-        &lt;div&gt;A: {this.state.answer.body} &lt;/div&gt;    
-               
         &lt;div&gt;
             &lt;span&gt;By {this.props.answer.answerer_name}, {date}  &lt;/span&gt;
-           
+&nbsp;
             &lt;span&gt;| helpful? &lt;/span&gt;
-            &lt;span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}&gt;Yes({this.props.answer.helpfulness})&lt;/span&gt;  
+            &lt;span id='helpfulanswer' onClick={this.handleHelpful.bind(this)}&gt;Yes({this.props.answer.helpfulness})&lt;/span&gt;
             &lt;span&gt; | &lt;/span&gt;
             {this.state.reported ? reportedTag : notReportedTag}
-           
-        &lt;/div&gt; 
+&nbsp;
+        &lt;/div&gt;
         &lt;div&gt;
           &lt;Photobar photos={this.state.answer.photos}/&gt;
-        &lt;/div&gt; 
->>>>>>> main
+        &lt;/div&gt;
       &lt;/div&gt;
     )
   }
@@ -312,11 +280,11 @@ class SingleAnswerBar extends React.Component {
 export default SingleAnswerBar;
 &nbsp;
 //note to self, the original code:
-// {this.state.answer.date.substring(0,10)} broke everything after i changed 
+// {this.state.answer.date.substring(0,10)} broke everything after i changed
 // this.state = {
 //   answer: '',
 //   reported: false,
-// }; 
+// };
 &nbsp;
 // apparent at this initial rendering in the lifecycle, this.state.answer.date.substring is not yet available as a method.
 // therefore calling this.state.answer.date = 'STRING'; in componentdidmount is not "soon enough" because that is called only if
@@ -330,11 +298,7 @@ export default SingleAnswerBar;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
-=======
-                at Wed Jun 16 2021 23:20:23 GMT-0400 (Eastern Daylight Time)
->>>>>>> main
+                at Mon Jun 21 2021 16:27:46 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>

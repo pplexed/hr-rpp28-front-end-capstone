@@ -23,13 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-<<<<<<< HEAD
-                <span class='fraction'>0/7</span>
-=======
-                <span class='fraction'>0/9</span>
->>>>>>> main
+                <span class='fraction'>3/9</span>
             </div>
         
             
@@ -41,20 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Lines</span>
-<<<<<<< HEAD
-                <span class='fraction'>0/7</span>
-=======
-                <span class='fraction'>0/9</span>
->>>>>>> main
+                <span class='fraction'>3/9</span>
             </div>
         
             
@@ -122,8 +114,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,10 +133,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
 <span class="cline-any cline-no">&nbsp;</span>
->>>>>>> main
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,7 +151,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,9 +165,9 @@
 import axios from 'axios';
 &nbsp;
 class SearchQuestionBar extends React.Component {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
-<span class="cstat-no" title="statement not covered" >    super(props);</span>
-<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+  constructor(props) {
+    super(props);
+    this.state = {
       inputField: 'Have a question? Search for answers…',
       initialLoad: true,
     };
@@ -187,13 +176,6 @@ class SearchQuestionBar extends React.Component {
 <span class="fstat-no" title="function not covered" >  up</span>datedInput(e) {
 <span class="cstat-no" title="statement not covered" >    this.setState({ inputField: e.target.value });</span>
 &nbsp;
-<<<<<<< HEAD
-<span class="cstat-no" title="statement not covered" >    if (this.state.inputField.length &gt; 1) {</span>
-<span class="cstat-no" title="statement not covered" >      axios.get(`http://localhost:3000/qa/search/${this.state.inputField}`)</span>
-        .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-          // console.log('response: ', response);
-        });
-=======
 <span class="cstat-no" title="statement not covered" >    if (this.state.inputField.length &gt;= 2) {</span>
       // axios.get(`http://localhost:3000/qa/search/${this.state.inputField}`)
       //   .then((response) =&gt; {
@@ -204,25 +186,24 @@ class SearchQuestionBar extends React.Component {
     }
     else { //if the inputfield is less than 2, we should fire off the sort by searching with a blank term.
 <span class="cstat-no" title="statement not covered" >      this.props.sortBySearch('');</span>
->>>>>>> main
     }
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  cl</span>ickHandler() {
 &nbsp;
-    // I only want it to clear the input field at the initial load with the default text.  
+    // I only want it to clear the input field at the initial load with the default text.
     //other wise, it should do nothing
 <span class="cstat-no" title="statement not covered" >    if (this.state.initialLoad) {</span>
-<span class="cstat-no" title="statement not covered" >      this.setState({ </span>
+<span class="cstat-no" title="statement not covered" >      this.setState({</span>
         inputField: '' ,
         initialLoad: false,
       });
-    }     
-    
+    }
+&nbsp;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  render() {
+    return (
       &lt;div&gt;Search Question
         &lt;form name='questionsearchbar'&gt;
           &lt;input type='text' onClick={this.clickHandler.bind(this)} onInput={this.updatedInput.bind(this)} className="questionfield" value={this.state.inputField}&gt;&lt;/input&gt;
@@ -239,11 +220,7 @@ export default SearchQuestionBar;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Jun 16 2021 20:14:15 GMT-0700 (Pacific Daylight Time)
-=======
-                at Wed Jun 16 2021 23:20:23 GMT-0400 (Eastern Daylight Time)
->>>>>>> main
+                at Mon Jun 21 2021 16:27:46 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>

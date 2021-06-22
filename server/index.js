@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes.js');
+const cors = require('cors');
 
 
 var RIroutes = require('./routes/relatedItems_routes.js');
@@ -12,7 +13,7 @@ var QAroutes = require('./routes/QA_routes.js');
 
 const PORT = 3000;
 
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./client/dist'));
