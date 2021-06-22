@@ -4,7 +4,7 @@ import Overview from "overview-module";
 import QuestionAnswer from './components/questionanswer/questionanswer.jsx';
 import Reviews from './components/reviews/reviews.jsx';
 import Breakdown from './components/reviews/breakdown.jsx';
-import RelatedItemsModule from './components/relatedItems/relatedItemsModule.jsx';
+import RelatedMain from './components/relatedItems/newRelatedItems/RelatedMain.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -47,18 +47,19 @@ class App extends React.Component {
     // this.reviews()
 
   }
+
   render () {
     return (
       <div>
         <h1>FEC React Main App</h1>
         <Overview apiIP={"http://3.21.164.220"} productId={1}/>
         <br></br>
-        {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
+        {<RelatedMain product_id='22134'/> /* Need to pass this.state.currentProductId */}
         <br></br>
         <br></br>
         Ratings and Reviews
         <div><Reviews /></div>
-        <QuestionAnswer currentProduct={this.state.defaultProduct}/>
+         <QuestionAnswer currentProduct={this.state.secondProduct}/>
       </div>
     );
 

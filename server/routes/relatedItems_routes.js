@@ -3,8 +3,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const axios = require('axios');
-const token = require('../../config.js');
-
+const TOKEN = require('../../config.js');
 
 const router = express.Router();
 
@@ -12,55 +11,50 @@ router.use(fileUpload());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
-const product_id = 22134;
+// const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp';
+// const product_id = 22134;
 
-router.get('/relatedItems', (req, res) => {
-  // Turn this line on when app goes live
-  // const builtUrl = url + `/products/${req.data.product_id}/related`;
+const deconstructQuery = (input, flag = '') => {
+  if (input === undefined) {
+    return '';
+  }
+  if (flag) {
+    return `${flag}=${input}`;
+  }
+  return `/${input}`;
+};
 
-  // Turn this line off when app goes live
-  var itemData = {};
-  const builtUrl = url + `/products/${product_id}/related`;
+const handleRequest = (query, callback) => {
+  const urlInfo = {};
+  urlInfo.product_id = deconstructQuery(query.product_id);
+  urlInfo.flag = deconstructQuery(query.flag);
 
-  const options = {
-    method: 'get',
-    url: builtUrl,
-    headers: token.AUTH,
-  };
-  axios.defaults.headers.common['Authorization'] = token.TOKEN;
+  console.log('built string ', urlInfo.product_id + urlInfo.flag);
+  const axiosVar = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`;
+  console.log('Axios Var: ', axiosVar);
 
-  axios(options)
-    .then(({ data }) => {
-      return (
-        Promise.all(data.map((id) => {
-          return axios(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${id}`)
-            .then(({ data }) => {
-              return itemData[data.id] = data;
-            });
-        }))
-      );
-    }).then((itemData) => {
-      res.send(itemData);
-    }).catch((err) => {
-      console.log(err);
-    });
-//NON-API Photo upload Logic (TomHo)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.product_id + urlInfo.flag}`, {
+    headers: {
+      'User-Agent': 'request',
+      Authorization: TOKEN,
+    },
+  })
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err, null);
+    })
+};
 
-
-// router.post('/uploadphoto', (req, res) => {
-//   console.log('upload post received');
-
-//   // console.log(Object.keys(req.files));
-
-//   if (req.files.answerpic) {
-//     fs.writeFile(`./client/dist/${req.files.answerpic.name}`, req.files.answerpic.data, function(err) {
-//       if(err) {
-//         return console.log(err);
-//       }
-//       console.log("The file was saved!");
-//       res.send(`http://localhost:3000/${req.files.answerpic.name}`);
-//     });
+router.get('/products', (req, res) => {
+  handleRequest(req.query, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 module.exports = router;

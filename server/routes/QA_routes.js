@@ -7,7 +7,7 @@ const fs = require('fs');
 const axios = require('axios');
 
 const QA_RouteConfig = require('../../config.js');
-const TOKEN = QA_RouteConfig.AUTH.Authorization;
+// const TOKEN = QA_RouteConfig.AUTH.Authorization;
 const AUTH_HEADER = QA_RouteConfig.AUTH;
 const API_PATH = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/';
 
