@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Stars from './starsrating.jsx';
 import Chars from './reviews-add-characteristics.jsx';
+import ReviewPhotos from './reviews-add-photos.jsx';
 import axios from 'axios';
 
 
@@ -47,7 +48,6 @@ class AddReview extends React.Component {
       reviewBodyRemaining: remaining,
       reviewBody: body
     });
-    console.log('thsi should show: ', remaining);
   }
 
   render() {
@@ -57,7 +57,7 @@ class AddReview extends React.Component {
         <div id="addReview" className="modal">
           <div className="modal-content-addReview">
             <span className="close-addReview" onClick={this.closeModal}>&times;</span>
-            <form>
+            {/* <form> */}
               <h1>Write your Review</h1>
               <p>About the Product Name here</p>
               <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
@@ -87,7 +87,7 @@ class AddReview extends React.Component {
                     <strong><abbr title="required">*</abbr></strong>
                   </label>
                     <Stars starpicker={this.chosenStars} rating={this.state.rating} />
-                    <p>Poor</p>
+
                 </p>
                 <p>
                   <label htmlFor="recommend">
@@ -128,15 +128,12 @@ class AddReview extends React.Component {
                 </p>
                 <p className={this.state.reviewBodyRemaining > 0 ? null : "product-hidden"}>Minimum required characters left: {this.state.reviewBodyRemaining}</p>
                 <p className={this.state.reviewBodyRemaining <= 0 ? null :  "product-hidden"}>Minimum reached</p>
-                <p>
-                  <label htmlFor="photos">
-                    <span>Upload Photos</span>
-                  </label>
-                    <input type="file" id="photos" name="photos" />
-                </p>
+
+                  <ReviewPhotos />
+
               </section>
               <input type="submit" value="Submit"></input>
-            </form>
+            {/* </form> */}
           </div>
         </div>
       </span>

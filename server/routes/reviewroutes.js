@@ -6,7 +6,7 @@ const fs = require('fs');
 const axios = require('axios');
 const token = require('../../config.js')
 const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22161&count=2'
-const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22147'
+const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22123'
 
 // default options as middleware
 router.use(fileUpload());
@@ -20,7 +20,7 @@ const options = {
 }
 
 router.get('/review-product', (req, res) => {
-  console.log('this is the req should see 30:', req)
+
   getReviews(req.query.count, (err, data) => {
     if (err) {
       // console.log(err);
@@ -41,6 +41,34 @@ router.get('/breakdown', (req, res) => {
     }
   });
 });
+
+
+router.post('/uploadphoto', (req, res) => {
+  // console.log('upload post received');
+
+  // console.log(Object.keys(req.files));
+  console.log(req)
+
+  if (req.files.photo) {
+    fs.writeFile(`./client/dist/${req.files.photo.name}`, req.files.photo.data, (err) => {
+      if (err) {
+        // return console.log(err);
+      }
+    //  console.log('The file was saved!');
+
+      res.send('hey we made it this far');
+    });
+  }
+});
+
+
+
+
+
+
+
+
+
 
 
 
