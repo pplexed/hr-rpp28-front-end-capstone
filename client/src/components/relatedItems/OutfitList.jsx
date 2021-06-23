@@ -129,8 +129,8 @@ class OutfitList extends React.Component {
     });
     const car = document.getElementById('outifts');
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    car.scrollLeft += 300;
-    if (car.scrollLeft <= remainingSpace - 300) {
+    car.scrollLeft += 325;
+    if (car.scrollLeft <= remainingSpace - 325) {
       this.setState({
         showScrollRight: false,
       });
@@ -143,8 +143,8 @@ class OutfitList extends React.Component {
     });
     const car = document.getElementById('outfits');
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    car.scrollLeft -= 300;
-    if (car.scrollLeft >= remainingSpace - 300) {
+    car.scrollLeft -= 325;
+    if (car.scrollLeft >= remainingSpace - 325) {
       this.setState({
         showScrollRight: false,
       });

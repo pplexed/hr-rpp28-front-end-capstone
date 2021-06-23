@@ -3,16 +3,11 @@ import styled from 'styled-components';
 
 const Modal = (props) => {
   const { parentName, compareName, compareFeatures } = props;
-  console.log('Modal props:', props);
 
   const closeWindow = (e) => {
     e.stopPropagation();
     props.close();
   };
-
-  console.log('ParentName Modal: ', parentName);
-  console.log('compareName Modal: ', compareName);
-  console.log('compareFeatures Modal: ', compareFeatures);
 
   return (
     <ModalWrap className="modal" onClick={closeWindow}>
@@ -27,7 +22,7 @@ const Modal = (props) => {
         <CompareWrapper>
           {compareFeatures.map((feature, idx) => {
             if (feature) {
-              if (feature[0] ===' ') {
+              if (feature[0] === '') {
                 const outputFeature = feature.substring(1, feature.length - 1);
                 return <CompareDiv key={idx}>{outputFeature}</CompareDiv>;
               }
@@ -81,7 +76,6 @@ justify-content: center;
 align-items: center;
 padding: 10px;
 border: 1px solid black;
-border-radius: 20px;
 overflow: auto;
 `;
 
@@ -119,4 +113,5 @@ const ProductTitle = styled.div`
   font-size: 17px;
   border-bottom: 1px solid grey;
   margin-bottom: 13px;
+  font-weight: bold;
 `;

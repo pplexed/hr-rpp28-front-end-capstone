@@ -9,6 +9,7 @@ class RelatedMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productId: this.props.productId,
       relatedProducts: [],
     };
     this.getRelatedIds = this.getRelatedIds.bind(this);
@@ -19,8 +20,9 @@ class RelatedMain extends React.Component {
   }
 
   getRelatedIds() {
-    const product_id = 22134;
-    axios.get(`relatedItems/products/?product_id=${product_id}&flag=related`)
+    // const productId = 22134;
+    const { productId } = this.props;
+    axios.get(`relatedItems/products/?productId=${productId}&flag=related`)
       .then((relatedIds) => {
         this.setState({
           relatedProducts: relatedIds.data,
@@ -33,7 +35,7 @@ class RelatedMain extends React.Component {
 
   render() {
     const { relatedProducts } = this.state;
-    const { product_id } = this.props;
+    const { productId, updateProduct } = this.props;
     return (
       <RelatedModuleWrap id="relatedModuleWrap">
         <div>
@@ -41,8 +43,9 @@ class RelatedMain extends React.Component {
         </div>
         <ListWrap>
           <RelatedItemsList
-            product_id={product_id}
+            productId={productId}
             relatedProducts={relatedProducts}
+            updateProduct={updateProduct}
           />
         </ListWrap>
         <div>
@@ -50,7 +53,7 @@ class RelatedMain extends React.Component {
         </div>
         <ListWrap>
           <OutfitList
-            parentId={product_id}
+            parentId={productId}
           />
         </ListWrap>
       </RelatedModuleWrap>

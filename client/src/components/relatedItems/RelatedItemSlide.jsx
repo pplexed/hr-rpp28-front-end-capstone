@@ -3,6 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Modal from './Modal.jsx';
 // Star Rating and average rating import or logic
+import Ratings from '../reviews/breakdown-rating.jsx';
+import Reviews from '../reviews/reviews.jsx';
 
 class RelatedItemSlide extends React.Component {
   constructor(props) {
@@ -36,8 +38,8 @@ class RelatedItemSlide extends React.Component {
   }
 
   getData() {
-    const { product_id, parentInfo } = this.props;
-    axios.get(`/relatedItems/products/?product_id=${product_id}`)
+    const { productId, parentInfo } = this.props;
+    axios.get(`/relatedItems/products/?productId=${productId}`)
       .then((data) => {
         this.setState({
           productInfo: data.data,
@@ -50,7 +52,7 @@ class RelatedItemSlide extends React.Component {
         console.log('Error fetching product info for RelatedItemSlide: ', err);
       });
 
-    axios.get(`relatedItems/products/?product_id=${product_id}&flag=styles`)
+    axios.get(`relatedItems/products/?productId=${productId}&flag=styles`)
       .then((data) => {
         let thumbnail = '';
         const mainProductDescription = data.data.results.find((product) => product['default?'] === true);
@@ -116,8 +118,6 @@ class RelatedItemSlide extends React.Component {
     const keys = Object.keys(compare);
     const compareArray = [];
 
-    console.log('CompareArray RIS: ', compareArray);
-
     for (let i = 0; i < keys.length; i++) {
       if (values[i][0] === undefined) {
         values[i][0] = 'N/A';
@@ -134,9 +134,10 @@ class RelatedItemSlide extends React.Component {
   }
 
   newProduct() {
-    const { product_id } = this.props;
-    console.log('Need newProduct logic here...');
-    // Need some sort of event handler to handle changing to a new product
+    const { productId, updateProduct } = this.props;
+    // updateProduct(productId); // <-------------------------------------------------This line is breaking the app
+    console.log('productId (should start as 22161 Adele 300 Shoes and turn to 22939 Pablo Sweatpants when clicking the first box', productId);
+    console.log('^^^ This should not be showing up until an image is clicked from within RelatedItemSlide render. Line 179 seems to be calling the functionon its own ^^^');
   }
 
   render() {
@@ -173,8 +174,8 @@ class RelatedItemSlide extends React.Component {
             <SlideContainer>
               <ButtonWrap>
                 <CompareButton
-                  onClick={this.handleModalClick}
                   className="fa fa-star"
+                  onClick={this.handleModalClick}
                 />
               </ButtonWrap>
               <ImageWrap onClick={this.newProduct}>

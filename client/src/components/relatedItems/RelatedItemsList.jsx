@@ -21,8 +21,8 @@ class RelatedProductList extends React.Component {
   }
 
   componentDidMount() {
-    const { product_id } = this.props;
-    axios.get(`relatedItems/products/?product_id=${product_id}`)
+    const { productId } = this.props;
+    axios.get(`relatedItems/products/?productId=${productId}`)
       .then((parentData) => {
         this.setState({
           parentInfo: parentData.data,
@@ -38,8 +38,8 @@ class RelatedProductList extends React.Component {
       showScrollRight: true,
     });
     let car = document.getElementById('productCarousel');
-    car -= 300;
-    if (car.scrollLeft <= 300) {
+    car -= 325;
+    if (car.scrollLeft <= 325) {
       this.setState({
         showScrollLeft: false,
       });
@@ -51,9 +51,9 @@ class RelatedProductList extends React.Component {
       showScrollLeft: true,
     });
     let car = document.getElementById('productCarousel');
-    car += 300;
+    car += 325;
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    if (car.scrollLeft >= remainingSpace - 300) {
+    if (car.scrollLeft >= remainingSpace - 325) {
       this.setState({
         showScrollRight: false,
       });
@@ -70,7 +70,7 @@ class RelatedProductList extends React.Component {
   }
 
   render() {
-    const { relatedProducts, product_id } = this.props;
+    const { relatedProducts, productId } = this.props;
     const { parentInfo, showScrollLeft, showScrollRight } = this.state;
     return (
       <div>
@@ -85,10 +85,11 @@ class RelatedProductList extends React.Component {
         <ListContainer id="productCarousel" onLoad={this.overflow}>
           {relatedProducts.map((data) => (
             <RelatedItemSlide
-              key={product_id}
-              product_id={data}
-              parent_id={product_id}
+              key={productId}
+              productId={data}
+              parent_id={productId}
               parentInfo={parentInfo}
+              updateProduct={this.props.updateProduct}
             />
           ))}
         </ListContainer>
