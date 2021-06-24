@@ -52,12 +52,12 @@ class App extends React.Component {
   }
 
   updateProduct(productId) {
-    axios.get(`/reviews/?product_id=${productID}/getMeta`)
+    axios.get(`/reviews/?product_id=${productId}/getMeta`)
       .then((results) => {
         console.log('results in index.js updateProduct', results);
         this.setState({
           metaData: results.data,
-          productID,
+          productId,
         });
       })
       .catch((err) => {

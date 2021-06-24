@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Modal from './Modal.jsx';
 // Star Rating and average rating import or logic
 import Ratings from '../reviews/breakdown-rating.jsx';
-import Reviews from '../reviews/reviews.jsx';
+import Stars from '../reviews/starsrating.jsx';
 
 class RelatedItemSlide extends React.Component {
   constructor(props) {
@@ -135,9 +135,7 @@ class RelatedItemSlide extends React.Component {
 
   newProduct() {
     const { productId, updateProduct } = this.props;
-    // updateProduct(productId); // <-------------------------------------------------This line is breaking the app
-    console.log('productId (should start as 22161 Adele 300 Shoes and turn to 22939 Pablo Sweatpants when clicking the first box', productId);
-    console.log('^^^ This should not be showing up until an image is clicked from within RelatedItemSlide render. Line 179 seems to be calling the functionon its own ^^^');
+    updateProduct(productId); // <-------------------------------------------------This line is breaking the app
   }
 
   render() {
@@ -184,6 +182,9 @@ class RelatedItemSlide extends React.Component {
               <ProductContentWrap style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrap>
               <ProductContentWrap onClick={this.newProduct()} style={{ fontSize: '15px', fontWeight: 'bold' }}>{productInfo.name}</ProductContentWrap>
               <ProductContentWrap style={sale}>${productInfo.default_price}</ProductContentWrap>
+              <div className="stars-noclick">
+                <Stars />
+              </div>
               {salePrice ? <ProductContentWrap style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrap> : null}
               {salePrice ? <LowerBorderDiv /> : <BorderDiv />}
             </SlideContainer>
