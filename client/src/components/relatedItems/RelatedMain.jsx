@@ -27,6 +27,7 @@ class RelatedMain extends React.Component {
         this.setState({
           relatedProducts: relatedIds.data,
         });
+
       })
       .catch((err) => {
         console.log('Error fetching Related Product IDs: ', err);

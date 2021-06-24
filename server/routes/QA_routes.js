@@ -7,7 +7,7 @@ const fs = require('fs');
 const axios = require('axios');
 
 const QA_RouteConfig = require('../../config.js');
-// const TOKEN = QA_RouteConfig.AUTH.Authorization;
+const QA_TOKEN = QA_RouteConfig.AUTH.Authorization;
 const AUTH_HEADER = QA_RouteConfig.AUTH;
 const API_PATH = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/';
 
@@ -20,7 +20,7 @@ const API_PATH = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/';
 router.get('/products', (req, res) => {
   var builtPath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/';
 
-  axios.defaults.headers.common['Authorization'] = TOKEN;
+  axios.defaults.headers.common['Authorization'] = QA_TOKEN;
 
   axios.get(builtPath)
     .then((response) => {
@@ -71,7 +71,7 @@ router.get('/search/:searchterm', (req, res) => {
 router.get('/questions', (req, res) => {
   var builtPath = API_PATH + `questions/?product_id=${req.query.product_id}&page=1&count=10`;
 
-  // axios.defaults.headers.common['Authorization'] = TOKEN;
+  axios.defaults.headers.common['Authorization'] = QA_TOKEN;
 
   axios.get(builtPath)
     .then((response) => {
@@ -90,7 +90,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
 
   var builtPath = API_PATH + `questions/${req.params.question_id}/answers`;
 
-  axios.defaults.headers.common['Authorization'] = TOKEN;
+  axios.defaults.headers.common['Authorization'] = QA_TOKEN;
 
 
   // console.log('route reached');
