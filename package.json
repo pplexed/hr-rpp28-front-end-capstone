@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/FEC-madal/hr-rpp28-front-end-capstone#readme",
   "dependencies": {
+    "aws-sdk": "^2.932.0",
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "bluebird": "^3.7.2",

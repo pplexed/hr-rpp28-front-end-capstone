@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const axios = require('axios');
-const TOKEN = require('../../config.js');
+const RI_TOKEN = require('../../config.js');
 
 const router = express.Router();
 
@@ -31,7 +31,7 @@ const handleRequest = (query, callback) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.productId + urlInfo.flag}`, {
     headers: {
       'User-Agent': 'request',
-      Authorization: TOKEN.TOKEN,
+      Authorization: RI_TOKEN.AUTH.Authorization
     },
   })
     .then((data) => {
