@@ -31,7 +31,7 @@ const handleRequest = (query, callback) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products${urlInfo.productId + urlInfo.flag}`, {
     headers: {
       'User-Agent': 'request',
-      Authorization: RI_TOKEN.TOKEN,
+      Authorization: RI_TOKEN.AUTH.Authorization,
     },
   })
     .then((data) => {

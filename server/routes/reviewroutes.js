@@ -20,7 +20,7 @@ const options = {
 }
 
 router.get('/review-product', (req, res) => {
-  console.log('this is the req should see 30:', req)
+  // console.log('this is the req should see 30:', req)
   getReviews(req.query.count, (err, data) => {
     if (err) {
       // console.log(err);
