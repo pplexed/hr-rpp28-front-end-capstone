@@ -135,7 +135,7 @@ class RelatedItemSlide extends React.Component {
 
   newProduct() {
     const { productId, updateProduct } = this.props;
-    updateProduct(productId); // <-------------------------------------------------This line is breaking the app
+    updateProduct(productId);
   }
 
   render() {
