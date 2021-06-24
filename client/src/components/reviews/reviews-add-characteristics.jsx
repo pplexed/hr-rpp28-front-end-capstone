@@ -166,11 +166,11 @@ class Characteristics extends React.Component {
               <td>5</td>
             </tr>
             <tr onChange={this.onChange}>
-              <td><label htmlFor="fit1"><input type="radio" id="size1" name="fit" value="1"/></label></td>
-              <td><label htmlFor="fit2"><input type="radio" id="size2" name="fit" value="2"/></label></td>
-              <td><label htmlFor="fit3"><input type="radio" id="size3" name="fit" value="3"/></label></td>
-              <td><label htmlFor="fit4"><input type="radio" id="size4" name="fit" value="4"/></label></td>
-              <td><label htmlFor="fit5"><input type="radio" id="size5" name="fit" value="5"/></label></td>
+              <td><label htmlFor="fit1"><input type="radio" id="fit1" name="fit" value="1"/></label></td>
+              <td><label htmlFor="fit2"><input type="radio" id="fit2" name="fit" value="2"/></label></td>
+              <td><label htmlFor="fit3"><input type="radio" id="fit3" name="fit" value="3"/></label></td>
+              <td><label htmlFor="fit4"><input type="radio" id="fit4" name="fit" value="4"/></label></td>
+              <td><label htmlFor="fit5"><input type="radio" id="fit5" name="fit" value="5"/></label></td>
             </tr>
             <tr>
               <td>Runs tight</td>

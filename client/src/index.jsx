@@ -60,16 +60,16 @@ class App extends React.Component {
     //       productId,
     //     });
     //   })
-    //   .catch((err) => {
-    //     console.log('error on meta GET request', err);
-    //   });
+      // .catch((err) => {
+      //   console.log('error on meta GET request', err);
+      // });
   }
 
   render () {
     return (
       <div>
         <h1>FEC React Main App</h1>
-        <Overview apiIP={"http://3.21.164.220"} productId={1}/>
+        <Overview/>
         <br></br>
         <RelatedMain productId={this.state.productId} updateProduct={this.updateProduct}/>
         <br></br>

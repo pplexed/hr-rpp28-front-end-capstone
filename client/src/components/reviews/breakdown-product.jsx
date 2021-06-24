@@ -36,10 +36,10 @@ const Product = (props) => {
 
   return (
     <div>
-      <div>
-        <div className={size ? null : "product-hidden"}>Size</div>
+      <div className={size ? null : "product-hidden"}>
+        <div>Size</div>
         <div><input type="range" id="size" name="size"
-          min="1" max="5" value={size}></input></div>
+          min="1" max="5" value={size} readOnly={true}></input></div>
           <div id="textbox">
             <p className="alignleft">Too small</p>
             <p className="aligncenter">Perfect</p>
@@ -50,7 +50,7 @@ const Product = (props) => {
       <div className={width ? null : "product-hidden"}>
         <div>Width</div>
         <div><input type="range" id="width" name="width"
-          min="1" max="5" value={width}></input></div>
+          min="1" max="5" value={width} readOnly={true}></input></div>
           <div id="textbox">
             <p className="alignleft">Too narrow</p>
             <p className="aligncenter">Perfect</p>
@@ -61,7 +61,7 @@ const Product = (props) => {
       <div className={comfort ? null : "product-hidden"}>
         <div>Comfort</div>
         <div><input type="range" id="comfort" name="comfort"
-          min="1" max="5" value={comfort}></input></div>
+          min="1" max="5" value={comfort} readOnly={true}></input></div>
           <div id="textbox">
             <p className="alignleft">Uncomfortable</p>
             <p className="aligncenter">Ok</p>
@@ -72,7 +72,7 @@ const Product = (props) => {
       <div className={quality ? null : "product-hidden"}>
         <div>Quality</div>
         <div><input type="range" id="quality" name="quality"
-          min="1" max="5" value={quality}></input></div>
+          min="1" max="5" value={quality} readOnly={true}></input></div>
           <div id="textbox">
             <p className="alignleft">Poor</p>
             <p className="aligncenter">What I expected</p>
@@ -83,7 +83,7 @@ const Product = (props) => {
       <div className={length ? null : "product-hidden"}>
         <div>Length</div>
         <div><input type="range" id="length" name="length"
-          min="1" max="5" value={length}></input></div>
+          min="1" max="5" value={length} readOnly={true}></input></div>
           <div id="textbox">
             <p className="alignleft">Runs short</p>
             <p className="aligncenter">Perfect</p>
@@ -94,7 +94,7 @@ const Product = (props) => {
       <div className={fit ? null : "product-hidden"}>
         <div>Fit</div>
         <div><input type="range" id="fit" name="fit"
-          min="1" max="5" value={fit}></input></div>
+          min="1" max="5" value={fit} readOnly={true}></input></div>
           <div id="textbox">
             <p className="alignleft">Runs tight</p>
             <p className="aligncenter">Perfect</p>

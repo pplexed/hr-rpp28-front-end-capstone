@@ -70,6 +70,7 @@ class RelatedProductList extends React.Component {
   }
 
   render() {
+
     const { relatedProducts, productId } = this.props;
     const { parentInfo, showScrollLeft, showScrollRight } = this.state;
     return (

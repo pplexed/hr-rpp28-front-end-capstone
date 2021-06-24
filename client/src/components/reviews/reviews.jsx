@@ -15,7 +15,7 @@ class Reviews extends React.Component {
       recommendations: '',
       reviewList: [],
       allReviews: [],
-      totalRatings: 0,
+      totalRatings: '',
       stars: [] //going to use this for sort later
     };
     //this.binds go here
