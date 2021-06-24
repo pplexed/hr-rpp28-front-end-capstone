@@ -4,12 +4,9 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/routes.js');
 const cors = require('cors');
 
-
-var RIroutes = require('./routes/relatedItems_routes.js');
-
-const review = require('./routes/reviewroutes.js');
-const overview = require('./routes/overviewRoutes.js');
-var QAroutes = require('./routes/QA_routes.js');
+const RIroutes = require('./routes/relatedItems_routes.js');
+const review = require('./routes/reviewroutes.js')
+const QAroutes = require('./routes/QA_routes.js');
 
 const PORT = 3000;
 
@@ -21,14 +18,7 @@ app.use(express.static('./client/dist'));
 // import routes
 app.use('/qa', QAroutes);
 app.use('/reviews', review);
-app.use('/overview', overview);
-
-
-
-
-
 app.use('/relatedItems', RIroutes);
-
 
 app.get('/', (req, res) => {
 
@@ -38,7 +28,6 @@ app.get('/', (req, res) => {
   res.send(data);
 });
 
-
 app.listen(PORT, () => {
-  // console.log(`Now listening on port ${PORT}`);
+  console.log(`Now listening on port ${PORT}`);
 });
