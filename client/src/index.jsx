@@ -51,7 +51,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>FEC React Main App</h1>
-        <Overview apiIP={"http://3.21.164.220"} productId={22123}/>
+        <Overview/>
         <br></br>
         {<RelatedItemsModule /> /* Need to pass this.state.currentProductId */}
         <br></br>

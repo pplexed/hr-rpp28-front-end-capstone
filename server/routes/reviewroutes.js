@@ -8,6 +8,9 @@ const token = require('../../config.js')
 const urlReviews = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=22161&count=2'
 const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=22123'
 
+var AWS = require('aws-sdk');
+// Set the Region
+AWS.config.loadFromPath('./config.json');
 // default options as middleware
 router.use(fileUpload());
 router.use(bodyParser.urlencoded({extended: true}));
@@ -47,16 +50,41 @@ router.post('/uploadphoto', (req, res) => {
   // console.log('upload post received');
 
   // console.log(Object.keys(req.files));
-  console.log(req)
 
-  if (req.files.photo) {
-    fs.writeFile(`./client/dist/${req.files.photo.name}`, req.files.photo.data, (err) => {
+  if (req.files.reviewphoto) {
+    fs.writeFile(`./client/dist/${req.files.reviewphoto.name}`, req.files.reviewphoto.data, (err) => {
+      console.log('did we make it?')
       if (err) {
         // return console.log(err);
+      } else {
+        s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
+// call S3 to retrieve upload file to specified bucket
+        var uploadParams = {Bucket: 'review-widget2', Key: '', Body: ''};
+        var file = `./client/dist/${req.files.reviewphoto.name}`;
+
+        // Configure the file stream and obtain the upload parameters
+
+        var fileStream = fs.createReadStream(file);
+        fileStream.on('error', function(err) {
+          console.log('File Error', err);
+        });
+        uploadParams.Body = fileStream;
+        var path = require('path');
+        uploadParams.Key = path.basename(file);
+
+        // call S3 to retrieve upload file to specified bucket
+        s3.upload (uploadParams, function (err, data) {
+          if (err) {
+            console.log("Error", err);
+          } if (data) {
+            console.log("Upload Success", data);
+            res.send(data);
+          }
+        });
       }
     //  console.log('The file was saved!');
 
-      res.send('hey we made it this far');
     });
   }
 });

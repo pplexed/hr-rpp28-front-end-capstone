@@ -10,7 +10,8 @@ class ReviewPhotos extends React.Component {
     super(props);
     this.state = {
       photos: [],
-      max: 5
+      max: 5,
+      url: ''
     }
     //this bind here
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -20,27 +21,27 @@ class ReviewPhotos extends React.Component {
   //functions here
 
   onChangeHandler (e) {
-    console.log('photo load handler fired');
-    console.log(e.target.files);
 
     var formData = new FormData();
 
     formData.append("reviewphoto", e.target.files[0]);
-    axios.post('http://localhost:3000/reviews/uploadphoto', formData, {
+    axios.post('/reviews/uploadphoto', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
     }).then((response) => {
-      console.log('returned response', response.data)
       // let newarray = this.state.photos;
       // newarray.push(response.data);
+      this.setState({
+        url: response.data['Location']
+      });
 
       // max photos can be 5 before the button disappears
-      if (this.state.photos.length < 5) {
-        this.setState({photos: newarray});
-      } else {
-        this.setState({showUploadForm: false});
-      }
+      // if (this.state.photos.length < 5) {
+      //   this.setState({photos: newarray});
+      // } else {
+      //   this.setState({showUploadForm: false});
+      // }
     });
   }
 
@@ -48,10 +49,13 @@ class ReviewPhotos extends React.Component {
 
     // changed enctype to encType based on warning.  was working with enctype
     return (
-          <form action="/reviews/uploadphoto" method="post" enctype="multipart/form-data">
-                  <input type="file" accept="image/*" name="photo" />
+      <div>
+          <form action="/reviews/uploadphoto" method="post" encType="multipart/form-data">
+                  <input type="file" accept="image/*" name="photo" onChange={this.onChangeHandler} />
                   <input type="submit" value="upload" />
           </form>
+          <div><img className="thumbnail" src={`${this.state.url}`} alt="Girl in a jacket" width="500" height="600" /></div>
+      </div>
     )
   }
 }
