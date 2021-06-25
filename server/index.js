@@ -19,13 +19,10 @@ app.use('/qa', QAroutes);
 app.use('/reviews', review);
 app.use('/relatedItems', RIroutes);
 
-// app.get('/', (req, res) => {
-
-//   //res.send('basic get request received');
-//   // console.log('received a request at /');
-
-//   res.send(data);
-// });
+app.get('/', (req, res) => {
+  console.log('this is data: ', req);
+  res.sendFile('./client/dist');
+});
 
 app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}`);
