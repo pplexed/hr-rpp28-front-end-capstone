@@ -26,10 +26,8 @@ class OutfitList extends React.Component {
   componentDidMount() {
     const { parentId } = this.props;
 
-    console.log('ParentId in OL: ', parentId);
-
     if (parentId !== undefined) {
-      axios.get(`relatedItems/products/?product_id=${parentId}`)
+      axios.get(`relatedItems/products/?productId=${parentId}`)
         .then((data) => {
           this.setState({
             parentInfo: data.data,
@@ -39,7 +37,8 @@ class OutfitList extends React.Component {
           console.log('Error fetching parent product info OutfitList CDM: ', err);
         });
 
-      axios.get(`relatedItems/products/?product_id=${parentId}&flag=styles`)
+      // This request is failing with 404, parentId is being omitted in url
+      axios.get(`relatedItems/products/?productId=${parentId}&flag=styles`)
         .then((data) => {
           this.setState({
             parentStyles: data.data
@@ -72,7 +71,7 @@ class OutfitList extends React.Component {
       }
     });
     if (idx >= 0) {
-      console.log('Outfit added previously');
+      console.log('Outfit already added - should show no change in outfit slides');
     } else {
       const newOutfitInfoConstructor = [
         {
@@ -88,7 +87,6 @@ class OutfitList extends React.Component {
 
       axios.post('relatedItems/outfits', newOutfitInfoObject)
         .then((data) => {
-          console.log('data at OutfitList post): ', data);
           this.setState({
             outfits: data.data,
             loaded: true,
@@ -109,7 +107,6 @@ class OutfitList extends React.Component {
     }, () => {
       axios.delete('relatedItems/outfits', { data: outfitToRemove })
         .then((data) => {
-          console.log('data at OutfitList delete: ', data);
           if (data.data.length > 0) {
             this.setState({
               outfits: data.data,

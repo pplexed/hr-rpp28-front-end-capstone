@@ -39,7 +39,7 @@ class RelatedItemSlide extends React.Component {
 
   getData() {
     const { productId, parentInfo } = this.props;
-    axios.get(`/relatedItems/products/?productId=${productId}`)
+    axios.get(`relatedItems/products/?productId=${productId}`)
       .then((data) => {
         this.setState({
           productInfo: data.data,
@@ -135,7 +135,6 @@ class RelatedItemSlide extends React.Component {
 
   newProduct() {
     const { productId, updateProduct } = this.props;
-    console.log('productId in newProduct b4 updateProduct call: ', productId);
     updateProduct(productId);
   }
 

@@ -57,11 +57,9 @@ class App extends React.Component {
 
   // Tim's methods for RelatedProducts and Outfit List
   updateProduct(newProductId) {
-    console.log('current product id', this.state.productId, 'should change to', newProductId, 'on the log below');
     this.setState({
       productId: newProductId
     });
-    console.log('new product id: ', newProductId);
   }
 
   render () {

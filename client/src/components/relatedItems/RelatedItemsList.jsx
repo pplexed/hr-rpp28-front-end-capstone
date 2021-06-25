@@ -54,7 +54,6 @@ class RelatedProductList extends React.Component {
       showScrollLeft: true,
     });
     let car = document.getElementById('productCarousel');
-    console.log('car in RIL: ', car);
     car.scrollLeft = car.scrollLeft + 315;
     const remainingSpace = car.scrollWidth - car.clientWidth;
     if (car.scrollLeft >= remainingSpace - 315) {
