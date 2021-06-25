@@ -135,6 +135,7 @@ class RelatedItemSlide extends React.Component {
 
   newProduct() {
     const { productId, updateProduct } = this.props;
+    console.log('productId in newProduct b4 updateProduct call: ', productId);
     updateProduct(productId);
   }
 
@@ -152,7 +153,7 @@ class RelatedItemSlide extends React.Component {
     const sale = {
       color: salePrice ? 'red' : 'black',
       textDecoration: salePrice ? 'line-through' : 'none',
-      fonstSize: '15px',
+      fonstSize: '20px',
     };
 
     const loadPhoto = {
@@ -179,14 +180,17 @@ class RelatedItemSlide extends React.Component {
               <ImageWrap onClick={this.newProduct}>
                 <Image src={photoURL} alt={productInfo.name} />
               </ImageWrap>
-              <ProductContentWrap style={{ fontSize: '10px'}}>{productInfo.category}</ProductContentWrap>
-              <ProductContentWrap onClick={this.newProduct()} style={{ fontSize: '15px', fontWeight: 'bold' }}>{productInfo.name}</ProductContentWrap>
-              <ProductContentWrap style={sale}>${productInfo.default_price}</ProductContentWrap>
+              <StarsWrap>
               <div className="stars-noclick">
                 <Stars />
               </div>
-              {salePrice ? <ProductContentWrap style={{ fontSize: '13px' }}>{salePrice}</ProductContentWrap> : null}
+              </StarsWrap>
+              <ProductContentWrap style={{ fontSize: '15px'}}>{productInfo.category}</ProductContentWrap>
+              <ProductContentWrap style={{ fontSize: '20px', fontWeight: 'bold' }}>{productInfo.name}</ProductContentWrap>
+              <ProductContentWrap style={sale}>${productInfo.default_price}</ProductContentWrap>
+              {salePrice ? <ProductContentWrap style={{ fontSize: '15px', fontWeight: 'bold' }}>{salePrice}</ProductContentWrap> : null}
               {salePrice ? <LowerBorderDiv /> : <BorderDiv />}
+              <br />
             </SlideContainer>
           )
         }
@@ -280,6 +284,10 @@ const CompareButton = styled.button`
 `;
 
 const ProductContentWrap = styled.div`
+  margin: 5px 15px;
+`;
+
+const StarsWrap = styled.div`
   margin: 5px 15px;
 `;
 

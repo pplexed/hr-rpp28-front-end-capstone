@@ -51,7 +51,7 @@ class OutfitList extends React.Component {
           this.setState({
             outfits: data.data,
             loaded: true,
-          });
+          }, this.overlfow);
         })
         .catch((err) => {
           console.log('Error fetching outfit info in OutfitList CDM: ', err);
@@ -77,7 +77,7 @@ class OutfitList extends React.Component {
           styles: parentStyles,
         }
       ];
-      const newOutfitInfoObject = newOutfitInfoConstructor;
+      const newOutfitInfoObject = newOutfitInfoConstructor[0];
       this.setState({
         outfits: [],
       });
@@ -127,9 +127,9 @@ class OutfitList extends React.Component {
     this.setState({
       showScrollRight: true,
     });
-    const car = document.getElementById('outifts');
+    const car = document.getElementById('outfits');
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    car.scrollLeft += 325;
+    car.scrollLeft = car.scrollLeft - 325;
     if (car.scrollLeft <= remainingSpace - 325) {
       this.setState({
         showScrollRight: false,
@@ -143,7 +143,7 @@ class OutfitList extends React.Component {
     });
     const car = document.getElementById('outfits');
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    car.scrollLeft -= 325;
+    car.scrollLeft = car.scrollLeft + 325;
     if (car.scrollLeft >= remainingSpace - 325) {
       this.setState({
         showScrollRight: false,
@@ -163,6 +163,7 @@ class OutfitList extends React.Component {
 
   render() {
     const { outfits, showScrollLeft, showScrollRight, loaded } = this.state;
+
     return (
       <>
         {showScrollRight ? (
@@ -172,7 +173,7 @@ class OutfitList extends React.Component {
               </RightButton>
             </RightButtonWrap>
         ) : null }
-        <ListWrap id="outifts">
+        <ListWrap id="outfits">
           <CardWrap id="addOutfit" onClick={this.addOutfit} aria-label="Add to outfit list">
             <AddOutfitContent>
               Add to outfit

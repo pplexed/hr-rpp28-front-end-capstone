@@ -10,7 +10,7 @@ const urlMeta = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/met
 
 var AWS = require('aws-sdk');
 // Set the Region
-AWS.config.loadFromPath('./config.json');
+// AWS.config.loadFromPath('./config.json');
 // default options as middleware
 router.use(fileUpload());
 router.use(bodyParser.urlencoded({extended: true}));

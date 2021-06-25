@@ -15,12 +15,13 @@ class RelatedProductList extends React.Component {
       showScrollRight: true,
     };
 
-    this.overflow = this.overflow.bind(this);
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
+    this.overflow = this.overflow.bind(this);
   }
 
   componentDidMount() {
+    // This needs to move to index.js in CDM
     const { productId } = this.props;
     axios.get(`relatedItems/products/?productId=${productId}`)
       .then((parentData) => {
@@ -33,12 +34,13 @@ class RelatedProductList extends React.Component {
       });
   }
 
+  // Not working
   scrollLeft() {
     this.setState({
       showScrollRight: true,
     });
     let car = document.getElementById('productCarousel');
-    car -= 325;
+    car.scrollLeft = car.scrollLeft - 325;
     if (car.scrollLeft <= 325) {
       this.setState({
         showScrollLeft: false,
@@ -46,12 +48,14 @@ class RelatedProductList extends React.Component {
     }
   }
 
+  // Not working
   scrollRight() {
     this.setState({
       showScrollLeft: true,
     });
     let car = document.getElementById('productCarousel');
-    car += 325;
+    console.log('car in RIL: ', car);
+    car.scrollLeft = car.scrollLeft + 325;
     const remainingSpace = car.scrollWidth - car.clientWidth;
     if (car.scrollLeft >= remainingSpace - 325) {
       this.setState({
@@ -70,9 +74,14 @@ class RelatedProductList extends React.Component {
   }
 
   render() {
-
     const { relatedProducts, productId } = this.props;
     const { parentInfo, showScrollLeft, showScrollRight } = this.state;
+
+    if (parentInfo.length === 0) {
+      return (
+        null
+      );
+    }
     return (
       <div>
         {showScrollRight
@@ -88,7 +97,7 @@ class RelatedProductList extends React.Component {
             <RelatedItemSlide
               key={productId}
               productId={data}
-              parent_id={productId}
+              parentId={productId}
               parentInfo={parentInfo}
               updateProduct={this.props.updateProduct}
             />

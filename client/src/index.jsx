@@ -37,41 +37,44 @@ class App extends React.Component {
         created_at: '2021-03-18T16:09:30.589Z',
         updated_at: '2021-03-18T16:09:30.589Z'
       },
-      productId: 22161,
+      productId: 23008,
+      productData: {},
       metaData: {},
     };
 
+    // Tim's RelatedItems bindings
     this.updateProduct = this.updateProduct.bind(this);
   }
 
   componentDidMount() {
+    // Get product data
+
+    // Get metaData
 
 
-    // this.reviews()
 
   }
 
-  updateProduct(productId) {
-    // axios.get(`/reviews/?product_id=${productId}/getMeta`)
-    //   .then((results) => {
-    //     console.log('results in index.js updateProduct', results);
-    //     this.setState({
-    //       metaData: results.data,
-    //       productId,
-    //     });
-    //   })
-      // .catch((err) => {
-      //   console.log('error on meta GET request', err);
-      // });
+  // Tim's methods for RelatedProducts and Outfit List
+  updateProduct(newProductId) {
+    console.log('current product id', this.state.productId, 'should change to', newProductId, 'on the log below');
+    this.setState({
+      productId: newProductId
+    });
+    console.log('new product id: ', newProductId);
   }
 
   render () {
+    let { productId } =  this.state;
+
     return (
       <div>
         <h1>FEC React Main App</h1>
         <Overview/>
         <br></br>
-        <RelatedMain productId={this.state.productId} updateProduct={this.updateProduct}/>
+        <RelatedMain
+          productId={productId}
+          updateProduct={this.updateProduct}/>
         <br></br>
         <br></br>
         Ratings and Reviews

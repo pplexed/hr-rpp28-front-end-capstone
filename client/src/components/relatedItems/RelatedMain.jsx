@@ -12,22 +12,15 @@ class RelatedMain extends React.Component {
       productId: this.props.productId,
       relatedProducts: [],
     };
-    this.getRelatedIds = this.getRelatedIds.bind(this);
   }
 
   componentDidMount() {
-    this.getRelatedIds();
-  }
-
-  getRelatedIds() {
-    // const productId = 22134;
     const { productId } = this.props;
     axios.get(`relatedItems/products/?productId=${productId}&flag=related`)
       .then((relatedIds) => {
         this.setState({
           relatedProducts: relatedIds.data,
         });
-
       })
       .catch((err) => {
         console.log('Error fetching Related Product IDs: ', err);
@@ -55,6 +48,7 @@ class RelatedMain extends React.Component {
         <ListWrap>
           <OutfitList
             parentId={productId}
+            updateProduct={updateProduct}
           />
         </ListWrap>
       </RelatedModuleWrap>
