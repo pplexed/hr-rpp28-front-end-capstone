@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// Star Rating
 
 class OutfitSlide extends React.Component {
   constructor(props) {
@@ -18,9 +19,11 @@ class OutfitSlide extends React.Component {
   }
 
   componentDidMount() {
+    console.log('In CDM in OutfitSlide');
     const { outfit } = this.props;
     const defaultInfo = outfit.styles.results.find((product) => product['default?'] === true);
     let thumbnailURL;
+
     if (!defaultInfo) {
       thumbnailURL = outfit.styles.results[0].photos[0].url;
       this.setState({
@@ -29,15 +32,16 @@ class OutfitSlide extends React.Component {
     } else {
       thumbnailURL = defaultInfo.photos[0].url;
       this.setState({
-        salePrice: defaultProduct.sale_price,
+        salePrice: defaultInfo.sale_price,
       });
     }
+
     if (!thumbnailURL) {
       this.setState({
         productInfo: outfit.info,
         productStyles: outfit.styles,
+        photoURL: 'https://www.westernheights.k12.ok.us/wp-content/uploads/2020/01/No-Photo-Available.jpg',
         loaded: this.state.loaded + 1,
-        // Default photo if no photo available?
       });
     } else {
       this.setState({
@@ -56,9 +60,9 @@ class OutfitSlide extends React.Component {
   }
 
   changeProduct() {
-    const { outfit } = this.props;
+    const { outfit, updateProduct } = this.props;
     const productId = outfit.styles.product_id;
-    // Need some sort of passed in event handler to switch to another product here
+    updateProduct(productId);
   }
 
   render() {
@@ -72,27 +76,29 @@ class OutfitSlide extends React.Component {
     };
     return (
       <>
-        {loaded === 1 && (
-          <CardWrap>
-            <ButtonWrap>
-              <RemoveButton
-                onClick={this.removeOutift}
-                aria-label="Remove item from outfit"
-              />
-            </ButtonWrap>
-            <ImageWrap onClick={this.changeProduct}>
-              <Image src={photoURL} width='100%' height='auto' alt={productInfo.name} />
-            </ImageWrap>
-            <ProductContentWrap style={{ fonSize: '10px' }}>{productInfo.category}</ProductContentWrap>
-            <ProductContentWrap style={{ fontSize: '15px', fontWeight: 'bold' }} onClick = {this.changeProduct}>{productInfo.name}</ProductContentWrap>
-            <ProductContentWrap style={sale}>
-              $
-              {productInfo.default_price}
-            </ProductContentWrap>
-            {salePrice ? <ProductContentWrap style={{ fontSize: '13px' }} > {salePrice}</ProductContentWrap> : null}
-            {salePrice ? <LowerBorderDiv /> : <BorderDiv />}
-          </CardWrap>
-        )}
+        {
+          loaded === 1 && (
+            <CardWrap>
+              <ButtonWrap>
+                <RemoveButton
+                  onClick={this.removeOutift}
+                  aria-label="Remove item from outfit"
+                />
+              </ButtonWrap>
+              <ImageWrap onClick={this.changeProduct}>
+                <Image src={photoURL} width='100%' height='auto' alt={productInfo.name} />
+              </ImageWrap>
+              <ProductContentWrap style={{ fonSize: '10px' }}>{productInfo.category}</ProductContentWrap>
+              <ProductContentWrap style={{ fontSize: '15px', fontWeight: 'bold' }} onClick = {this.changeProduct}>{productInfo.name}</ProductContentWrap>
+              <ProductContentWrap style={sale}>
+                $
+                {productInfo.default_price}
+              </ProductContentWrap>
+              {salePrice ? <ProductContentWrap style={{ fontSize: '13px' }} > {salePrice}</ProductContentWrap> : null}
+              {salePrice ? <LowerBorderDiv /> : <BorderDiv />}
+            </CardWrap>
+          )
+        }
       </>
     );
   }

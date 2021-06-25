@@ -43,7 +43,7 @@ class RelatedMain extends React.Component {
           />
         </ListWrap>
         <div>
-          <h3>Build your perfect outfit here</h3>
+          <h3>Your Outfit</h3>
         </div>
         <ListWrap>
           <OutfitList

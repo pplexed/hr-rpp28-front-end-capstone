@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import OutfitSlide from './OutfitSlide.jsx';
+// Star ratings
 
 class OutfitList extends React.Component {
   constructor(props) {
@@ -24,6 +25,8 @@ class OutfitList extends React.Component {
 
   componentDidMount() {
     const { parentId } = this.props;
+
+    console.log('ParentId in OL: ', parentId);
 
     if (parentId !== undefined) {
       axios.get(`relatedItems/products/?product_id=${parentId}`)
@@ -62,13 +65,13 @@ class OutfitList extends React.Component {
   addOutfit() {
     const { parentStyles, parentInfo, outfits } = this.state;
     const outfitId = parentStyles.product_id;
-    let position;
-    outfits.forEach((outfit, idx) => {
+    let idx;
+    outfits.forEach((outfit, i) => {
       if (outfit.styles.product_id === outfitId) {
-        position = idx;
+        idx = i;
       }
     });
-    if (position >= 0) {
+    if (idx >= 0) {
       console.log('Outfit added previously');
     } else {
       const newOutfitInfoConstructor = [
@@ -78,13 +81,14 @@ class OutfitList extends React.Component {
         }
       ];
       const newOutfitInfoObject = newOutfitInfoConstructor[0];
+
       this.setState({
         outfits: [],
       });
 
-      axios.post('relatedItems/interactions', newOutfitInfoObject)
+      axios.post('relatedItems/outfits', newOutfitInfoObject)
         .then((data) => {
-          console.log('data at OutfitList (post - need route created): ', data);
+          console.log('data at OutfitList post): ', data);
           this.setState({
             outfits: data.data,
             loaded: true,
@@ -103,9 +107,9 @@ class OutfitList extends React.Component {
     this.setState({
       outfits: [],
     }, () => {
-      axios.delete('relatedItems/interactions', { data: outfitToRemove })
+      axios.delete('relatedItems/outfits', { data: outfitToRemove })
         .then((data) => {
-          console.log('data at OutfitList (delete - need route created): ', data);
+          console.log('data at OutfitList delete: ', data);
           if (data.data.length > 0) {
             this.setState({
               outfits: data.data,
@@ -129,8 +133,8 @@ class OutfitList extends React.Component {
     });
     const car = document.getElementById('outfits');
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    car.scrollLeft = car.scrollLeft - 325;
-    if (car.scrollLeft <= remainingSpace - 325) {
+    car.scrollLeft = car.scrollLeft - 315;
+    if (car.scrollLeft <= remainingSpace - 315) {
       this.setState({
         showScrollRight: false,
       });
@@ -143,8 +147,8 @@ class OutfitList extends React.Component {
     });
     const car = document.getElementById('outfits');
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    car.scrollLeft = car.scrollLeft + 325;
-    if (car.scrollLeft >= remainingSpace - 325) {
+    car.scrollLeft = car.scrollLeft + 315;
+    if (car.scrollLeft >= remainingSpace - 315) {
       this.setState({
         showScrollRight: false,
       });
@@ -161,9 +165,11 @@ class OutfitList extends React.Component {
     }
   }
 
+
+  // NEEDS A BETTER + SIGN
   render() {
     const { outfits, showScrollLeft, showScrollRight, loaded } = this.state;
-
+    const { updateProduct } = this.props;
     return (
       <>
         {showScrollRight ? (
@@ -176,7 +182,7 @@ class OutfitList extends React.Component {
         <ListWrap id="outfits">
           <CardWrap id="addOutfit" onClick={this.addOutfit} aria-label="Add to outfit list">
             <AddOutfitContent>
-              Add to outfit
+               + Add To Your Outfit
             </AddOutfitContent>
           </CardWrap>
           {loaded
@@ -186,6 +192,7 @@ class OutfitList extends React.Component {
                   <OutfitSlide
                     key={idx}
                     outfit={outfit}
+                    updateProduct={updateProduct}
                     removeOutfit={this.removeOutfit}
                   />;
                 })}
@@ -210,7 +217,7 @@ const ListWrap = styled.div`
 display: flex;
 justify-content: flex-start;
 overflow: scroll;
-position: relative;
+idx: relative;
 height: 415px;
 margin: 0px;
 padding: 0px;
@@ -221,7 +228,7 @@ scroll-behavior: smooth;
 const CardWrap = styled.div`
 height: 400px;
 width: 275px;
-position: relative;
+idx: relative;
 flex-shrink: 0;
 margin: 0px 10px;
 background: rgba(255,255,255,0.1);
@@ -234,7 +241,7 @@ background: linear-gradient(180deg, hsl(190,70%,99%), hsl(240,60%,100%));
 `;
 
 const LeftButton = styled.button`
-  position: absolute;
+  idx: absolute;
   left: 2%;
   top: 25%;
   background-color: white;
@@ -249,7 +256,7 @@ const LeftButton = styled.button`
 `;
 
 const LeftButtonWrap = styled.div`
-  position: absolute;
+  idx: absolute;
   left: 1%;
   top: 0px;
   padding-left: 60px;
@@ -261,7 +268,7 @@ const LeftButtonWrap = styled.div`
 `;
 
 const RightButton = styled.button`
-  position: absolute;
+  idx: absolute;
   right: 2%;
   top: 25%;
   background-color: white;
@@ -276,7 +283,7 @@ const RightButton = styled.button`
 `;
 
 const RightButtonWrap = styled.div`
-  position: absolute;
+  idx: absolute;
   right: -1%;
   top: 0px;
   padding-left: 60px;
@@ -294,7 +301,7 @@ width: 90%;
 margin-top: 0px;
 margin-left: 5%;
 margin-right: 5%;
-position: relative;
+idx: relative;
 bottom: 0px;
 `;
 

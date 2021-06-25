@@ -15,6 +15,7 @@ const Modal = (props) => {
         <CloseWindowButton className="close" onClick={closeWindow}>&times;</CloseWindowButton>
       </div>
       <ModalContent>
+        <ModuleTitle>Comparing</ModuleTitle>
         <CompareTitle>
           <ProductTitle>{parentName}</ProductTitle><br />
           <ProductTitle>{compareName}</ProductTitle><br />
@@ -114,4 +115,11 @@ const ProductTitle = styled.div`
   border-bottom: 1px solid grey;
   margin-bottom: 13px;
   font-weight: bold;
+`;
+
+const ModuleTitle = styled.div`
+text-align: center;
+font-size: 20px;
+margin-bottom: 13px;
+font-weight: bold;
 `;

@@ -4,6 +4,7 @@ const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const axios = require('axios');
 const RI_TOKEN = require('../../config.js');
+const outfit = require('../OutfitHelpers.js');
 
 const router = express.Router();
 
@@ -53,18 +54,33 @@ router.get('/products', (req, res) => {
 });
 
 router.get('/outfits', (req, res) => {
-  console.log('In OutfitList API call outfits');
-  res.send([1, 2, 3, 4]);
+  outfit.getAllOutfits((err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
-router.post('/interactions', (req, res) => {
-  console.log('In OufitList API call interactions');
-  res.send();
+router.post('/outfits', (req, res) => {
+  outfit.saveOutfit(req.body, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.send(data);
+    }
+  });
 })
 
-router.delete('/interactions', (req, res) => {
-  console.log('In OutfitLIst API call delete');
-  res.send();
+router.delete('/outfits', (req, res) => {
+  outfit.deleteOutfit(req.body.id, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.send(data);
+    }
+  });
 })
 
 module.exports = router;

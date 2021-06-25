@@ -40,8 +40,8 @@ class RelatedProductList extends React.Component {
       showScrollRight: true,
     });
     let car = document.getElementById('productCarousel');
-    car.scrollLeft = car.scrollLeft - 325;
-    if (car.scrollLeft <= 325) {
+    car.scrollLeft = car.scrollLeft - 315;
+    if (car.scrollLeft <= 315) {
       this.setState({
         showScrollLeft: false,
       });
@@ -55,9 +55,9 @@ class RelatedProductList extends React.Component {
     });
     let car = document.getElementById('productCarousel');
     console.log('car in RIL: ', car);
-    car.scrollLeft = car.scrollLeft + 325;
+    car.scrollLeft = car.scrollLeft + 315;
     const remainingSpace = car.scrollWidth - car.clientWidth;
-    if (car.scrollLeft >= remainingSpace - 325) {
+    if (car.scrollLeft >= remainingSpace - 315) {
       this.setState({
         showScrollRight: false,
       });

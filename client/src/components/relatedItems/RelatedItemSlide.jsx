@@ -91,7 +91,7 @@ class RelatedItemSlide extends React.Component {
     parentFeature.forEach((item) => {
       if (!compare[item.feature]) {
         if (item.value === null) {
-          compare[item.feature] = ['N/A'];
+          compare[item.feature] = ['\u2713'];
         } else {
           compare[item.feature] = [item.value];
         }
@@ -102,13 +102,13 @@ class RelatedItemSlide extends React.Component {
       if (!compare[item.feature]) {
         if (item.value === null) {
           compare[item.feature] = [];
-          compare[item.feature][1] = 'N/A';
+          compare[item.feature][1] = '\u2713';
         } else {
           compare[item.feature] = [];
           compare[item.feature][1] = item.value;
         }
       } else if (item.value === null) {
-        compare[item.feature][1] = 'N/A';
+        compare[item.feature][1] = '\u2713';
       } else {
         compare[item.feature][1] = item.value;
       }
@@ -120,10 +120,10 @@ class RelatedItemSlide extends React.Component {
 
     for (let i = 0; i < keys.length; i++) {
       if (values[i][0] === undefined) {
-        values[i][0] = 'N/A';
+        values[i][0] = '';
       }
       if (values[i][1] === undefined) {
-        values[i][1] = 'N/A';
+        values[i][1] = '';
       }
       compareArray.push(values[i][0], keys[i], values[i][1]);
     }
